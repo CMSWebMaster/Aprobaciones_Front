@@ -1,0 +1,373 @@
+$primary: #FEB02D;
+$secondary: #212874;
+
+@import url('https://fonts.cdnfonts.com/css/fontin');
+
+.italic{
+  font-family: 'Fontin', sans-serif;
+}
+
+:host {
+  --family: 'Roboto', sans-serift;
+  background: #fff;
+}
+
+toolbar {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.login-container {
+  background: transparent;
+}
+
+.login-card {
+  background: #fff;
+}
+
+.subtitle{
+  color: var(--secondary);
+}
+/*
+@media (prefers-color-scheme: dark) {
+  .subtitle{
+    color: white;
+  }
+  .login-container {
+    background: transparent;
+  }
+  .login-card {
+    background: rgba(#fff, .05);
+  }
+}*/
+
+#svg2 {
+  animation-name: login-animation;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+
+}
+
+@keyframes login-animation {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.container-background-blue {
+  min-height: 300px;
+  // background: transparent;
+}
+.text-blue{
+  color: #212874;
+}
+
+.background-blue{
+  border-radius: 50% / 0 0 100% 100%;
+  width: 100%;
+  max-width: 400px;
+  height: 200px;
+  background: #212874;
+  box-shadow: 0 16px 0 #FEB02D;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+.logo{
+  width: 70%;
+  padding-bottom: 15%;
+}
+.text-secondary{
+  padding-top: 35px;
+  padding-bottom: 15px;
+}
+.text-secondary-lg{
+display: none;
+}
+.text-blue-lg{
+  display: none;
+}
+.background-primary{
+  background: $primary;
+}
+@media (width: 540px) and (height: 720px){
+  .background-blue{
+
+    max-width: 100%;
+    height: 70%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+
+  .background-blue{
+
+    max-width: 100%;
+    height: 90%;
+
+  }
+
+
+}
+@media only screen and (min-width: 1024px) {
+  .container-background-blue {
+    // min-height: 300px;
+    // background: transparent;
+  }
+  .background-blue{
+    border-radius: 50% / 0% 50% 50% 0%;
+    width: 100%;
+    max-width: 100%;
+    height: 100vh;
+    background: #212874;
+    // box-shadow: 0 16px 0 #FEB02D;
+    box-shadow: 16px 10px 0px #FEB02D;
+    display: flex;
+    justify-content: center;
+    align-items: center
+  }
+  .form-login{
+    background: $primary;
+  }
+  // .logo{
+  //   width: 70%;
+  //   padding-bottom: 0%;
+  // }
+  .text-secondary{
+    display: none;
+
+  }
+  .text-secondary-lg{
+    display: block;
+
+    }
+    .text-secondary-lg .subtitle{
+      font-size:3rem;
+      // margin-left: 205px;
+      letter-spacing: 0.1rem;
+    }
+    .text-blue{
+      // color: transparent;
+    }
+    .text-white:hover {
+      cursor: pointer;
+    }
+    .text-blue-lg{
+      display: block;
+      color: #212874;
+      padding-bottom: 10px;
+    }
+  .logo{
+padding-bottom: 0;  }
+
+  .text-secondary, .subtitle {
+
+    color: #fff!important;
+}
+.background-primary{
+  background: transparent;
+}
+}
+.col-lg-6, .col-12{
+  padding-right: 0!important;
+  padding-left: 0!important;
+}
+// clases para la caja de credenciales
+.input-container {
+  border-radius: 5px;
+  min-height: 35px;
+  height: 40px;
+  max-height: 45px;
+  padding: 0rem 1rem;
+  background: rgba(var(--primary-rgb), .07);
+  display: flex;
+  align-items: center;
+  margin-top: 1.25rem;
+
+  & select {
+    padding-right: .5rem !important;
+  }
+
+  &.warning {
+    border: 2px solid rgba(255, 0, 0, .3);
+  }
+
+  svg {
+    height: 24px;
+  }
+  input{
+
+    border: none;
+    &:focus {
+      outline:none;
+    }
+  }
+}
+
+.card, .card-body {
+  background: var(--background);
+}
+/*
+@media (prefers-color-scheme: dark) {
+  .input-container {
+    background: #fff;
+
+    [class*="input"] {
+      color: #000;
+    }
+  }
+  h1.text-primary {
+    color: #fff !important;
+  }
+  .btn-ingresar {
+    background: var(--secondary);
+  }
+
+}*/
+
+.title-default {
+  font-size: 1rem;
+}
+
+.shadow-sm {
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25) !important;
+}
+
+.card {
+  border-radius: 12px;
+}
+
+.title-default {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: var(--secondary);
+  /*@media (prefers-color-scheme: dark) {
+    color: #fff;
+  }*/
+}
+
+.modal-h-50 .modal-wrapper {
+  height: 50%;
+}
+
+.modal-h-75 .modal-wrapper {
+  height: 75%;
+}
+
+
+.rounded {
+  .modal-wrapper {
+    border-radius: 8px;
+  }
+}
+
+.rounded-lt {
+  .modal-wrapper {
+    border-top-left-radius: 8px;
+  }
+}
+
+.rounded-rt {
+  .modal-wrapper {
+    border-top-right-radius: 8px;
+  }
+}
+
+.rounded-lb {
+  .modal-wrapper {
+    border-bottom-left-radius: 8px;
+  }
+}
+
+.rounded-rb {
+  .modal-wrapper {
+    border-bottom-left-radius: 8px;
+  }
+}
+
+.rounded-b {
+  .modal-wrapper {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+}
+
+.rounded-t {
+  .modal-wrapper {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+}
+
+.fw-bold{
+font-size: large;
+font-weight: 500;
+text-transform: uppercase;
+}
+.h-100vh{
+min-height: 100vh;
+}
+
+@media (min-width: 3000px) and (max-width: 3999px) {
+  .title-xl {
+    font-size: calc(1em + 0.35vw);
+    line-height: 1em;
+    padding: 1em;
+    margin: 1em;
+  }
+  .font-xl {
+    font-size: calc(1em  + 0.25vw);
+    line-height: 1em;
+    // padding: 15px 0;
+    margin: 1em;
+  }
+  .input-conainet-xl {
+    font-size: calc(1em  + 0.2vw);
+    // line-height: 1em;
+    max-height: 5rem!important;
+    height: 4rem;
+    margin: 2.5rem;
+  }
+  svg{
+    width:38px;
+    height:34px;
+  }
+  .subtitle-font{
+    font-size: calc(1em  + 2vw)!important;
+  }
+}
+
+@media (min-width: 4000px){
+  .title-xl {
+    font-size: calc(1em + 0.5vw);
+    line-height: 1em;
+    padding: 1em;
+    margin: 1em;
+  }
+  .font-xl {
+    font-size: calc(1em  + 0.35vw);
+    line-height: 1em;
+    // padding: 15px 0;
+    margin: 1em;
+  }
+  .input-conainet-xl {
+    font-size: calc(1em  + 0.2vw);
+    // line-height: 1em;
+    max-height: 6rem!important;
+    height: 5rem;
+    margin: 3.5rem;
+  }
+  svg{
+    width:48px;
+    height:44px;
+  }
+  .extra-font{
+    font-size: calc(1em  + 0.35vw)!important;
+  }
+  .subtitle-font{
+    font-size: calc(1em  + 2.35vw)!important;
+  }
+}
