@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 export class SharedService {
   response: Observable<any>;
   baseURL: string = environment.baseURL;
+  loginURL: string = environment.loginURL;
   private messageSource = new BehaviorSubject(localStorage.getItem('title'));
   currentMessage = this.messageSource.asObservable();
   constructor(private http: HttpClient) {
@@ -35,6 +36,9 @@ export class SharedService {
   }
   getMenuSidebarAllService() {
     return this.http.get(`${this.baseURL}/permisos/allUser/`).toPromise();
+  }
+  getModelsAccesPermission(id) {
+    return this.http.get(`${this.loginURL}/permisos/model/${id}`).toPromise();
   }
   logout() {
     localStorage.removeItem('token');

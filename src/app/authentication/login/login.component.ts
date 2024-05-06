@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     // this.subscription = this.sharedService.currentMessage.subscribe(message => this.message = message)
-    console.log(100,this.getUserdata());
+    // console.log(100,this.getUserdata());
     console.log(30,localStorage.getItem('username'));
 
   }
@@ -62,9 +62,8 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('title', 'Aplicativo Web')
     // this.sharedService.changeMessage("Aplicativo Web")
     this.submitted = true;
-    // this.router.navigate(['/dashboard/dashboard1'])
-    // stop here if form is invalid
-    this.router.navigate(['dashboard/dashboard1']);
+
+    // this.router.navigate(['dashboard/dashboard1']);
     if (this.loginForm.invalid) {
       return;
     }
@@ -76,7 +75,7 @@ export class LoginComponent implements OnInit {
     this.loading();
     this.apiService.postLoginService(data).then(
       (response: any) => {
-        console.log(response);
+        console.log(111, response);
         if (response.respuesta === 'True') {
           this.getProfileUser(this.username.value);
           localStorage.setItem('username', this.username.value);
@@ -173,7 +172,7 @@ export class LoginComponent implements OnInit {
         this.acceso = this.listrol[0]?.special_access
       }
       console.log('lista rol', response);
-      // Swal.close();
+      Swal.close();
       if (response.data.length > 0) {
 // console.log(this.listrol)
         let claves = Object.keys(this.listrol);
@@ -197,7 +196,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('idrol', idrol);
         localStorage.setItem('access_area', this.listrol[0]?.area_access);
         // localStorage.setItem('idrol', this.listrol[0]?.idrol);
-        this.router.navigate(['/default']);
+        this.router.navigate(['/dashboard/dashboard1']);
       } else {
         this.InfoLogin();
       }
@@ -210,9 +209,9 @@ export class LoginComponent implements OnInit {
       width: '200px',
       allowEscapeKey: false,
       allowOutsideClick: false,
-      // onOpen: () => {
-      //   Swal.showLoading();
-      // },
+      didOpen: () => {
+        Swal.showLoading();
+      },
     });
   }
 

@@ -5,7 +5,7 @@ import { HorizontalSidebarService } from './horizontal-sidebar.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { FeatherModule } from 'angular-feather';
-
+import { SharedService } from '../../services/shared.service';
 @Component({
   selector: 'app-horizontal-sidebar',
   standalone: true,
@@ -19,10 +19,12 @@ export class HorizontalSidebarComponent {
   path = '';
 
   constructor(
-    private menuServise: HorizontalSidebarService,
+    private menuServise: SharedService,
+    // private menuServise: HorizontalSidebarService,
     private router: Router
   ) {
-    this.menuServise.items.subscribe((menuItems) => {
+    const id = 149
+    this.menuServise.getModelsAccesPermission(id).then((menuItems:any) => {
       this.sidebarnavItems = menuItems;
 
       // Active menu
