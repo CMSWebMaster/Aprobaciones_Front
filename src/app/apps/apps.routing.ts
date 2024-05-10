@@ -30,222 +30,246 @@ import { EditInvoiceComponent } from './invoice/edit-invoice/edit-invoice.compon
 import { JobsListComponent } from './jobs/jobs-list/jobs-list.component';
 import { JobDetailComponent } from './jobs/job-detail/job-detail.component';
 import { JobApplyComponent } from './jobs/job-apply/job-apply.component';
+import { PurchaseOrderComponent } from '../pages/approval/submodules/purchase-order/index/index.component';
+import { ServicesOrderComponent } from '../pages/approval/submodules/services-order/index/index.component';
 
 export const AppsRoutes: Routes = [
-  {
-    path: '',
-    children: [
-      {
-        path: 'chat',
-        component: ChatComponent,
-        data: {
-          title: '',
-          urls: [],
-        },
-      },
+	{
+		path: 'purcharseOrder',
+		component: PurchaseOrderComponent,
+		data: {
+			title: 'Órdenes de Compra',
+			urls: [
+				{ title: 'Apps', url: '/dashboard' },
+				{ title: 'Órdenes de Compra' },
+			],
+		},
+	},
+	{
+		path: 'servicesOrder',
+		component: ServicesOrderComponent,
+		data: {
+			title: 'Órdenes de Servicios',
+			urls: [
+				{ title: 'Apps', url: '/dashboard' },
+				{ title: 'Órdenes de Servicios' },
+			],
+		},
+	},
+	{
+		path: '',
+		children: [
+			{
+				path: 'chat',
+				component: ChatComponent,
+				data: {
+					title: '',
+					urls: [],
+				},
+			},
 
-      {
-        path: 'mail/:type',
-        component: MailboxComponent,
-        children: [
-          { path: ':id', component: DetailComponent },
-          { path: 'compose', component: ComposeComponent },
-        ],
-        data: {
-          title: '',
-          urls: [],
-        },
-      },
+			{
+				path: 'mail/:type',
+				component: MailboxComponent,
+				children: [
+					{ path: ':id', component: DetailComponent },
+					{ path: 'compose', component: ComposeComponent },
+				],
+				data: {
+					title: '',
+					urls: [],
+				},
+			},
 
-      {
-        path: 'ticket/ticketlist',
-        component: TicketsComponent,
-        data: {
-          title: 'Ticket List',
-          urls: [
-            { title: 'Dashboard', url: '/dashboard' },
-            { title: 'Ticket List' },
-          ],
-        },
-      },
-      {
-        path: 'ticket/ticketdetails',
-        component: TicketdetailsComponent,
-        data: {
-          title: 'Ticket Details',
-          urls: [
-            { title: 'Dashboard', url: '/dashboard' },
-            { title: 'Ticket Details' },
-          ],
-        },
-      },
-      {
-        path: 'taskboard',
-        component: TaskboardComponent,
-        data: {
-          title: 'Taskboard',
-          urls: [
-            { title: 'Dashboard', url: '/dashboard' },
-            { title: 'Taskboard' },
-          ],
-        },
-      },
-      {
-        path: "fullcalendar",
-        component: FullcalendarComponent,
-        data: {
-          title: "Full-Calendar",
-          urls: [
-            { title: "Dashboard", url: "/dashboard" },
-            { title: "Full-Calendar" },
-          ],
-        },
-      },
-      {
-        path: 'todo',
-        component: TodosComponent,
-        data: {
-          title: '',
-          urls: [],
-        },
-      },
-      {
-        path: 'tasks',
-        component: TasksComponent,
-        data: {
-          title: '',
-          urls: [],
-        },
-      },
-      {
-        path: 'contact-list',
-        component: ContactListComponent,
-        data: {
-          title: '',
-          urls: [],
-        },
-      },
-      {
-        path: 'contact-list-rxjs',
-        component: ContactListRxjsComponent,
-        data: {
-          title: '',
-          urls: [],
-        },
-      },
-      {
-        path: 'notes',
-        component: NotesComponent,
-        data: {
-          title: '',
-          urls: [],
-        },
-      },
-      {
-        path: 'users',
-        component: ListUsersComponent,
-        data: {
-          title: 'Users App',
-          urls: [
-            { title: 'Dashboard', url: '/dashboard' },
-            { title: 'Users App' },
-          ],
-        },
-      },
-      {
-        path: 'usersrxjs',
-        component: UserRxjsComponent,
-        data: {
-          title: 'Users-Rxjs App',
-          urls: [
-            { title: 'Apps', url: '/dashboard' },
-            { title: 'Users-Rxjs App' },
-          ],
-        },
-      },
-      {
-        path: 'contact-grid',
-        component: ContactComponent,
-        data: {
-          title: 'Contact Grid',
-          urls: [
-            { title: 'Dashboard', url: '/dashboard' },
-            { title: 'Contact Grid' },
-          ],
-        },
-      },
-      {
-        path: 'contact',
-        component: ContactsComponent,
-        data: {
-          title: '',
-          urls: [],
-        },
-      },
-      {
-        path: 'contactrxjs',
-        component: ContactRxjsComponent,
-        data: {
-          title: '',
-          urls: [],
-        },
-      },
-      {
-        path: 'invoice',
-        component: ListInvoicesComponent,
-        data: {
-          title: 'Invoice',
-          urls: [],
-        },
-      },
-      {
-        path: 'addinvoice',
-        component: AddInvoiceComponent,
-        data: {
-          title: 'Add Invoice',
-          urls: [],
-        },
-      },
-      {
-        path: 'viewinvoice/:id',
-        component: ViewInvoiceComponent,
-        data: {
-          title: 'View Invoice',
-          urls: [],
-        },
-      },
-      {
-        path: 'editinvoice/:id',
-        component: EditInvoiceComponent,
-        data: {
-          title: '',
-          urls: [],
-        },
-      },
-      {
-        path: 'jobs',
-        component: JobsListComponent,
-        data: {
-          title: 'Jobs',
-          urls: [],
-        },
-      },
-      {
-        path: 'job-detail/:id',
-        component: JobDetailComponent,
-        data: {
-          title: 'Jobs Details',
-          urls: [],
-        },
-      },
-      {
-        path: 'apply-job',
-        component: JobApplyComponent,
-        data: {
-          title: 'Apply Job',
-          urls: [],
-        },
-      },
-    ],
-  },
+			{
+				path: 'ticket/ticketlist',
+				component: TicketsComponent,
+				data: {
+					title: 'Ticket List',
+					urls: [
+						{ title: 'Dashboard', url: '/dashboard' },
+						{ title: 'Ticket List' },
+					],
+				},
+			},
+			{
+				path: 'ticket/ticketdetails',
+				component: TicketdetailsComponent,
+				data: {
+					title: 'Ticket Details',
+					urls: [
+						{ title: 'Dashboard', url: '/dashboard' },
+						{ title: 'Ticket Details' },
+					],
+				},
+			},
+			{
+				path: 'taskboard',
+				component: TaskboardComponent,
+				data: {
+					title: 'Taskboard',
+					urls: [
+						{ title: 'Dashboard', url: '/dashboard' },
+						{ title: 'Taskboard' },
+					],
+				},
+			},
+			{
+				path: "fullcalendar",
+				component: FullcalendarComponent,
+				data: {
+					title: "Full-Calendar",
+					urls: [
+						{ title: "Dashboard", url: "/dashboard" },
+						{ title: "Full-Calendar" },
+					],
+				},
+			},
+			{
+				path: 'todo',
+				component: TodosComponent,
+				data: {
+					title: '',
+					urls: [],
+				},
+			},
+			{
+				path: 'tasks',
+				component: TasksComponent,
+				data: {
+					title: '',
+					urls: [],
+				},
+			},
+			{
+				path: 'contact-list',
+				component: ContactListComponent,
+				data: {
+					title: '',
+					urls: [],
+				},
+			},
+			{
+				path: 'contact-list-rxjs',
+				component: ContactListRxjsComponent,
+				data: {
+					title: '',
+					urls: [],
+				},
+			},
+			{
+				path: 'notes',
+				component: NotesComponent,
+				data: {
+					title: '',
+					urls: [],
+				},
+			},
+			{
+				path: 'users',
+				component: ListUsersComponent,
+				data: {
+					title: 'Users App',
+					urls: [
+						{ title: 'Dashboard', url: '/dashboard' },
+						{ title: 'Users App' },
+					],
+				},
+			},
+			{
+				path: 'usersrxjs',
+				component: UserRxjsComponent,
+				data: {
+					title: 'Users-Rxjs App',
+					urls: [
+						{ title: 'Apps', url: '/dashboard' },
+						{ title: 'Users-Rxjs App' },
+					],
+				},
+			},
+			{
+				path: 'contact-grid',
+				component: ContactComponent,
+				data: {
+					title: 'Contact Grid',
+					urls: [
+						{ title: 'Dashboard', url: '/dashboard' },
+						{ title: 'Contact Grid' },
+					],
+				},
+			},
+			{
+				path: 'contact',
+				component: ContactsComponent,
+				data: {
+					title: '',
+					urls: [],
+				},
+			},
+			{
+				path: 'contactrxjs',
+				component: ContactRxjsComponent,
+				data: {
+					title: '',
+					urls: [],
+				},
+			},
+			{
+				path: 'invoice',
+				component: ListInvoicesComponent,
+				data: {
+					title: 'Invoice',
+					urls: [],
+				},
+			},
+			{
+				path: 'addinvoice',
+				component: AddInvoiceComponent,
+				data: {
+					title: 'Add Invoice',
+					urls: [],
+				},
+			},
+			{
+				path: 'viewinvoice/:id',
+				component: ViewInvoiceComponent,
+				data: {
+					title: 'View Invoice',
+					urls: [],
+				},
+			},
+			{
+				path: 'editinvoice/:id',
+				component: EditInvoiceComponent,
+				data: {
+					title: '',
+					urls: [],
+				},
+			},
+			{
+				path: 'jobs',
+				component: JobsListComponent,
+				data: {
+					title: 'Jobs',
+					urls: [],
+				},
+			},
+			{
+				path: 'job-detail/:id',
+				component: JobDetailComponent,
+				data: {
+					title: 'Jobs Details',
+					urls: [],
+				},
+			},
+			{
+				path: 'apply-job',
+				component: JobApplyComponent,
+				data: {
+					title: 'Apply Job',
+					urls: [],
+				},
+			},
+		],
+	},
 ];

@@ -1,0 +1,43 @@
+import { IServiceOrderDetails } from "./IServicesOrderDetails";
+
+export interface IPurchaseOrderDetails extends IServiceOrderDetails {
+	Descripcion: string;
+	sede: string;
+	CompaniaSocio: string;
+	NumeroOrden: string;
+	Proveedor: number;
+	NombreCompleto: string;
+	FormadePago: string;
+	FechaPreparacion: string;
+	FechaAprobacion: string | null;
+	ImpresionNumero: number;
+	Clasificacion: string;
+	UnidadNegocio: string;
+	Observaciones: string;
+	RacionFlag: string;
+	LocalForeignFlag: string;
+	AlmacenCodigo: string;
+	TipodeCambio: number;
+	MonedaCodigo: string;
+	MontoTotal: number;
+	MontoOtros: number;
+	MontoFlete: number | null;
+	Estado: string;
+	UltimaFechaModif: string;
+	UltimoUsuario: string;
+	MontoPendientedePago: number;
+	AlmacenCodigoIngreso: string;
+	PlazoEntrega: number;
+	ObservacionesEntrega: string | null;
+	NumeroInterno: string | null;
+	RazonRechazo: string | null;
+	RequisicionNumero: string;
+	NumeroContrato: string | null;
+	FechaPrometida: string;
+	FechaEnvioProveedor: string | null;
+	Sucursal: string;
+	MontoBruto: number;
+	MontoNoAfecto: number;
+	DescripcionLocal: string;
+	NivelAprobacion: string;
+}
