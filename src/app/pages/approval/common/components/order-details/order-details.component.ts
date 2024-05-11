@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IPurchaseOrderDetails } from '../../../models/IPurchaseOrderDetails';
-import { IServiceOrderDetails } from '../../../models/IServicesOrderDetails';
 import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 import { IUsersAprrovers } from '../../../models/IUsersApprovers';
+import Swal from 'sweetalert2';
+import { PurchaseOrderService } from '../../../services/purchase-order.service';
+import { ServicesOrderService } from '../../../services/services-order.service';
 
 @Component({
 	selector: 'app-order-details',
@@ -17,8 +19,14 @@ export class OrderDetailsComponent {
 	@Input() orderDetail: IPurchaseOrderDetails;
 	@Input() userApprovers: IUsersAprrovers[] = [];
 	@Output() onEmitBackOrder: EventEmitter<boolean> = new EventEmitter<boolean>();
+	@Output() onEmitExecuteApproval: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 	currencyDocument: string = '';
+
+	constructor(public purchaseOrderService: PurchaseOrderService, public servicesOrderService: ServicesOrderService) {
+
+	}
+
 
 	ngOnChanges(changes: any) {
 		console.log(changes);
@@ -29,5 +37,20 @@ export class OrderDetailsComponent {
 
 	backOrderTable() {
 		this.onEmitBackOrder.emit(true);
+	}
+
+	executeApprovalOrder() {
+		Swal.fire({
+			icon: 'question',
+			title: 'APROBAR ORDER.',
+			text: 'Está seguro de APROBAR la orden de compra?',
+			showCancelButton: true,
+			showConfirmButton: true,
+		}).then((result) => {
+			if (result.isConfirmed) {
+				this.onEmitExecuteApproval.emit(true);
+			}
+		});
+
 	}
 }

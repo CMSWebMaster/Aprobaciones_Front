@@ -3,10 +3,13 @@
 	<div class="col-lg-12">
 		<div class="card">
 			<div class="card-body">
-				<h3 class="card-title">{{ orderDetail.NumeroCompromiso }}-{{ orderDetail.Descripcion }}</h3>
+				<h3 class="card-title">{{ orderDetail.NumeroCompromiso ?? orderDetail.NumeroOrden }}-{{
+					orderDetail.NumeroOrden ? orderDetail.Observaciones :
+					orderDetail.Descripcion }}</h3>
 				<div class="card-subtitle" style="text-align: right;">
 					<div class="buttons-group">
-						<button class="btn btn-primary btn-rounded" style="margin-right: 5px;">Aprobar</button>
+						<button class="btn btn-primary btn-rounded" style="margin-right: 5px;"
+							(click)="executeApprovalOrder()">Aprobar</button>
 						<ng-template #popContent>
 							<div *ngFor="let item of userApprovers">
 								<p>{{ item.Busqueda }}, <b> {{ item.Estado === 'A1' ? 'PRE APROBADO' : item.Estado === 'AN' ?
@@ -46,7 +49,7 @@
 										<td>{{ orderDetail.FormadePago }}-{{ orderDetail.desformapag ?? orderDetail.Descripcion}}
 										</td>
 									</tr>
-									<tr *ngIf=" orderDetail.Comentarios">
+									<tr *ngIf="orderDetail.Comentarios">
 										<td>Desc. Adicional</td>
 										<td>{{ orderDetail.Comentarios }}</td>
 									</tr>
@@ -72,7 +75,7 @@
 									</tr>
 									<tr>
 										<td>Impuestos</td>
-										<td>{{ currencyDocument }} {{ orderDetail.MontoImpuesto }}</td>
+										<td>{{ currencyDocument }} {{ orderDetail.MontoImpuesto ?? orderDetail.MontoIGV }}</td>
 									</tr>
 									<tr>
 										<td>Monto Total</td>

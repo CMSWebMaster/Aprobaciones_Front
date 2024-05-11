@@ -6,6 +6,7 @@ import { IApprovalOrder } from '../models/IApprovalOrder';
 import { ServicesOrderConstants } from '../common/constants/services-order.constants';
 import { IPurchaseOrderDetails } from '../models/IPurchaseOrderDetails';
 import { IServiceOrderDetails } from '../models/IServicesOrderDetails';
+import { IExecuteApprovalOrders } from '../models/IExecuteApprovalOrders';
 
 @Injectable({
 	providedIn: 'root'
@@ -23,5 +24,8 @@ export class ServicesOrderService {
 		return this.http
 			.get<IServiceOrderDetails[]>(`${ServicesOrderConstants.BASE_URL}/${ServicesOrderConstants.GET_SERVICE_ORDER_DETAILS}/${numeroCompromiso}`)
 			.pipe(catchError((err) => of(err)));
+	}
+	executeApprovalServiceOrder(request: IExecuteApprovalOrders): Observable<boolean> {
+		return this.http.post<boolean>(`${ServicesOrderConstants.BASE_URL}/${ServicesOrderConstants.EXECUTE_APPROVAL_SERVICE_ORDER}`, request);
 	}
 }

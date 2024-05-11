@@ -46,4 +46,5 @@ export interface IServiceOrderDetails {
 	Clasificacion: string;
 	DescripcionLocal: string;
 	NivelAprobacion: string;
+	MontoIGV: number;
 }

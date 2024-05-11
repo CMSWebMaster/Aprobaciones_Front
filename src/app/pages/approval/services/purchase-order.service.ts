@@ -5,6 +5,7 @@ import { PurchaseOrderConstants } from '../common/constants/purchase-order.const
 import { HttpClient } from '@angular/common/http';
 import { IPurchaseOrderDetails } from '../models/IPurchaseOrderDetails';
 import { IUsersAprrovers } from '../models/IUsersApprovers';
+import { IExecuteApprovalOrders } from '../models/IExecuteApprovalOrders';
 
 @Injectable({
 	providedIn: 'root'
@@ -22,5 +23,8 @@ export class PurchaseOrderService {
 		return this.http
 			.get<IPurchaseOrderDetails[]>(`${PurchaseOrderConstants.BASE_URL}/${PurchaseOrderConstants.GET_PURCHASE_ORDER_DETAILS}/${numeroOrden}`)
 			.pipe(catchError((err) => of(err)));
+	}
+	executeApprovalPurchaseOrder(request: IExecuteApprovalOrders): Observable<boolean> {
+		return this.http.post<boolean>(`${PurchaseOrderConstants.BASE_URL}/${PurchaseOrderConstants.EXECUTE_APPROVAL_PURCHASE_ORDER}`, request);
 	}
 }

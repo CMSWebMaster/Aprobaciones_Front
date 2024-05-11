@@ -4,8 +4,9 @@ import { OrderDetailsComponent } from '../../../common/components/order-details/
 import { OrderComponent } from '../../../common/components/order/order.component';
 import { IApprovalOrder } from '../../../models/IApprovalOrder';
 import { IPurchaseOrderDetails } from '../../../models/IPurchaseOrderDetails';
-import { IServiceOrderDetails } from '../../../models/IServicesOrderDetails';
 import { IUsersAprrovers } from '../../../models/IUsersApprovers';
+import { IExecuteApprovalOrders } from '../../../models/IExecuteApprovalOrders';
+import Swal from 'sweetalert2';
 
 @Component({
 	selector: 'app-index',
@@ -20,9 +21,12 @@ export class ServicesOrderComponent implements OnInit {
 	rows: any = [];
 	orderDetail: IPurchaseOrderDetails;
 	userApprovers: IUsersAprrovers[] = [];
+	persona: string = '';
+	codUser: number = 0;
 
 	constructor(public servicesOrderService: ServicesOrderService) {
-
+		this.persona = localStorage.getItem('CodigoUsuario');
+		this.codUser = parseInt(localStorage.getItem('cod_user'));
 	}
 
 	ngOnInit() {
@@ -30,7 +34,7 @@ export class ServicesOrderComponent implements OnInit {
 	}
 
 	listApprovalServicesOrder() {
-		this.servicesOrderService.listApprovalServicesOrder('WLIVISACA', 1304).subscribe({
+		this.servicesOrderService.listApprovalServicesOrder(this.persona, this.codUser).subscribe({
 			next: (response) => {
 				response = response.map((d: IApprovalOrder) => ({
 					...d,
@@ -60,6 +64,40 @@ export class ServicesOrderComponent implements OnInit {
 	}
 
 	backOrders(e: boolean) {
+		this.listApprovalServicesOrder();
 		this.showDetails = !e;
+	}
+
+	executeApproval(e: boolean) {
+		const { Clasificacion, CompaniaSocio, Estado, MontoAfecto, NivelAprobacion, UnidadNegocio, NumeroCompromiso } = this.orderDetail
+		const requestApproval: IExecuteApprovalOrders = {
+			Clasificacion,
+			CompaniaSocio,
+			Estado,
+			MontoBruto: 0,
+			NivelAprobacion,
+			UnidadNegocio,
+			NumeroOrden: '',
+			IdUser: this.persona,
+			Persona: this.codUser,
+			MontoAfecto,
+			NumeroCompromiso
+		};
+
+		this.servicesOrderService.executeApprovalServiceOrder(requestApproval).subscribe({
+			next: (response) => {
+				console.log(response);
+				Swal.fire({
+					icon: 'success',
+					title: 'APROBADO!',
+					text: 'La orden fue APROBADA con éxito.',
+				});
+				this.showDetails = false;
+				this.listApprovalServicesOrder();
+			},
+			error: (error) => {
+				console.log(error);
+			}
+		});
 	}
 }

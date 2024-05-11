@@ -1,3 +1,3 @@
 <app-order [rows]="rows" (onEmitViewDetails)="viewDetails($event)" [showDetails]="showDetails"></app-order>
 <app-order-details [showDetails]="showDetails" (onEmitBackOrder)="backOrders($event)" [orderDetail]="orderDetail"
-	[userApprovers]="userApprovers"></app-order-details>
+	[userApprovers]="userApprovers" (onEmitExecuteApproval)="executeApproval($event)"></app-order-details>

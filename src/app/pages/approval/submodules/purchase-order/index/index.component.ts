@@ -5,6 +5,8 @@ import { PurchaseOrderService } from '../../../services/purchase-order.service';
 import { IApprovalOrder } from '../../../models/IApprovalOrder';
 import { IPurchaseOrderDetails } from '../../../models/IPurchaseOrderDetails';
 import { IUsersAprrovers } from '../../../models/IUsersApprovers';
+import { IExecuteApprovalOrders } from '../../../models/IExecuteApprovalOrders';
+import Swal from 'sweetalert2';
 
 @Component({
 	selector: 'app-index',
@@ -19,17 +21,20 @@ export class PurchaseOrderComponent {
 	rows: any = [];
 	orderDetail: IPurchaseOrderDetails;
 	userApprovers: IUsersAprrovers[] = [];
+	persona: string = '';
+	codUser: number = 0;
 
 	constructor(public purchaseOrderService: PurchaseOrderService) {
-
+		this.persona = localStorage.getItem('CodigoUsuario');
+		this.codUser = parseInt(localStorage.getItem('cod_user'));
 	}
 
 	ngOnInit() {
-		this.listApprovalServicesOrder();
+		this.listApprovalPurchaseOrder();
 	}
 
-	listApprovalServicesOrder() {
-		this.purchaseOrderService.listApprovalPurchaseOrder('WLIVISACA', 1304).subscribe({
+	listApprovalPurchaseOrder() {
+		this.purchaseOrderService.listApprovalPurchaseOrder(this.persona, this.codUser).subscribe({
 			next: (response) => {
 				response = response.map((d: IApprovalOrder) => ({
 					...d,
@@ -58,6 +63,39 @@ export class PurchaseOrderComponent {
 	}
 
 	backOrders(e: boolean) {
+		this.listApprovalPurchaseOrder();
 		this.showDetails = !e;
+	}
+
+	executeApproval(e: boolean) {
+		const { Clasificacion, CompaniaSocio, Estado, MontoBruto, NivelAprobacion, UnidadNegocio, NumeroOrden } = this.orderDetail
+		const requestApproval: IExecuteApprovalOrders = {
+			Clasificacion,
+			CompaniaSocio,
+			Estado,
+			MontoBruto,
+			NivelAprobacion,
+			UnidadNegocio,
+			NumeroOrden,
+			IdUser: this.persona,
+			Persona: this.codUser,
+			MontoAfecto: 0,
+			NumeroCompromiso: ''
+		};
+
+		this.purchaseOrderService.executeApprovalPurchaseOrder(requestApproval).subscribe({
+			next: (response) => {
+				Swal.fire({
+					icon: 'success',
+					title: 'APROBADO!',
+					text: 'La orden fue APROBADA con éxito.',
+				});
+				this.showDetails = false;
+				this.listApprovalPurchaseOrder();
+			},
+			error: (error) => {
+				console.log(error);
+			}
+		});
 	}
 }
