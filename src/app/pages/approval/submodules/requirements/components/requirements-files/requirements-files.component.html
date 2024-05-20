@@ -1,0 +1,29 @@
+<div class="row el-element-overlay">
+	<div class="file-explorer">
+		<div *ngFor="let item of filesRequirement" class="file-item">
+			<div class="card">
+				<div class="el-card-item position-relative pb-3">
+					<div class="el-card-avatar mb-3 el-overlay-1 overflow-hidden w-100 position-relative text-center">
+						<img src="assets/images/icon/archive.png" alt="user" class="file-image" />
+						<div class="el-overlay overflow-hidden w-100 h-100">
+							<ul
+								class="list-style-none el-info text-decoration-none d-inline-block text-uppercase text-white bg-transparent p-0 m-auto">
+								<li class="el-item d-inline-block">
+									<a class="btn default btn-outline el-link border-white text-white"
+										href="javascript:void(0);">
+										<i class="icon-link"></i>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="d-flex no-block align-items-center">
+						<div class="ms-3 file-comment">
+							<span class="text-muted">{{ item.Comentario }}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

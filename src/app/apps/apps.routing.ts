@@ -30,29 +30,41 @@ import { EditInvoiceComponent } from './invoice/edit-invoice/edit-invoice.compon
 import { JobsListComponent } from './jobs/jobs-list/jobs-list.component';
 import { JobDetailComponent } from './jobs/job-detail/job-detail.component';
 import { JobApplyComponent } from './jobs/job-apply/job-apply.component';
-import { PurchaseOrderComponent } from '../pages/approval/submodules/purchase-order/index/index.component';
-import { ServicesOrderComponent } from '../pages/approval/submodules/services-order/index/index.component';
+import { WorkerPermissionComponent } from '../pages/approval/submodules/worker-permission/index/index.component';
+import { RequirementsComponent } from '../pages/approval/submodules/requirements/index/index.component';
+import { OrdersComponent } from '../pages/approval/submodules/orders/index/index.component';
 
 export const AppsRoutes: Routes = [
 	{
-		path: 'purcharseOrder',
-		component: PurchaseOrderComponent,
+		path: 'orders/:id',
+		component: OrdersComponent,
 		data: {
-			title: 'Órdenes de Compra',
+			title: 'Órdenes',
 			urls: [
 				{ title: 'Apps', url: '/dashboard' },
-				{ title: 'Órdenes de Compra' },
+				{ title: 'Órdenes' },
 			],
 		},
 	},
 	{
-		path: 'servicesOrder',
-		component: ServicesOrderComponent,
+		path: 'workerPermission',
+		component: WorkerPermissionComponent,
 		data: {
-			title: 'Órdenes de Servicios',
+			title: 'Permiso de Trabajador',
 			urls: [
 				{ title: 'Apps', url: '/dashboard' },
-				{ title: 'Órdenes de Servicios' },
+				{ title: 'Permiso de Trabajador' },
+			],
+		},
+	},
+	{
+		path: 'requirements',
+		component: RequirementsComponent,
+		data: {
+			title: 'Requerimientos',
+			urls: [
+				{ title: 'Apps', url: '/dashboard' },
+				{ title: 'Requerimientos' },
 			],
 		},
 	},

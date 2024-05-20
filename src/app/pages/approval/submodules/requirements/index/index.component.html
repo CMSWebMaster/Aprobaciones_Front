@@ -1,0 +1,10 @@
+<div class="card">
+	@if(showDetail) {
+	<app-requirements-summary [rows]="rowsSummary" (onEmitBackToTableReq)="backToRequirementTable()"
+		[rowSelected]="rowSelected" [filesRequirement]="filesRequirement"></app-requirements-summary>
+	}
+	@if(!showDetail) {
+	<app-requirements-table [rows]="rows"
+		(onEmmitRequierementsDetails)="getRequirementsDetails($event)"></app-requirements-table>
+	}
+</div>

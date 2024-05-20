@@ -10,7 +10,7 @@ export const ROUTES: RouteInfo[] = [
 		extralink: false,
 		submenu: [
 			{
-				path: "/apps/purcharseOrder",
+				path: "/apps/orders/1",
 				title: "Órdenes de Compra",
 				icon: "mdi mdi-bulletin-board",
 				class: "",
@@ -19,9 +19,27 @@ export const ROUTES: RouteInfo[] = [
 				submenu: [],
 			},
 			{
-				path: "/apps/servicesOrder",
+				path: "/apps/orders/0",
 				title: "Órdenes de Servicio",
 				icon: "mdi mdi-arrange-bring-forward",
+				class: "",
+				ddclass: "",
+				extralink: false,
+				submenu: [],
+			},
+			{
+				path: "/apps/workerPermission",
+				title: "Permiso de Trabajador",
+				icon: "mdi mdi-account-hard-hat",
+				class: "",
+				ddclass: "",
+				extralink: false,
+				submenu: [],
+			},
+			{
+				path: "/apps/requirements",
+				title: "Requerimientos",
+				icon: "mdi mdi-book-multiple",
 				class: "",
 				ddclass: "",
 				extralink: false,

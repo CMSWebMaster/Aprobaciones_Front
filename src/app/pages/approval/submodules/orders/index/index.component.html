@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="col-12">
+		<div class="card">
+			@if(showDetails){
+			<div class="card-body">
+				<app-orders-summary (onEmitBackOrder)="backToOrderTable()" [orderDetail]="orderDetail"
+					[userApprovers]="userApprovers" [typeOrder]="typeOrder"
+					(onEmitExecuteApproval)="executeApproval()"></app-orders-summary>
+			</div>
+			}
+			@if(!showDetails){
+			<div class="table-responsive">
+				<app-orders-table [rows]="rows" (onEmitCellClicked)="cellClicked($event)"></app-orders-table>
+			</div>
+			}
+		</div>
+	</div>
+</div>

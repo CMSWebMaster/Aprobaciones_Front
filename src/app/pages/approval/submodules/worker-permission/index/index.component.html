@@ -1,0 +1,22 @@
+<div class="card">
+	@if(!showDetail) {
+	<div style="padding: 20px;" class="col-md-12 col-lg-12 col-xl-12 text-md-end mt-12 mt-md-0">
+		<button class="btn btn-light-primary text-primary">
+			<i class="fa fa-plus-square me-2"></i>Agregar
+		</button>
+	</div>
+	<app-worker-permission-table (onEmitCreateWorkerPermission)="createWorkerPermission()" [rows]="rows"
+		(onEmitCellClicked)="cellClicked($event)"></app-worker-permission-table>
+	}
+
+	@if(showDetail) {
+	<app-worker-permission-summary [permissionDetail]="permissionDetail"
+		(onEmitBackPermission)="backToTablePermission()"></app-worker-permission-summary>
+	}
+
+</div>
+
+<ng-template #addWorkerPermission let-modal>
+	<app-worker-permision-form (onEmitCloseModal)="closeModal($event)"
+		(onEmitFinalizeAddPermission)="finalizeAddPermission()"></app-worker-permision-form>
+</ng-template>

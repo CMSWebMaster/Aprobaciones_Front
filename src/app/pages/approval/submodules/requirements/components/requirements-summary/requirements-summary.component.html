@@ -1,0 +1,30 @@
+<div class="card">
+	<div class="card-header">
+		<h3 class="card-title">
+			<span><img src="assets/images/users/user5.jpg" alt="user" class="rounded-circle" width="50"></span>
+			{{ rowSelected.PreparadaPor }} - {{ rowSelected.Prioridad }}
+		</h3>
+		<div class="card-subtitle" style="text-align: right;">
+			<div class="buttons-group">
+				<button class="btn btn-light-primary text-primary" (click)="viewFiles(false)" [disabled]="!showFiles">Ver
+					Detalles</button>
+				<button type="button" class="btn btn-light-primary text-primary" (click)="viewFiles(true)"
+					[disabled]="showFiles">Ver Adjuntos</button>
+				<button class="btn btn-light-primary text-primary" (click)="approveRequirements()">Aprobar</button>
+				<button type="button" class="btn btn-light-primary text-primary"
+					(click)="rejectRequirements()">Rechazar</button>
+				<button class="btn btn-light-primary text-primary" (click)="backToRequirementTable()">
+					<i class="fa fa-chevron-left"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="card-body">
+		@if(!showFiles) {
+		<app-table [columns]="columns" [rows]="rows"></app-table>
+		}
+		@if(showFiles) {
+		<app-requirements-files [filesRequirement]="filesRequirement"></app-requirements-files>
+		}
+	</div>
+</div>

@@ -1,0 +1,27 @@
+.file-explorer {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+ }
+ 
+ .file-item {
+	flex: 1 1 150px;
+	max-width: 150px;
+ }
+ 
+ .file-image {
+	width: 100%;
+	height: 80px;
+	object-fit: cover;
+ }
+ 
+ .file-comment {
+	width: 100%;
+ }
+ 
+ .file-comment span {
+	display: block;
+	word-wrap: break-word;
+	overflow: hidden;
+ }
+ 
