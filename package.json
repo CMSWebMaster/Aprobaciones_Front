@@ -44,6 +44,8 @@
     "ng-apexcharts": "^1.7.6",
     "ng-chartist": "^7.1.2",
     "ng2-charts": "^4.1.1",
+    "ng2-pdf-viewer": "^10.2.2",
+    "ngx-doc-viewer": "^15.0.1",
     "ngx-editor": "^15.3.0",
     "ngx-scrollbar": "^11.0.0",
     "ngx-toastr": "^16.2.0",

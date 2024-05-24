@@ -5,14 +5,14 @@
 				<div class="el-card-item position-relative pb-3">
 					<div class="el-card-avatar mb-3 el-overlay-1 overflow-hidden w-100 position-relative text-center">
 						<img src="assets/images/icon/archive.png" alt="user" class="file-image" />
-						<div class="el-overlay overflow-hidden w-100 h-100">
+						<div class="el-overlay overflow-hidden w-100 h-100" (click)="openDetailsFile(item)">
 							<ul
 								class="list-style-none el-info text-decoration-none d-inline-block text-uppercase text-white bg-transparent p-0 m-auto">
 								<li class="el-item d-inline-block">
-									<a class="btn default btn-outline el-link border-white text-white"
+									<!-- <a class="btn default btn-outline el-link border-white text-white"
 										href="javascript:void(0);">
 										<i class="icon-link"></i>
-									</a>
+									</a> -->
 								</li>
 							</ul>
 						</div>
@@ -27,3 +27,16 @@
 		</div>
 	</div>
 </div>
+
+
+<ng-template #viewDocument let-modal>
+	<div class="modal-header">
+		<h5 class="modal-title" id="editUserLabel">{{ fileName }}</h5>
+
+		<button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+	</div>
+
+	<div class="modal-body">
+		<app-file-viewer [fileType]="fileType" [fileUrl]="fileUrl"></app-file-viewer>
+	</div>
+</ng-template>
