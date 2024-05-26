@@ -1,4 +1,4 @@
 export const environment = {
 	production: true,
-	api_url: 'https://api.maisondesante.org.pe/api/v1/',
+	api_url: 'https://api.maisondesante.org.pe/api',
 };

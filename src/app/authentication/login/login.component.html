@@ -1,104 +1,107 @@
 <div class="overflow-auto">
-  <div class="col-lg-6 d-lg-flex flex-lg-row d-flex flex-column  h-100vh">
-    <div class="col-12  flex-grow-1 d-flex flex-column align-content-between container-background-blue">
-      <div class="align-items-center">
-        <div class="d-flex flex-column background-blue">
-          <img src="assets/images/CMS_300.png" class="img logo" >
-          <div class="text-center text-secondary-lg">
-            <h3 class="subtitle">
-              La clínica de las
-              <br>
-              <i class="italic">oportunidades</i>
-            </h3>
-          </div>
-        </div>
-        <div class="text-center text-secondary ">
-          <h3 class="subtitle">
-            La clínica de las
-            <br>
-            <i class="italic">oportunidades</i>
-          </h3>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 flex-grow-1 d-flex align-items-lg-center align-items-lg-end justify-content-center background-primary">
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" #form="ngForm" style="background: var(--primary); border-radius: 5px;">
-        <div class="form-login px-5 rounded-3 pt-4 pb-4">
+	<div class="col-lg-6 d-lg-flex flex-lg-row d-flex flex-column  h-100vh">
+		<div class="col-12  flex-grow-1 d-flex flex-column align-content-between container-background-blue">
+			<div class="align-items-center">
+				<div class="d-flex flex-column background-blue">
+					<img src="assets/images/CMS_300.png" class="img logo">
+					<div class="text-center text-secondary-lg">
+						<h3 class="subtitle">
+							La clínica de las
+							<br>
+							<i class="italic">oportunidades</i>
+						</h3>
+					</div>
+				</div>
+				<div class="text-center text-secondary ">
+					<h3 class="subtitle">
+						La clínica de las
+						<br>
+						<i class="italic">oportunidades</i>
+					</h3>
+				</div>
+			</div>
+		</div>
+		<div
+			class="col-12 flex-grow-1 d-flex align-items-lg-center align-items-lg-end justify-content-center background-primary">
+			<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" #form="ngForm"
+				style="background: var(--primary); border-radius: 5px;">
+				<div class="form-login px-5 rounded-3 pt-4 pb-4">
 
-          <div class="pt-3 pb-3 text-center text-blue fw-bold h6 title-gestiona-movil title-xl">
-            Clínica Ocupacional
-          </div>
+					<div class="pt-3 pb-3 text-center text-blue fw-bold h6 title-gestiona-movil title-xl">
+						Aprobaciones
+					</div>
 
-          <div class="input-container bg-white input-conainet-xl">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M12 0C5.37328 0 0 5.37222 0 11.9995C0 18.6267 5.37275 23.9989 12 23.9989C18.6278 23.9989 24 18.6267 24 11.9995C24 5.37222 18.6278 0 12 0ZM12 3.58798C14.1927 3.58798 15.9696 5.36537 15.9696 7.55706C15.9696 9.74928 14.1927 11.5261 12 11.5261C9.80831 11.5261 8.03145 9.74928 8.03145 7.55706C8.03145 5.36537 9.80831 3.58798 12 3.58798ZM11.9974 20.8616C9.81042 20.8616 7.80743 20.0652 6.2625 18.7469C5.88615 18.4259 5.66898 17.9552 5.66898 17.4613C5.66898 15.2385 7.46798 13.4595 9.69129 13.4595H14.3098C16.5336 13.4595 18.3257 15.2385 18.3257 17.4613C18.3257 17.9557 18.1096 18.4254 17.7328 18.7464C16.1884 20.0652 14.1848 20.8616 11.9974 20.8616Z"
-                fill="#51565B"/>
-            </svg>
-            <input class="mx-2 w-100" formControlName="username" type="text"
-                        name="username"
-                       placeholder="Usuario"/>
-          </div>
-          <div class="input-container  bg-white">
-            <svg width="22" height="30" viewBox="0 0 22 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M19.25 11H18.3333V7.33333C18.3333 3.289 15.0443 0 11 0C6.95567 0 3.66667 3.289 3.66667 7.33333V11H2.75C1.23444 11 0 12.2332 0 13.75V26.5833C0 28.1001 1.23444 29.3333 2.75 29.3333H19.25C20.7656 29.3333 22 28.1001 22 26.5833V13.75C22 12.2332 20.7656 11 19.25 11ZM6.11111 7.33333C6.11111 4.63711 8.30378 2.44444 11 2.44444C13.6962 2.44444 15.8889 4.63711 15.8889 7.33333V11H6.11111V7.33333ZM12.2222 20.438V23.2222C12.2222 23.8969 11.6759 24.4444 11 24.4444C10.3241 24.4444 9.77778 23.8969 9.77778 23.2222V20.438C9.05056 20.0139 8.55556 19.2341 8.55556 18.3333C8.55556 16.9852 9.65189 15.8889 11 15.8889C12.3481 15.8889 13.4444 16.9852 13.4444 18.3333C13.4444 19.2341 12.9494 20.0139 12.2222 20.438Z"
-                fill="#51565B"/>
-            </svg>
-            <input class="mx-2 w-100" formControlName="password" [type]="showPassword?'text':'password'"
-                       placeholder="Clave"/>
-            <ng-container>
-              <div class="cursor-pointer" (click)="showPassword = !showPassword">
-                <svg *ngIf="showPassword;else ojoShow" width="28" height="24" viewBox="0 0 28 24" fill="none"
-                     xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M13.7869 7.51731L17.795 11.4541L17.8141 11.2478C17.8141 9.17947 16.1027 7.49857 13.9968 7.49857L13.7869 7.51731Z"
-                    fill="#51565B"/>
-                  <path
-                    d="M13.9968 4.99909C17.5087 4.99909 20.359 7.79857 20.359 11.2479C20.359 12.054 20.1936 12.8226 19.9073 13.5287L23.6292 17.1842C25.5505 15.6095 27.0647 13.5725 28 11.2479C25.7923 5.76148 20.3654 1.87471 13.9968 1.87471C12.2154 1.87471 10.5104 2.18713 8.92621 2.74952L11.6747 5.44273C12.3935 5.16781 13.1761 4.99909 13.9968 4.99909Z"
-                    fill="#51565B"/>
-                  <path
-                    d="M1.27242 1.59344L4.17357 4.44289L4.75255 5.01155C2.65303 6.62374 0.9925 8.7671 0 11.2478C2.20133 16.7343 7.63461 20.621 13.9968 20.621C15.9691 20.621 17.8523 20.2461 19.5765 19.565L20.1173 20.0961L23.8264 23.7454L25.4488 22.1582L2.89477 0L1.27242 1.59344ZM8.30902 8.49838L10.2749 10.4293C10.2177 10.698 10.1795 10.9666 10.1795 11.2478C10.1795 13.3162 11.8909 14.9971 13.9968 14.9971C14.2831 14.9971 14.5567 14.9596 14.8239 14.9034L16.7898 16.8343C15.9436 17.2467 15.0021 17.4966 13.9968 17.4966C10.4849 17.4966 7.63461 14.6972 7.63461 11.2478C7.63461 10.2605 7.88912 9.3357 8.30902 8.49838Z"
-                    fill="#51565B"/>
-                </svg>
-                <ng-template #ojoShow>
-                  <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M14 5.71364C11.8936 5.71364 10.1818 7.42136 10.1818 9.52273C10.1818 11.6241 11.8936 13.3318 14 13.3318C16.1064 13.3318 17.8182 11.6241 17.8182 9.52273C17.8182 7.42136 16.1063 5.71364 14 5.71364Z"
-                      fill="#51565B"/>
-                    <path
-                      d="M14 0C7.63635 0 2.20183 3.94872 0 9.52274C2.20183 15.0967 7.63635 19.0455 14 19.0455C20.37 19.0455 25.7982 15.0967 28 9.52274C25.7982 3.94872 20.37 0 14 0ZM14 15.8712C10.4873 15.8712 7.63635 13.027 7.63635 9.52268C7.63635 6.01831 10.4873 3.17423 14 3.17423C17.5127 3.17423 20.3636 6.01837 20.3636 9.52274C20.3636 13.0271 17.5127 15.8712 14 15.8712Z"
-                      fill="#51565B"/>
-                  </svg>
-                </ng-template>
-              </div>
-            </ng-container>
+					<div class="input-container bg-white input-conainet-xl">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M12 0C5.37328 0 0 5.37222 0 11.9995C0 18.6267 5.37275 23.9989 12 23.9989C18.6278 23.9989 24 18.6267 24 11.9995C24 5.37222 18.6278 0 12 0ZM12 3.58798C14.1927 3.58798 15.9696 5.36537 15.9696 7.55706C15.9696 9.74928 14.1927 11.5261 12 11.5261C9.80831 11.5261 8.03145 9.74928 8.03145 7.55706C8.03145 5.36537 9.80831 3.58798 12 3.58798ZM11.9974 20.8616C9.81042 20.8616 7.80743 20.0652 6.2625 18.7469C5.88615 18.4259 5.66898 17.9552 5.66898 17.4613C5.66898 15.2385 7.46798 13.4595 9.69129 13.4595H14.3098C16.5336 13.4595 18.3257 15.2385 18.3257 17.4613C18.3257 17.9557 18.1096 18.4254 17.7328 18.7464C16.1884 20.0652 14.1848 20.8616 11.9974 20.8616Z"
+								fill="#51565B" />
+						</svg>
+						<input class="mx-2 w-100" formControlName="username" type="text" name="username"
+							placeholder="Usuario" />
+					</div>
+					<div class="input-container  bg-white">
+						<svg width="22" height="30" viewBox="0 0 22 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M19.25 11H18.3333V7.33333C18.3333 3.289 15.0443 0 11 0C6.95567 0 3.66667 3.289 3.66667 7.33333V11H2.75C1.23444 11 0 12.2332 0 13.75V26.5833C0 28.1001 1.23444 29.3333 2.75 29.3333H19.25C20.7656 29.3333 22 28.1001 22 26.5833V13.75C22 12.2332 20.7656 11 19.25 11ZM6.11111 7.33333C6.11111 4.63711 8.30378 2.44444 11 2.44444C13.6962 2.44444 15.8889 4.63711 15.8889 7.33333V11H6.11111V7.33333ZM12.2222 20.438V23.2222C12.2222 23.8969 11.6759 24.4444 11 24.4444C10.3241 24.4444 9.77778 23.8969 9.77778 23.2222V20.438C9.05056 20.0139 8.55556 19.2341 8.55556 18.3333C8.55556 16.9852 9.65189 15.8889 11 15.8889C12.3481 15.8889 13.4444 16.9852 13.4444 18.3333C13.4444 19.2341 12.9494 20.0139 12.2222 20.438Z"
+								fill="#51565B" />
+						</svg>
+						<input class="mx-2 w-100" formControlName="password" [type]="showPassword?'text':'password'"
+							placeholder="Clave" />
+						<ng-container>
+							<div class="cursor-pointer" (click)="showPassword = !showPassword">
+								<svg *ngIf="showPassword;else ojoShow" width="28" height="24" viewBox="0 0 28 24" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M13.7869 7.51731L17.795 11.4541L17.8141 11.2478C17.8141 9.17947 16.1027 7.49857 13.9968 7.49857L13.7869 7.51731Z"
+										fill="#51565B" />
+									<path
+										d="M13.9968 4.99909C17.5087 4.99909 20.359 7.79857 20.359 11.2479C20.359 12.054 20.1936 12.8226 19.9073 13.5287L23.6292 17.1842C25.5505 15.6095 27.0647 13.5725 28 11.2479C25.7923 5.76148 20.3654 1.87471 13.9968 1.87471C12.2154 1.87471 10.5104 2.18713 8.92621 2.74952L11.6747 5.44273C12.3935 5.16781 13.1761 4.99909 13.9968 4.99909Z"
+										fill="#51565B" />
+									<path
+										d="M1.27242 1.59344L4.17357 4.44289L4.75255 5.01155C2.65303 6.62374 0.9925 8.7671 0 11.2478C2.20133 16.7343 7.63461 20.621 13.9968 20.621C15.9691 20.621 17.8523 20.2461 19.5765 19.565L20.1173 20.0961L23.8264 23.7454L25.4488 22.1582L2.89477 0L1.27242 1.59344ZM8.30902 8.49838L10.2749 10.4293C10.2177 10.698 10.1795 10.9666 10.1795 11.2478C10.1795 13.3162 11.8909 14.9971 13.9968 14.9971C14.2831 14.9971 14.5567 14.9596 14.8239 14.9034L16.7898 16.8343C15.9436 17.2467 15.0021 17.4966 13.9968 17.4966C10.4849 17.4966 7.63461 14.6972 7.63461 11.2478C7.63461 10.2605 7.88912 9.3357 8.30902 8.49838Z"
+										fill="#51565B" />
+								</svg>
+								<ng-template #ojoShow>
+									<svg width="28" height="20" viewBox="0 0 28 20" fill="none"
+										xmlns="http://www.w3.org/2000/svg">
+										<path
+											d="M14 5.71364C11.8936 5.71364 10.1818 7.42136 10.1818 9.52273C10.1818 11.6241 11.8936 13.3318 14 13.3318C16.1064 13.3318 17.8182 11.6241 17.8182 9.52273C17.8182 7.42136 16.1063 5.71364 14 5.71364Z"
+											fill="#51565B" />
+										<path
+											d="M14 0C7.63635 0 2.20183 3.94872 0 9.52274C2.20183 15.0967 7.63635 19.0455 14 19.0455C20.37 19.0455 25.7982 15.0967 28 9.52274C25.7982 3.94872 20.37 0 14 0ZM14 15.8712C10.4873 15.8712 7.63635 13.027 7.63635 9.52268C7.63635 6.01831 10.4873 3.17423 14 3.17423C17.5127 3.17423 20.3636 6.01837 20.3636 9.52274C20.3636 13.0271 17.5127 15.8712 14 15.8712Z"
+											fill="#51565B" />
+									</svg>
+								</ng-template>
+							</div>
+						</ng-container>
 
-          </div>
-          <!-- <p *ngIf="loginForm.invalid && loginForm.touched && submited" class="my-3 small text-danger">Llene los datos correctamente</p> -->
+					</div>
+					<!-- <p *ngIf="loginForm.invalid && loginForm.touched && submited" class="my-3 small text-danger">Llene los datos correctamente</p> -->
 
-            <p *ngIf="loginForm.invalid && loginForm.touched" class="my-3 small text-danger">Llene los datos
-              correctamente</p>
+					<p *ngIf="loginForm.invalid && loginForm.touched" class="my-3 small text-danger">Llene los datos
+						correctamente</p>
 
-          <!-- <p class="mt-3 text-center small text-white" (click)="goStepOne()">¿Olvidaste tu contraseña?</p> -->
-            <!-- <re-captcha formControlName="recaptchaReactive" (resolved)="captchaResolved($event)" siteKey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></re-captcha> -->
-          <!-- <button class="btn btn-secondary" [disabled]="loginForm.invalid && loginForm.touched" expand="block"
+					<!-- <p class="mt-3 text-center small text-white" (click)="goStepOne()">¿Olvidaste tu contraseña?</p> -->
+					<!-- <re-captcha formControlName="recaptchaReactive" (resolved)="captchaResolved($event)" siteKey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></re-captcha> -->
+					<!-- <button class="btn btn-secondary" [disabled]="loginForm.invalid && loginForm.touched" expand="block"
                       (click)="onSubmit()">
             Ingresar
           </button> -->
-          <!-- <div class="container-login100-form-btn pt-2"> -->
-          <!-- </div> -->
-          <div class="text-center py-4 h6">
-            <button type="submit" class="btn btn-secondary btn-lg w-100" [disabled]="loginForm.invalid && loginForm.touched">INGRESAR</button>
+					<!-- <div class="container-login100-form-btn pt-2"> -->
+					<!-- </div> -->
+					<div class="text-center py-4 h6">
+						<button type="submit" class="btn btn-secondary btn-lg w-100"
+							[disabled]="loginForm.invalid && loginForm.touched">INGRESAR</button>
 
-            <p class="fw-light small my-3">
-              <!-- ¿Entrar sin Loguearte? -->
-              <!-- <span class="text-white" (click)="entrarSinLogueo()">Aquí</span> -->
-              <!-- <span class="text-white" routerLink="/auth/register">Aquí</span> -->
-            </p>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
+						<p class="fw-light small my-3">
+							<!-- ¿Entrar sin Loguearte? -->
+							<!-- <span class="text-white" (click)="entrarSinLogueo()">Aquí</span> -->
+							<!-- <span class="text-white" routerLink="/auth/register">Aquí</span> -->
+						</p>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
