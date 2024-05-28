@@ -1,4 +1,5 @@
 export interface IWorkerPermission {
+	IdPermiso: number;
 	IdColaborador: number;
 	Colaborador: string;
 	SexoColaborador: string;
@@ -6,8 +7,6 @@ export interface IWorkerPermission {
 	Justificacion: string;
 	FechaDesde: Date;
 	FechaHasta: Date;
-	HoraDesde: Date;
-	HoraHasta: Date;
 	EstadoAutorizacion: string;
 	FechaAutorizacion: Date;
 	UsuarioAutorizacion: string;

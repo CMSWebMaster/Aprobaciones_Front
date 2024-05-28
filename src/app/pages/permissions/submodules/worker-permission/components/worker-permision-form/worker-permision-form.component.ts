@@ -2,8 +2,9 @@ import { JsonPipe } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ReactiveFormsModule, FormsModule, UntypedFormGroup, Validators, FormBuilder } from '@angular/forms';
 import { NgbDatepickerModule, NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
-import { IAddWorkerPermission } from 'src/app/pages/approval/models/IAddWorkerPermission';
-import { WorkerPermissionService } from 'src/app/pages/approval/services/worker-permission.service';
+import { IAddWorkerPermission } from 'src/app/pages/permissions/models/IAddWorkerPermission';
+import { WorkerPermissionService } from 'src/app/pages/permissions/services/worker-permission.service';
+import Swal from 'sweetalert2';
 
 @Component({
 	selector: 'app-worker-permision-form',
@@ -56,7 +57,7 @@ export class WorkerPermisionFormComponent {
 			CodUserRegistro: this.user,
 			IndicadorEstado: 'SO'
 		}
-		console.log(request);
+		console.log(JSON.stringify(request));
 		this.workerPermissionService.addWorkerPermission(request).subscribe({
 			next: (response) => {
 				console.log(response);

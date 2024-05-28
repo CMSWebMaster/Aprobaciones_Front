@@ -4,6 +4,12 @@
 		[rowSelected]="rowSelected" [filesRequirement]="filesRequirement"></app-requirements-summary>
 	}
 	@if(!showDetail) {
+	<div style="padding: 20px;" class="col-md-12 col-lg-12 col-xl-12 text-md-end mt-12 mt-md-0">
+		<div class="buttons-group">
+			<button class="btn btn-light-primary text-primary" (click)="listApprovalRequirements()"><i
+					class="fa fa-search me-2"></i>Buscar</button>
+		</div>
+	</div>
 	<app-requirements-table [rows]="rows"
 		(onEmmitRequierementsDetails)="getRequirementsDetails($event)"></app-requirements-table>
 	}

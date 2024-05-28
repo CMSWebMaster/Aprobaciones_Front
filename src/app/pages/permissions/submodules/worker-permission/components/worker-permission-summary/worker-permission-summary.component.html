@@ -9,22 +9,8 @@
 				</h3>
 				<div class="card-subtitle" style="text-align: right;">
 					<div class="buttons-group">
-						<button class="btn btn-light-primary text-primary"
-							(click)="executeApprovalPermission()">Aprobar</button>
-						<ng-template #popContent>
-							<div *ngFor="let item of userApprovers">
-								<p>{{ item.Busqueda }}, <b> {{ item.Estado === 'A1' ? 'PRE APROBADO' : item.Estado === 'AN' ?
-										'ANULADO' : '' }}</b></p>
-							</div>
-							@if(userApprovers.length === 0){
-							<p><b>Todavía no fue aprobado por algún usuario.</b></p>
-							}
-						</ng-template>
-						<ng-template #popTitle><b>Flujo de Aprobaciones!!</b></ng-template>
-						<button type="button" class="btn btn-light-primary text-primary" [ngbPopover]="popContent"
-							[popoverTitle]="popTitle">
-							Aprobado por
-						</button>
+						<button class="btn btn-light-primary text-primary" (click)="executeApprovalPermission()"
+							[disabled]="permissionDetail.UsuarioAutorizacion != ''">Aprobar</button>
 					</div>
 				</div>
 				<div class="row">
@@ -38,15 +24,15 @@
 										<td>{{ permissionDetail.Area }}</td>
 									</tr>
 									<tr>
-										<td>Fecha Solicitada </td>
-										<td>{{ permissionDetail.FechaDesde }} - {{ permissionDetail.FechaHasta }}</td>
+										<td>Fecha Desde </td>
+										<td>{{ permissionDetail.FechaDesde }}</td>
 									</tr>
 									<tr>
-										<td>Hora Solicitada </td>
-										<td>{{ permissionDetail.HoraDesde }} - {{ permissionDetail.HoraHasta }}</td>
+										<td>Fecha Hasta </td>
+										<td>{{ permissionDetail.FechaHasta }}</td>
 									</tr>
 									<tr>
-										<td>Justificaciono</td>
+										<td>Justificación</td>
 										<td>{{ permissionDetail.Justificacion }}</td>
 									</tr>
 									<tr>
@@ -54,12 +40,12 @@
 										<td>{{ permissionDetail.EstadoAutorizacion }}</td>
 									</tr>
 									<tr>
-										<td>Fecha Autorización</td>
-										<td>{{ permissionDetail.FechaAutorizacion }}</td>
+										<td>Usuario Aprobación</td>
+										<td> {{ permissionDetail.UsuarioAutorizacion }} </td>
 									</tr>
 									<tr>
-										<td>Usuario Aprobador</td>
-										<td> {{ permissionDetail.UsuarioAutorizacion }} </td>
+										<td>Fecha Autorización</td>
+										<td>{{ permissionDetail.FechaAutorizacion }}</td>
 									</tr>
 								</tbody>
 							</table>

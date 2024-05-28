@@ -3,7 +3,7 @@ import { WorkerPermissionTableComponent } from '../components/worker-permission-
 import { WorkerPermisionFormComponent } from '../components/worker-permision-form/worker-permision-form.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { WorkerPermissionService } from '../../../services/worker-permission.service';
-import { IWorkerPermission } from '../../../models/IWorkerPermissionDetail';
+import { IWorkerPermission } from '../../../../permissions/models/IWorkerPermissionDetail';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { WorkerPermissionSummaryComponent } from '../components/worker-permission-summary/worker-permission-summary.component';
@@ -23,10 +23,11 @@ export class WorkerPermissionComponent implements OnInit {
 	rows: any = [];
 	permissionDetail: IWorkerPermission;
 	showDetail: boolean = false;
+	user: number;
 
 
 	constructor(private modalService: NgbModal, private workerPermissionService: WorkerPermissionService) {
-
+		this.user = parseInt(localStorage.getItem('cod_user'));
 	}
 
 	ngOnInit(): void {
@@ -50,7 +51,7 @@ export class WorkerPermissionComponent implements OnInit {
 	}
 
 	listWorkerPermission() {
-		this.workerPermissionService.listWorkerPermission('123').subscribe({
+		this.workerPermissionService.listWorkerPermission(this.user).subscribe({
 			next: (response) => {
 				console.log(response);
 				this.rows = response;
@@ -73,6 +74,7 @@ export class WorkerPermissionComponent implements OnInit {
 	}
 
 	backToTablePermission() {
+		this.listWorkerPermission();
 		this.showDetail = false;
 	}
 }
