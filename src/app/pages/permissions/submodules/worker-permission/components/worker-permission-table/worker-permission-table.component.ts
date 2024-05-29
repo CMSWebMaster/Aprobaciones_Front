@@ -15,12 +15,7 @@ export class WorkerPermissionTableComponent {
 	{ name: 'Justificación', prop: 'Justificacion' }, { name: 'Estado', prop: 'EstadoAutorizacion' }];
 
 	@Input() rows: any = [];
-	@Output() onEmitCreateWorkerPermission: EventEmitter<boolean> = new EventEmitter<boolean>();
 	@Output() onEmitCellClicked: EventEmitter<any> = new EventEmitter<any>();
-
-	createWorkerPermission() {
-		this.onEmitCreateWorkerPermission.emit();
-	}
 
 	cellClicked(e: IWorkerPermission) {
 		this.onEmitCellClicked.emit(e);

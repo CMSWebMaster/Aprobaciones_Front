@@ -16,7 +16,6 @@ export class TableComponent {
 	@Input() rows: any = [];
 	@Input() showDetails: boolean = true;
 	@Output() onEmitViewDetails: EventEmitter<any> = new EventEmitter<any>();
-	@Output() onEmitCreateWorkerPermission: EventEmitter<boolean> = new EventEmitter<boolean>();
 	@Output() onEmitCellClicked: EventEmitter<any> = new EventEmitter<any>();
 	_searchTerm: string = '';
 	pageSize: number = 6;
