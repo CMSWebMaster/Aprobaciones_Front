@@ -1,0 +1,14 @@
+<div class="container mt-4">
+	@for(row of tableDetails; track row.Cabecera)
+	{
+	<div class="card mb-3" (click)="viewDetails(row)">
+		<div class="card-body">
+			<h5 class="order-title">
+				<i class="fas fa-check-circle"></i> {{ row.Cabecera }}
+			</h5>
+			<p class="order-details">{{ row.Detalle1 }}</p>
+			<p class="order-details">{{ row.Detalle2 }}</p>
+		</div>
+	</div>
+	}
+</div>

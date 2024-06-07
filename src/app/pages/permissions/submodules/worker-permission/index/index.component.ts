@@ -20,7 +20,7 @@ export class WorkerPermissionComponent implements OnInit {
 	@ViewChild('addWorkerPermission', { static: true }) addWorkerPermissionTemplate: TemplateRef<any>;
 	private modalRef: any;
 	codUser: number = 0;
-	rows: any = [];
+	rows: any[] = [];
 	permissionDetail: IWorkerPermission;
 	showDetail: boolean = false;
 	user: number;

@@ -5,6 +5,7 @@ import { WorkerPermissionConstants } from '../common/constants/worker-permission
 import { IWorkerPermission } from '../models/IWorkerPermissionDetail';
 import { IAddWorkerPermission } from '../models/IAddWorkerPermission';
 import { IApprovePermission } from '../models/IApprovePermission';
+import { IPerson } from '../models/IPerson';
 
 @Injectable({
 	providedIn: 'root'
@@ -23,5 +24,18 @@ export class WorkerPermissionService {
 	}
 	executeApprovePermission(request: IApprovePermission): Observable<boolean> {
 		return this.http.post<boolean>(`${WorkerPermissionConstants.BASE_URL}/${WorkerPermissionConstants.EXECUTE_APPROVE_PERMISSION}`, request);
+	}
+	executeRejectPermission(request: IApprovePermission): Observable<boolean> {
+		return this.http.post<boolean>(`${WorkerPermissionConstants.BASE_URL}/${WorkerPermissionConstants.EXECUTE_REJECT_PERMISSION}`, request);
+	}
+	listApprovers(): Observable<IPerson[]> {
+		return this.http
+			.get<IPerson[]>(`${WorkerPermissionConstants.BASE_URL}/${WorkerPermissionConstants.LIST_APPROVERS}`)
+			.pipe(catchError((err) => of(err)));
+	}
+	searchWorkers(personName: string): Observable<IPerson[]> {
+		return this.http
+			.get<IPerson[]>(`${WorkerPermissionConstants.BASE_URL}/${WorkerPermissionConstants.SEARCH_PERSON}/${personName}`)
+			.pipe(catchError((err) => of(err)));
 	}
 }

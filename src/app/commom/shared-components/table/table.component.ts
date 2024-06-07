@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
@@ -19,6 +19,11 @@ export class TableComponent {
 	@Output() onEmitCellClicked: EventEmitter<any> = new EventEmitter<any>();
 	_searchTerm: string = '';
 	pageSize: number = 6;
+	isLargeScreen: boolean;
+
+	constructor() {
+		this.isLargeScreen = window.innerWidth > 768;
+	}
 
 	get searchTerm(): string {
 		return this._searchTerm;
@@ -35,5 +40,10 @@ export class TableComponent {
 			// this.getUsersApprovers(event.row);
 			this.onEmitCellClicked.emit(event.row);
 		}
+	}
+
+	@HostListener('window:resize', ['$event'])
+	onResize(event: any) {
+		this.isLargeScreen = window.innerWidth > 768;
 	}
 }

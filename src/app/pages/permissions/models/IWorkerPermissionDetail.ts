@@ -7,7 +7,12 @@ export interface IWorkerPermission {
 	Justificacion: string;
 	FechaDesde: Date;
 	FechaHasta: Date;
-	EstadoAutorizacion: string;
-	FechaAutorizacion: Date;
-	UsuarioAutorizacion: string;
+	IndicadorEstado: string;
+	FechaCreacion: Date;
+	UsuarioCreacion: string;
+	FechaAprueba: Date;
+	UsuarioAprobador: string;
+	FechaRechaza: Date;
+	UsuarioRechaza: string;
+	CodUsuarioAprobador: number;
 }

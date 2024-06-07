@@ -4,7 +4,7 @@
 			<span><img src="assets/images/users/user5.jpg" alt="user" class="rounded-circle" width="50"></span>
 			{{ rowSelected.PreparadaPor }} - {{ rowSelected.Prioridad }}
 		</h3>
-		<div class="card-subtitle" style="text-align: right;">
+		<div class="card-subtitle" style="text-align: right; margin-top: 20px;">
 			<div class="buttons-group">
 				<button class="btn btn-light-primary text-primary" (click)="viewFiles(false)" [disabled]="!showFiles">Ver
 					Detalles</button>
@@ -21,7 +21,9 @@
 	</div>
 	<div class="card-body">
 		@if(!showFiles) {
-		<app-table [columns]="columns" [rows]="rows"></app-table>
+		<app-table [columns]="columns" [rows]="rows">
+			<app-table-resize [tableDetails]="tableDetails"></app-table-resize>
+		</app-table>
 		}
 		@if(showFiles) {
 		<app-requirements-files [filesRequirement]="filesRequirement"></app-requirements-files>

@@ -1,0 +1,21 @@
+.card-title {
+	display: flex;
+	align-items: center;
+}
+.card-title img {
+	margin-right: 10px;
+}
+.buttons-group {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	justify-content: flex-end;
+}
+.buttons-group button {
+	flex: 1;
+}
+@media (max-width: 576px) {
+	.buttons-group button {
+		 flex: 0 0 100%; /* Botones a toda la anchura en pantallas muy pequeñas */
+	}
+}

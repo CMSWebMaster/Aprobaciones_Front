@@ -3,11 +3,10 @@ export interface IAddWorkerPermission {
 	IdArea: string;
 	CodSede: string;
 	CodMotivo: string;
-	FechaDesde: Date;
-	FechaHasta: Date;
-	HoraDesde: string;
-	HoraHasta: string;
+	FechaDesde: string;
+	FechaHasta: string;
 	Justificacion: string;
 	CodUserRegistro: number;
 	IndicadorEstado: string;
+	CodUsuarioAut: string;
 }

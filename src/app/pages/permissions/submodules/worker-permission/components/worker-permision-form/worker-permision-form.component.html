@@ -6,18 +6,24 @@
 
 <div class="modal-body">
 	<form [formGroup]="addWorkerPermissionForm" (ngSubmit)="onSubmit()">
-		<!-- <div class="mb-3 row">
-		<label for="doj" class="col-sm-4 col-form-label">Aprobador</label>
-		<div class="col-sm-8">
-			<select class="form-control" id="inlineFormCustomSelect">
-				<option selected>Choose...</option>
-				<option value="1">One</option>
-				<option value="2">Two</option>
-				<option value="3">Three</option>
-			</select>
-
+		<div class="mb-3 row">
+			<label for="doj" class="col-sm-4 col-form-label">Trabajador</label>
+			<div class="col-sm-8 d-flex">
+				<ng-select [items]="personList" bindLabel="NombreCompleto" bindValue="Persona" placeholder="Trabajador"
+					formControlName="person" [searchable]="true" class="flex-grow-1 me-2" (search)="onSearch($event)">
+				</ng-select>
+				<button type="button" class="btn btn-primary" (click)="searchPersons()">Buscar</button>
+			</div>
 		</div>
-	</div> -->
+
+		<div class="mb-3 row">
+			<label for="doj" class="col-sm-4 col-form-label">Motivo</label>
+			<div class="col-sm-8">
+				<ng-select [items]="motiveList" bindLabel="name" bindValue="id" placeholder="Motivo"
+					formControlName="motive" [searchable]="true">
+				</ng-select>
+			</div>
+		</div>
 
 		<div class="mb-3 row">
 			<label for="doj" class="col-sm-4 col-form-label">Fecha Desde</label>
@@ -56,13 +62,22 @@
 			</div>
 		</div>
 
+		<div class="mb-3 row">
+			<label for="doj" class="col-sm-4 col-form-label">Aprobado por</label>
+			<div class="col-sm-8">
+				<ng-select [items]="approverList" bindLabel="NombreCompleto" bindValue="Persona" placeholder="Aprobado por"
+					formControlName="approver" [searchable]="true">
+				</ng-select>
+			</div>
+		</div>
+
 		<div class="modal-footer">
 			<button type="button" class="btn btn-secondary" (click)="closeModal()">
-				Close
+				Cerrar
 			</button>
 
 			<button type="submit" class="btn btn-primary" [disabled]="addWorkerPermissionForm.invalid">
-				Save
+				Guardar
 			</button>
 		</div>
 	</form>
