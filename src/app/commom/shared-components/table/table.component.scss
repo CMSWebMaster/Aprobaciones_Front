@@ -1,0 +1,56 @@
+/* Estilos generales para las tarjetas */
+.card {
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+	margin-bottom: 10px;
+ }
+ 
+ .card-body {
+	padding: 15px;
+ }
+ 
+ .d-flex {
+	display: flex;
+	justify-content: space-between;
+ }
+ 
+ .table-responsive {
+	overflow-x: auto;
+ }
+ 
+ /* Estilos específicos para pantallas pequeñas */
+ @media (max-width: 768px) {
+	.ngx-datatable.material {
+	  display: block;
+	  overflow-x: visible;
+	}
+ 
+	.ngx-datatable.material .datatable-header,
+	.ngx-datatable.material .datatable-footer {
+	  display: none;
+	}
+ 
+	.ngx-datatable.material .datatable-body-row {
+	  display: block;
+	  margin-bottom: 10px;
+	  border: 1px solid #e0e0e0;
+	  border-radius: 8px;
+	  padding: 10px;
+	}
+ 
+	.ngx-datatable.material .datatable-body-cell {
+	  display: flex;
+	  flex-direction: column;
+	  padding: 5px 0;
+	}
+ 
+	.ngx-datatable.material .datatable-body-cell-label {
+	  font-weight: bold;
+	  margin-right: 10px;
+	}
+ 
+	.ngx-datatable.material .datatable-body-cell-value {
+	  margin-left: 10px;
+	}
+ }
+ 

@@ -6,34 +6,34 @@ import { Dashboard3Component } from './dashboard3/dashboard3.component';
 import { FullComponent } from '../layouts/full/full.component';
 
 export const DashboardRoutes: Routes = [
-  {
-    path: '',
+	{
+		path: '',
 
-    children: [
-      {
-        path: 'dashboard1',
-        component: Dashboard1Component,
-        data: {
-          title: 'Modern Dashboard',
-          urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Modern Dashboard' }]
-        }
-      },
-      {
-        path: 'dashboard2',
-        component: Dashboard2Component,
-        data: {
-          title: 'Classic Dashboard',
-          urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Classic Dashboard' }]
-        }
-      },
-      {
-        path: 'dashboard3',
-        component: Dashboard3Component,
-        data: {
-          title: 'Analytical Dashboard',
-          urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Analytical Dashboard' }]
-        }
-      }
-    ]
-  }
+		children: [
+			{
+				path: 'dashboard1',
+				component: Dashboard1Component,
+				data: {
+					title: 'Aprobaciones',
+					urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Aprobaciones' }]
+				}
+			},
+			{
+				path: 'dashboard2',
+				component: Dashboard2Component,
+				data: {
+					title: 'Classic Dashboard',
+					urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Classic Dashboard' }]
+				}
+			},
+			{
+				path: 'dashboard3',
+				component: Dashboard3Component,
+				data: {
+					title: 'Analytical Dashboard',
+					urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Analytical Dashboard' }]
+				}
+			}
+		]
+	}
 ];

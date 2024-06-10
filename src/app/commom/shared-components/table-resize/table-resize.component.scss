@@ -1,0 +1,41 @@
+.order-card {
+	margin-bottom: 1rem;
+ }
+ 
+ .order-header {
+	font-weight: bold;
+	color: #007bff;
+ }
+ 
+ .order-details {
+	font-size: 0.9rem;
+	color: #6c757d;
+ }
+ 
+ .order-title {
+	font-weight: bold;
+	color: #007bff;
+ }
+ 
+ @media (max-width: 768px) {
+	.order-card {
+	  margin-bottom: 1rem;
+	}
+ 
+	.order-header {
+	  font-size: 1rem;
+	}
+ 
+	.order-details {
+	  font-size: 0.85rem;
+	}
+ }
+
+ .card-body {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 15px;
+	margin-bottom: 10px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+ 

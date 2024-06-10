@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
@@ -14,27 +14,51 @@ export class TableComponent {
 
 	@Input() columns = [];
 	@Input() rows: any = [];
+	rowsInit: any = [];
 	@Input() showDetails: boolean = true;
 	@Output() onEmitViewDetails: EventEmitter<any> = new EventEmitter<any>();
-	@Output() onEmitCreateWorkerPermission: EventEmitter<boolean> = new EventEmitter<boolean>();
 	@Output() onEmitCellClicked: EventEmitter<any> = new EventEmitter<any>();
 	_searchTerm: string = '';
 	pageSize: number = 6;
+	isLargeScreen: boolean;
+
+	constructor() {
+		this.isLargeScreen = window.innerWidth > 768;
+	}
+
+	ngOnChanges(changes: any) {
+		if (changes.rows && this.rows) {
+			this.rowsInit = this.rows;
+		}
+	}
 
 	get searchTerm(): string {
 		return this._searchTerm;
 	}
 	set searchTerm(val: string) {
-		// this._searchTerm = val;
-		// const filterClient = this.filter(val);
-		// console.log(filterClient);
-		// this.rows = [...filterClient];
+		this._searchTerm = val;
+		const filterClient = this.filter(val);
+		this.rows = [...filterClient];
 	}
 	onActivate(event) {
 		if (event.type === 'click') {
-			console.log('Clicked Row:', event.row);
-			// this.getUsersApprovers(event.row);
 			this.onEmitCellClicked.emit(event.row);
 		}
+	}
+	filter(searchString: string): any[] {
+		if (!searchString) {
+			return this.rows;
+		}
+
+		return this.rowsInit.filter(row => {
+			return Object.values(row).some(value =>
+				String(value).toLowerCase().includes(searchString.toLowerCase())
+			);
+		});
+	}
+
+	@HostListener('window:resize', ['$event'])
+	onResize(event: any) {
+		this.isLargeScreen = window.innerWidth > 768;
 	}
 }

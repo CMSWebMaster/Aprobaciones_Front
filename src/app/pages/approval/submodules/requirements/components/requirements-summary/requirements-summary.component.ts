@@ -7,11 +7,12 @@ import { IFilesRequirement } from 'src/app/pages/approval/models/IFilesRequireme
 import { RequirementsService } from 'src/app/pages/approval/services/requirements.service';
 import Swal from 'sweetalert2';
 import { IExecuteRequirements } from 'src/app/pages/approval/models/IExecuteRequirements';
+import { TableResizeComponent } from 'src/app/commom/shared-components/table-resize/table-resize.component';
 
 @Component({
 	selector: 'app-requirements-summary',
 	standalone: true,
-	imports: [TableComponent, RequirementsFilesComponent],
+	imports: [TableComponent, RequirementsFilesComponent, TableResizeComponent],
 	templateUrl: './requirements-summary.component.html',
 	styleUrl: './requirements-summary.component.scss'
 })
@@ -23,8 +24,9 @@ export class RequirementsSummaryComponent {
 	showFiles: boolean = false;
 	requestApprove: IExecuteRequirements;
 	persona: string = '';
+	tableDetails: any = [];
 
-	@Input() rows: any = [];
+	@Input() rows: IRequirementDetail[] = [];
 	@Input() rowSelected: IApprovalRequeriments;
 	@Input() filesRequirement: IFilesRequirement[];
 	@Output() onEmitBackToTableReq: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -41,6 +43,17 @@ export class RequirementsSummaryComponent {
 				CompaniaSocio: '01000000'
 			}
 		}
+		if (changes.rows && this.rows) {
+			this.tableDetails = this.rows.map(row => {
+				return {
+					...row,
+					Cabecera: row.Descripcion,
+					Detalle1: row.UnidadCodigo,
+					Detalle2: row.CantidadPedida
+				};
+			});
+		}
+		console.log(this.tableDetails)
 	}
 
 	backToRequirementTable() {

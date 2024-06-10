@@ -45,4 +45,5 @@ export interface IApprovalOrder {
 	FechaEnvioProveedor: string | null;
 	Clasificacion: string;
 	NumeroOrden: string;
+	Compromiso: string;
 }

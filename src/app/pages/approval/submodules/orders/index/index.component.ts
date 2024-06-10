@@ -22,7 +22,7 @@ export class OrdersComponent implements OnInit {
 	showDetails: boolean = false;
 	persona: string = '';
 	codUser: number = 0;
-	rows: any = [];
+	rows: IApprovalOrder[] = [];
 	orderDetail: IOrderDetail;
 	typeOrder: typeOrderEnum;
 	userApprovers: IUsersAprrovers[] = [];

@@ -1,12 +1,15 @@
 <div class="card">
 	<div class="card-body">
+		@if(isLargeScreen){
 		<div class="d-flex mb-3 mt-3">
 			<input class="form-control w-25" placeholder="Buscador" type="text" [(ngModel)]="searchTerm" />
 		</div>
-		<div class="row">
-			<ngx-datatable #table class='material' [columns]="columns" [columnMode]="'force'" [headerHeight]="50"
-				[footerHeight]="50" [rowHeight]="'auto'" [limit]="10" [rows]='rows' (activate)="onActivate($event)">
-			</ngx-datatable>
-		</div>
+		<ngx-datatable #table class="material" [columns]="columns" [columnMode]="'force'" [headerHeight]="50"
+			[footerHeight]="50" [rowHeight]="'auto'" [limit]="10" [rows]="rows" (activate)="onActivate($event)">
+		</ngx-datatable>
+		}
+		@if (!isLargeScreen) {
+		<ng-content></ng-content>
+		}
 	</div>
 </div>

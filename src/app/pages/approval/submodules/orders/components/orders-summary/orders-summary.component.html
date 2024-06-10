@@ -1,107 +1,115 @@
-<div class="col-lg-12">
-	<div class="card">
-		<div class="card-body">
-			<h3 class="card-title">{{ headerDetail }}</h3>
-			<div class="card-subtitle" style="text-align: right;">
-				<div class="buttons-group">
-					<button class="btn btn-light-primary text-primary" (click)="executeApprovalOrder()">Aprobar</button>
-					<ng-template #popContent>
-						<div *ngFor="let item of userApprovers">
-							<p>{{ item.Busqueda }}, <b> {{ item.Estado === 'A1' ? 'PRE APROBADO' : item.Estado === 'AN' ?
-									'ANULADO' : '' }}</b></p>
-						</div>
-						@if(userApprovers.length === 0){
-						<p><b>Todavía no fue aprobado por algún usuario.</b></p>
-						}
-					</ng-template>
-					<ng-template #popTitle><b>Flujo de Aprobaciones!!</b></ng-template>
-					<button type="button" class="btn btn-light-primary text-primary" [ngbPopover]="popContent"
-						[popoverTitle]="popTitle">
-						Aprobado por
-					</button>
-					<button class="btn btn-light-primary text-primary" (click)="backOrderTable()">
-						<i class="fa fa-chevron-left"></i>
-					</button>
+<div class="card">
+	<h3 class="card-title">
+		<span><img src="assets/images/users/user5.jpg" alt="user" class="rounded-circle" width="50"></span>
+		{{ headerDetail }}
+	</h3>
+	<div class="card-subtitle" style="text-align: right; margin-top: 20px;">
+		<div class="buttons-group">
+			<button class="btn btn-light-primary text-primary me-2" (click)="executeApprovalOrder()"
+				data-bs-toggle="tooltip" title="Aprobar">
+				<i class="fa fa-check"></i>
+			</button>
+			<ng-template #popContent>
+				<div *ngFor="let item of userApprovers">
+					<p>{{ item.Busqueda }}, <b>{{ item.Estado === 'A1' ? 'PRE APROBADO' : item.Estado === 'AN' ? 'ANULADO' :
+							'' }}</b></p>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-12 col-md-12 col-sm-12">
-					<h3 class="p-2-title mt-4 pt-3">Información General</h3>
-					<div class="table-responsive">
-						<table class="table">
-							<tbody>
-								<tr>
-									<td>Sede</td>
-									<td>{{ orderDetail.sede }}</td>
-								</tr>
-								<tr>
-									<td>Clasificación</td>
-									<td>{{ orderDetail.DescripcionLocal }}</td>
-								</tr>
-								<tr>
-									<td>Proveedor</td>
-									<td>{{ orderDetail.Busqueda ?? orderDetail.NombreCompleto}}</td>
-								</tr>
-								<tr>
-									<td>Forma de Pago</td>
-									<td>{{ orderDetail.FormadePago }}-{{ orderDetail.desformapag ?? orderDetail.Descripcion}}
-									</td>
-								</tr>
-								@if(orderDetail.Comentarios){
-								<tr>
-									<td>Desc. Adicional</td>
-									<td>{{ orderDetail.Comentarios }}</td>
-								</tr>
-								}
-								<tr>
-									<td>Observaciones</td>
-									<td>{{ orderDetail.Observaciones }}</td>
-								</tr>
-								@if(orderDetail.ObservacionesEntrega){
-								<tr>
-									<td>Obs. Detallada</td>
-									<td> {{ orderDetail.ObservacionesEntrega }} </td>
-								</tr>
-								}
-								<tr>
-									<td>Monto Bruto</td>
-									<td>{{ currencyDocument }} {{ orderDetail.MontoBruto ?? orderDetail.MontoAfecto}}</td>
-								</tr>
-								<tr>
-									<td>Monto No Afecto</td>
-									<td>{{ currencyDocument }} {{ orderDetail.MontoNoAfecto }}</td>
-								</tr>
-								@if(orderDetail.MontoCompromisoOriginal){
-								<tr>
-									<td>Monto Sub. Total</td>
-									<td>{{ currencyDocument }} {{ orderDetail.MontoCompromisoOriginal }}</td>
-								</tr>
-								}
-								<tr>
-									<td>Impuestos</td>
-									<td>{{ currencyDocument }} {{ orderDetail.MontoImpuesto ?? orderDetail.MontoIGV }}</td>
-								</tr>
-								<tr>
-									<td>Monto Total</td>
-									<td>{{ currencyDocument }} {{ orderDetail.MontoTotal ?? orderDetail.MontoCompromiso }}
-									</td>
-								</tr>
-								@if(orderDetail.MontoGastado){
-								<tr>
-									<td>Monto Gastado</td>
-									<td>{{ currencyDocument }} {{ orderDetail.MontoGastado }}</td>
-								</tr>
-								}
-								@if(orderDetail.MontoCompromiso){
-								<tr>
-									<td>Saldo</td>
-									<td>{{ currencyDocument }} {{ orderDetail.MontoCompromiso - orderDetail.MontoGastado }}
-									</td>
-								</tr>
-								}
-							</tbody>
-						</table>
-					</div>
+				@if(userApprovers.length === 0){
+				<p><b>Todavía no fue aprobado por algún usuario.</b></p>
+				}
+			</ng-template>
+
+			<ng-template #popTitle><b>Flujo de Aprobaciones!!</b></ng-template>
+
+			<button class="btn btn-light-primary text-primary me-2" [ngbPopover]="popContent" [popoverTitle]="popTitle"
+				data-bs-toggle="tooltip" title="Aprobado por">
+				<i class="fa fa-user-check"></i>
+			</button>
+
+			<button class="btn btn-light-primary text-primary" (click)="backOrderTable()" data-bs-toggle="tooltip"
+				title="Regresar">
+				<i class="fa fa-chevron-left"></i>
+			</button>
+		</div>
+	</div>
+	<div class="card-body">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<h3 class="p-2-title mt-4 pt-3">Información General</h3>
+				<div class="table-responsive">
+					<table class="table">
+						<tbody>
+							<tr>
+								<td>Sede</td>
+								<td>{{ orderDetail.sede }}</td>
+							</tr>
+							<tr>
+								<td>Clasificación</td>
+								<td>{{ orderDetail.DescripcionLocal }}</td>
+							</tr>
+							<tr>
+								<td>Proveedor</td>
+								<td>{{ orderDetail.Busqueda ?? orderDetail.NombreCompleto}}</td>
+							</tr>
+							<tr>
+								<td>Forma de Pago</td>
+								<td>{{ orderDetail.FormadePago }}-{{ orderDetail.desformapag ?? orderDetail.Descripcion}}
+								</td>
+							</tr>
+							@if(orderDetail.Comentarios){
+							<tr>
+								<td>Desc. Adicional</td>
+								<td>{{ orderDetail.Comentarios }}</td>
+							</tr>
+							}
+							<tr>
+								<td>Observaciones</td>
+								<td>{{ orderDetail.Observaciones }}</td>
+							</tr>
+							@if(orderDetail.ObservacionesEntrega){
+							<tr>
+								<td>Obs. Detallada</td>
+								<td> {{ orderDetail.ObservacionesEntrega }} </td>
+							</tr>
+							}
+							<tr>
+								<td>Monto Bruto</td>
+								<td>{{ currencyDocument }} {{ orderDetail.MontoBruto ?? orderDetail.MontoAfecto}}</td>
+							</tr>
+							<tr>
+								<td>Monto No Afecto</td>
+								<td>{{ currencyDocument }} {{ orderDetail.MontoNoAfecto }}</td>
+							</tr>
+							@if(orderDetail.MontoCompromisoOriginal){
+							<tr>
+								<td>Monto Sub. Total</td>
+								<td>{{ currencyDocument }} {{ orderDetail.MontoCompromisoOriginal }}</td>
+							</tr>
+							}
+							<tr>
+								<td>Impuestos</td>
+								<td>{{ currencyDocument }} {{ orderDetail.MontoImpuesto ?? orderDetail.MontoIGV }}</td>
+							</tr>
+							<tr>
+								<td>Monto Total</td>
+								<td>{{ currencyDocument }} {{ orderDetail.MontoTotal ?? orderDetail.MontoCompromiso }}
+								</td>
+							</tr>
+							@if(orderDetail.MontoGastado){
+							<tr>
+								<td>Monto Gastado</td>
+								<td>{{ currencyDocument }} {{ orderDetail.MontoGastado }}</td>
+							</tr>
+							}
+							@if(orderDetail.MontoCompromiso){
+							<tr>
+								<td>Saldo</td>
+								<td>{{ currencyDocument }} {{ orderDetail.MontoCompromiso - orderDetail.MontoGastado }}
+								</td>
+							</tr>
+							}
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>

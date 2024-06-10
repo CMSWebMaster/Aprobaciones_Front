@@ -1,0 +1,24 @@
+@if(fileType === 'pdf'){
+<pdf-viewer [src]="fileUrl" [render-text]="true"></pdf-viewer>
+}
+
+@if(fileType === 'image') { <img [src]="fileUrl" alt="Image" class="img-fluid" /> }
+
+@if(fileType === 'video') {
+<video controls class="w-100">
+	<source [src]="fileUrl" type="video/mp4">
+	Your browser does not support the video tag.
+</video>
+}
+
+@if(fileType === 'doc' || fileType === 'docx' || fileType === 'ppt' || fileType === 'pptx' || fileType === 'xls' ||
+fileType === 'xlsx' || fileType === 'txt') {
+<!-- <iframe [src]="safeUrl" style="width:100%; height:600px;" frameborder="0"></iframe> -->
+<ngx-doc-viewer
+	[url]="'https://docs.google.com/gview?url=https://filesamples.com/samples/document/ppt/sample2.ppt&embedded=true'"
+	viewer="url" style="width:100%;height:50vh;">
+</ngx-doc-viewer>
+}
+
+@if(!['pdf', 'image', 'video', 'doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx', 'txt'].includes(fileType)) {<p>Unsupported
+	file type</p>}
