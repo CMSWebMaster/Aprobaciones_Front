@@ -5,21 +5,29 @@
 	</h3>
 	<div class="card-subtitle" style="text-align: right; margin-top: 20px;">
 		<div class="buttons-group">
-			<button class="btn btn-light-primary text-primary" (click)="executeApprovalOrder()">Aprobar</button>
+			<button class="btn btn-light-primary text-primary me-2" (click)="executeApprovalOrder()"
+				data-bs-toggle="tooltip" title="Aprobar">
+				<i class="fa fa-check"></i>
+			</button>
 			<ng-template #popContent>
 				<div *ngFor="let item of userApprovers">
-					<p>{{ item.Busqueda }}, <b> {{ item.Estado === 'A1' ? 'PRE APROBADO' : item.Estado === 'AN' ?
-							'ANULADO' : '' }}</b></p>
+					<p>{{ item.Busqueda }}, <b>{{ item.Estado === 'A1' ? 'PRE APROBADO' : item.Estado === 'AN' ? 'ANULADO' :
+							'' }}</b></p>
 				</div>
 				@if(userApprovers.length === 0){
 				<p><b>Todavía no fue aprobado por algún usuario.</b></p>
 				}
 			</ng-template>
+
 			<ng-template #popTitle><b>Flujo de Aprobaciones!!</b></ng-template>
-			<button class="btn btn-light-primary text-primary" [ngbPopover]="popContent" [popoverTitle]="popTitle">
-				Aprobado por
+
+			<button class="btn btn-light-primary text-primary me-2" [ngbPopover]="popContent" [popoverTitle]="popTitle"
+				data-bs-toggle="tooltip" title="Aprobado por">
+				<i class="fa fa-user-check"></i>
 			</button>
-			<button class="btn btn-light-primary text-primary" (click)="backOrderTable()">
+
+			<button class="btn btn-light-primary text-primary" (click)="backOrderTable()" data-bs-toggle="tooltip"
+				title="Regresar">
 				<i class="fa fa-chevron-left"></i>
 			</button>
 		</div>

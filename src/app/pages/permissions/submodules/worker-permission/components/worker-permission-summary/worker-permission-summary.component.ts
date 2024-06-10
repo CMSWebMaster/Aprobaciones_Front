@@ -19,13 +19,13 @@ export class WorkerPermissionSummaryComponent {
 
 	pathIconUser: string = '';
 	permissionApprove: IApprovePermission;
-	user: number;
+	user: string;
 
 	@Input() permissionDetail: IWorkerPermission;
 	@Output() onEmitBackPermission: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 	constructor(private workerPermissionService: WorkerPermissionService) {
-		this.user = parseInt(localStorage.getItem('cod_user'));
+		this.user = localStorage.getItem('cod_user');
 	}
 
 	backWorkerPermission() {
@@ -41,6 +41,7 @@ export class WorkerPermissionSummaryComponent {
 				IdPermiso: this.permissionDetail.IdPermiso,
 				IdAprobador: this.user,
 			}
+			console.log(this.permissionDetail.CodUsuarioAprobador, this.user);
 		}
 	}
 

@@ -30,20 +30,34 @@ export class WorkerPermisionFormComponent {
 	@Output() onEmitFinalizeAddPermission: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 	constructor(public fb: FormBuilder, public workerPermissionService: WorkerPermissionService) {
-		this.addWorkerPermissionForm = this.fb.group({
-			person: [null, Validators.required],
-			approver: [null, Validators.required],
-			motive: [null, Validators.required],
-			startDate: ['', Validators.required],
-			endDate: ['', Validators.required],
-			startTime: ['', Validators.required],
-			endTime: ['', Validators.required],
-			justification: [''],
-		});
-
 		this.sede = localStorage.getItem('sede');
 		this.area = localStorage.getItem('id_area');
 		this.user = parseInt(localStorage.getItem('cod_user'));
+		this.searchPersons(localStorage.getItem('Nombres'))
+
+		const today = new Date();
+		const formattedDate = today.toISOString().split('T')[0];
+
+		// Formatear la hora actual para los campos de tiempo
+		const pad = (num: number) => (num < 10 ? '0' + num : num.toString());
+		const currentHour = pad(today.getHours());
+		const currentMinutes = pad(today.getMinutes());
+
+		// Calcular la hora de finalización una hora después
+		const endHour = pad((today.getHours() + 1) % 24);
+
+		this.addWorkerPermissionForm = this.fb.group({
+			person: [this.user.toString(), Validators.required],
+			personSearch: [null],
+			approver: [null, Validators.required],
+			motive: [null, Validators.required],
+			startDate: [formattedDate, Validators.required],
+			endDate: [formattedDate, Validators.required],
+			startTime: [{ hour: currentHour, minute: currentMinutes }, Validators.required],
+			endTime: [{ hour: endHour, minute: currentMinutes }, Validators.required],
+			justification: [''],
+		});
+
 	}
 
 	ngOnInit() {
@@ -56,7 +70,8 @@ export class WorkerPermisionFormComponent {
 
 	onSubmit() {
 		const startHour = this.addWorkerPermissionForm?.get('startTime')?.value;
-		const endHour = this.addWorkerPermissionForm?.get('endTime')?.value
+		const endHour = this.addWorkerPermissionForm?.get('endTime')?.value;
+
 		const request: IAddWorkerPermission = {
 			IdColaborador: this.addWorkerPermissionForm?.get('person')?.value,
 			IdArea: this.area,
@@ -69,10 +84,9 @@ export class WorkerPermisionFormComponent {
 			IndicadorEstado: 'RG',
 			CodUsuarioAut: this.addWorkerPermissionForm?.get('approver')?.value
 		}
-		console.log(JSON.stringify(request));
+
 		this.workerPermissionService.addWorkerPermission(request).subscribe({
 			next: (response) => {
-				console.log(response);
 				this.onEmitFinalizeAddPermission.emit();
 				this.closeModal();
 			},
@@ -94,12 +108,14 @@ export class WorkerPermisionFormComponent {
 	}
 
 	onSearch(e: any) {
-		console.log(e);
 		this.personSearch = e.term;
 	}
 
-	searchPersons() {
-		this.workerPermissionService.searchWorkers(this.personSearch).subscribe({
+	searchPersons(personSearch: string) {
+		if (personSearch == '') {
+			personSearch = this.addWorkerPermissionForm?.get('personSearch')?.value;
+		}
+		this.workerPermissionService.searchWorkers(personSearch).subscribe({
 			next: (response) => {
 				this.personList = response;
 			},

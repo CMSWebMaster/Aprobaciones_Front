@@ -1,12 +1,12 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { WorkerPermissionTableComponent } from '../components/worker-permission-table/worker-permission-table.component';
-import { WorkerPermisionFormComponent } from '../components/worker-permision-form/worker-permision-form.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { WorkerPermissionService } from '../../../services/worker-permission.service';
 import { IWorkerPermission } from '../../../../permissions/models/IWorkerPermissionDetail';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { WorkerPermissionSummaryComponent } from '../components/worker-permission-summary/worker-permission-summary.component';
+import { WorkerPermisionFormComponent } from '../components/worker-permision-form/worker-permision-form.component';
 
 @Component({
 	selector: 'app-index',
@@ -38,7 +38,7 @@ export class WorkerPermissionComponent implements OnInit {
 		this.modalRef = this.modalService.open(this.addWorkerPermissionTemplate, {
 			centered: true,
 			backdrop: 'static',
-			size: 'md'
+			size: 'lg'
 		});
 	}
 

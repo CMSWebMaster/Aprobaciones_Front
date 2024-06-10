@@ -14,6 +14,7 @@ export class TableComponent {
 
 	@Input() columns = [];
 	@Input() rows: any = [];
+	rowsInit: any = [];
 	@Input() showDetails: boolean = true;
 	@Output() onEmitViewDetails: EventEmitter<any> = new EventEmitter<any>();
 	@Output() onEmitCellClicked: EventEmitter<any> = new EventEmitter<any>();
@@ -25,21 +26,35 @@ export class TableComponent {
 		this.isLargeScreen = window.innerWidth > 768;
 	}
 
+	ngOnChanges(changes: any) {
+		if (changes.rows && this.rows) {
+			this.rowsInit = this.rows;
+		}
+	}
+
 	get searchTerm(): string {
 		return this._searchTerm;
 	}
 	set searchTerm(val: string) {
-		// this._searchTerm = val;
-		// const filterClient = this.filter(val);
-		// console.log(filterClient);
-		// this.rows = [...filterClient];
+		this._searchTerm = val;
+		const filterClient = this.filter(val);
+		this.rows = [...filterClient];
 	}
 	onActivate(event) {
 		if (event.type === 'click') {
-			console.log('Clicked Row:', event.row);
-			// this.getUsersApprovers(event.row);
 			this.onEmitCellClicked.emit(event.row);
 		}
+	}
+	filter(searchString: string): any[] {
+		if (!searchString) {
+			return this.rows;
+		}
+
+		return this.rowsInit.filter(row => {
+			return Object.values(row).some(value =>
+				String(value).toLowerCase().includes(searchString.toLowerCase())
+			);
+		});
 	}
 
 	@HostListener('window:resize', ['$event'])

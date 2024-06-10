@@ -6,14 +6,20 @@
 		</h3>
 		<div class="card-subtitle" style="text-align: right; margin-top: 20px;">
 			<div class="buttons-group">
-				<button class="btn btn-light-primary text-primary" (click)="viewFiles(false)" [disabled]="!showFiles">Ver
-					Detalles</button>
-				<button type="button" class="btn btn-light-primary text-primary" (click)="viewFiles(true)"
-					[disabled]="showFiles">Ver Adjuntos</button>
-				<button class="btn btn-light-primary text-primary" (click)="approveRequirements()">Aprobar</button>
-				<button type="button" class="btn btn-light-primary text-primary"
-					(click)="rejectRequirements()">Rechazar</button>
-				<button class="btn btn-light-primary text-primary" (click)="backToRequirementTable()">
+				<button type="button" class="btn btn-light-primary text-primary me-2" (click)="viewFiles(true)"
+					[disabled]="showFiles" data-bs-toggle="tooltip" title="Ver Adjuntos">
+					<i class="fa fa-paperclip"></i>
+				</button>
+				<button class="btn btn-light-primary text-primary me-2" (click)="approveRequirements()"
+					data-bs-toggle="tooltip" title="Aprobar">
+					<i class="fa fa-check"></i>
+				</button>
+				<button type="button" class="btn btn-light-primary text-primary me-2" (click)="rejectRequirements()"
+					data-bs-toggle="tooltip" title="Rechazar">
+					<i class="fa fa-times"></i>
+				</button>
+				<button class="btn btn-light-primary text-primary" (click)="backToRequirementTable()"
+					data-bs-toggle="tooltip" title="Regresar">
 					<i class="fa fa-chevron-left"></i>
 				</button>
 			</div>

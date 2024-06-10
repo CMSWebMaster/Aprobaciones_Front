@@ -9,17 +9,28 @@
 				</h3>
 				<div class="card-subtitle" style="text-align: right; margin-top: 20px;">
 					<div class="buttons-group">
-						@if (permissionDetail.CodUsuarioAprobador == user) {
-						<button class="btn btn-light-primary text-primary" (click)="executeApprovalPermission()"
-							[disabled]="permissionDetail.FechaAprueba != null || permissionDetail.FechaRechaza">Aprobar</button>
-						<button class="btn btn-light-primary text-primary" (click)="executeRejectPermission()"
-							[disabled]="permissionDetail.FechaAprueba != null || permissionDetail.FechaRechaza">Rechazar</button>
-						}
-						<button class="btn btn-light-primary text-primary" (click)="generatePdf()">Descargar
-							Formato</button>
-						<button class="btn btn-light-primary text-primary" (click)="backWorkerPermission()">
-							<i class="fa fa-chevron-left"></i>
-						</button>
+						<div class="d-flex justify-content-end">
+							@if (permissionDetail.CodUsuarioAprobador === user) {
+							<button class="btn btn-light-primary text-primary me-2" (click)="executeApprovalPermission()"
+								[disabled]="permissionDetail.FechaAprueba != null || permissionDetail.FechaRechaza"
+								data-bs-toggle="tooltip" title="Aprobar">
+								<i class="fa fa-check"></i>
+							</button>
+							<button class="btn btn-light-primary text-primary me-2" (click)="executeRejectPermission()"
+								[disabled]="permissionDetail.FechaAprueba != null || permissionDetail.FechaRechaza"
+								data-bs-toggle="tooltip" title="Rechazar">
+								<i class="fa fa-times"></i>
+							</button>
+							}
+							<button class="btn btn-light-primary text-primary me-2" (click)="generatePdf()"
+								data-bs-toggle="tooltip" title="Descargar Formato">
+								<i class="fa fa-download"></i>
+							</button>
+							<button class="btn btn-light-primary text-primary" (click)="backWorkerPermission()"
+								data-bs-toggle="tooltip" title="Regresar">
+								<i class="fa fa-chevron-left"></i>
+							</button>
+						</div>
 					</div>
 				</div>
 

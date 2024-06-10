@@ -14,5 +14,5 @@ export interface IWorkerPermission {
 	UsuarioAprobador: string;
 	FechaRechaza: Date;
 	UsuarioRechaza: string;
-	CodUsuarioAprobador: number;
+	CodUsuarioAprobador: string;
 }

@@ -6,79 +6,95 @@
 
 <div class="modal-body">
 	<form [formGroup]="addWorkerPermissionForm" (ngSubmit)="onSubmit()">
-		<div class="mb-3 row">
-			<label for="doj" class="col-sm-4 col-form-label">Trabajador</label>
-			<div class="col-sm-8 d-flex">
-				<ng-select [items]="personList" bindLabel="NombreCompleto" bindValue="Persona" placeholder="Trabajador"
-					formControlName="person" [searchable]="true" class="flex-grow-1 me-2" (search)="onSearch($event)">
-				</ng-select>
-				<button type="button" class="btn btn-primary" (click)="searchPersons()">Buscar</button>
+		<!-- Trabajador Row -->
+		<div class="mb-3 row align-items-center">
+			<label for="trabajador" class="col-sm-2 col-form-label">Trabajador</label>
+			<div class="col-sm-10">
+				<div class="d-flex flex-column flex-md-row align-items-center">
+					<div class="d-flex flex-grow-1">
+						<input type="text" class="form-control me-2" placeholder="Buscador" [(ngModel)]="personSearch"
+							formControlName="personSearch" />
+						<button type="button" class="btn btn-primary me-2" (click)="searchPersons('')">Buscar</button>
+					</div>
+					<ng-select [items]="personList" bindLabel="NombreCompleto" bindValue="Persona" placeholder="Trabajador"
+						formControlName="person" [searchable]="true" class="w-100 mt-2 mt-md-0 flex-grow-1">
+					</ng-select>
+				</div>
 			</div>
 		</div>
 
+		<!-- Motivo Row -->
 		<div class="mb-3 row">
-			<label for="doj" class="col-sm-4 col-form-label">Motivo</label>
-			<div class="col-sm-8">
+			<label for="motive" class="col-sm-2 col-form-label">Motivo</label>
+			<div class="col-sm-6">
 				<ng-select [items]="motiveList" bindLabel="name" bindValue="id" placeholder="Motivo"
 					formControlName="motive" [searchable]="true">
 				</ng-select>
 			</div>
 		</div>
 
-		<div class="mb-3 row">
-			<label for="doj" class="col-sm-4 col-form-label">Fecha Desde</label>
-			<div class="col-sm-8">
-				<input type="date" class="form-control" formControlName="startDate" />
+		<!-- Fecha y Hora Rows -->
+		<div class="row">
+			<div class="col-md-6">
+				<div class="mb-3 row">
+					<label for="startDate" class="col-sm-4 col-form-label">Fecha Desde</label>
+					<div class="col-sm-8">
+						<input type="date" class="form-control" formControlName="startDate" />
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="mb-3 row">
+					<label for="startTime" class="col-sm-4 col-form-label">Hora Inicio</label>
+					<div class="col-sm-8">
+						<ngb-timepicker [meridian]="false" formControlName="startTime"></ngb-timepicker>
+					</div>
+				</div>
 			</div>
 		</div>
 
-
-		<div class="mb-3 row">
-			<label for="projects" class="col-sm-4 col-form-label">Hora Inicio</label>
-			<div class="col-sm-8">
-				<ngb-timepicker [(ngModel)]="time" [meridian]="false" formControlName="startTime"></ngb-timepicker>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="mb-3 row">
+					<label for="endDate" class="col-sm-4 col-form-label">Fecha Hasta</label>
+					<div class="col-sm-8">
+						<input type="date" class="form-control" formControlName="endDate" />
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="mb-3 row">
+					<label for="endTime" class="col-sm-4 col-form-label">Hora Fin</label>
+					<div class="col-sm-8">
+						<ngb-timepicker [meridian]="false" formControlName="endTime"></ngb-timepicker>
+					</div>
+				</div>
 			</div>
 		</div>
 
+		<!-- Justificación Row -->
 		<div class="mb-3 row">
-			<label for="doj" class="col-sm-4 col-form-label">Fecha Hasta</label>
-			<div class="col-sm-8">
-				<input type="date" class="form-control" formControlName="endDate" />
+			<label for="justification" class="col-sm-2 col-form-label">Justificación</label>
+			<div class="col-sm-10">
+				<textarea name="description" rows="3" class="form-control" formControlName="justification"></textarea>
 			</div>
 		</div>
 
+		<!-- Aprobado por Row -->
 		<div class="mb-3 row">
-			<label for="projects" class="col-sm-4 col-form-label">Hora Fin</label>
-			<div class="col-sm-8">
-				<ngb-timepicker [(ngModel)]="time" [meridian]="false" formControlName="endTime"></ngb-timepicker>
-			</div>
-		</div>
-
-		<div class="mb-3 row">
-			<label for="projects" class="col-sm-4 col-form-label">Justificación</label>
-			<div class="col-sm-8">
-				<textarea name="description" rows="6" type="text" class="form-control"
-					formControlName="justification"></textarea>
-			</div>
-		</div>
-
-		<div class="mb-3 row">
-			<label for="doj" class="col-sm-4 col-form-label">Aprobado por</label>
-			<div class="col-sm-8">
+			<label for="approver" class="col-sm-2 col-form-label">Aprobado por</label>
+			<div class="col-sm-6">
 				<ng-select [items]="approverList" bindLabel="NombreCompleto" bindValue="Persona" placeholder="Aprobado por"
 					formControlName="approver" [searchable]="true">
 				</ng-select>
 			</div>
 		</div>
 
+		<!-- Modal Footer -->
 		<div class="modal-footer">
-			<button type="button" class="btn btn-secondary" (click)="closeModal()">
-				Cerrar
-			</button>
-
-			<button type="submit" class="btn btn-primary" [disabled]="addWorkerPermissionForm.invalid">
-				Guardar
-			</button>
+			<button type="button" class="btn btn-secondary" (click)="closeModal()">Cerrar</button>
+			<button type="submit" class="btn btn-primary" [disabled]="addWorkerPermissionForm.invalid">Guardar</button>
 		</div>
 	</form>
+
 </div>
