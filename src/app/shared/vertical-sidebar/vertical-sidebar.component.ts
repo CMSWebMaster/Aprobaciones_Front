@@ -67,4 +67,9 @@ export class VerticalSidebarComponent {
 			behavior: 'smooth'
 		});
 	}
+
+	logout() {
+		localStorage.clear();
+		this.router.navigate(['authentication/login']);
+	}
 }

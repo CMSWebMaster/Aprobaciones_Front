@@ -6,6 +6,7 @@ import { IWorkerPermission } from '../models/IWorkerPermissionDetail';
 import { IAddWorkerPermission } from '../models/IAddWorkerPermission';
 import { IApprovePermission } from '../models/IApprovePermission';
 import { IPerson } from '../models/IPerson';
+import { IMasterTable } from 'src/app/commom/models/IMasterTable';
 
 @Injectable({
 	providedIn: 'root'
@@ -36,6 +37,11 @@ export class WorkerPermissionService {
 	searchWorkers(personName: string): Observable<IPerson[]> {
 		return this.http
 			.get<IPerson[]>(`${WorkerPermissionConstants.BASE_URL}/${WorkerPermissionConstants.SEARCH_PERSON}/${personName}`)
+			.pipe(catchError((err) => of(err)));
+	}
+	masterTableList(): Observable<IMasterTable[]> {
+		return this.http
+			.get<IPerson[]>(`${WorkerPermissionConstants.BASE_URL}/${WorkerPermissionConstants.MASTER_TABLE_LIST}`)
 			.pipe(catchError((err) => of(err)));
 	}
 }

@@ -8,4 +8,5 @@ export class WorkerPermissionConstants {
 	public static readonly EXECUTE_REJECT_PERMISSION: string = 'ExecuteRejectPermission';
 	public static readonly LIST_APPROVERS: string = 'ListApprovers';
 	public static readonly SEARCH_PERSON: string = 'SearchPersons';
+	public static readonly MASTER_TABLE_LIST: string = 'MasterTableList';
 }

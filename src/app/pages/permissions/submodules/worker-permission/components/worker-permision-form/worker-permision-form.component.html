@@ -23,6 +23,26 @@
 			</div>
 		</div>
 
+		<!-- Sede Row -->
+		<div class="mb-3 row">
+			<label for="motive" class="col-sm-2 col-form-label">Sede</label>
+			<div class="col-sm-6">
+				<ng-select [items]="sedeList" bindLabel="Descripcion" bindValue="Codigo" placeholder="Sede"
+					formControlName="sede" [searchable]="true">
+				</ng-select>
+			</div>
+		</div>
+
+		<!-- Area Row -->
+		<div class="mb-3 row">
+			<label for="motive" class="col-sm-2 col-form-label">Área</label>
+			<div class="col-sm-8">
+				<ng-select [items]="areaList" bindLabel="Descripcion" bindValue="Codigo" placeholder="Área"
+					formControlName="area" [searchable]="true">
+				</ng-select>
+			</div>
+		</div>
+
 		<!-- Motivo Row -->
 		<div class="mb-3 row">
 			<label for="motive" class="col-sm-2 col-form-label">Motivo</label>

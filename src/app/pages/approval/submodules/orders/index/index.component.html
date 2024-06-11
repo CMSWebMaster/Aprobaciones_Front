@@ -9,12 +9,12 @@
 			</div>
 			}
 			@if(!showDetails){
-			<div style="padding: 20px;" class="col-md-12 col-lg-12 col-xl-12 text-md-end mt-12 mt-md-0">
+			<!-- <div style="padding: 20px;" class="col-md-12 col-lg-12 col-xl-12 text-md-end mt-12 mt-md-0">
 				<div class="buttons-group">
 					<button class="btn btn-light-primary text-primary" (click)="listApprovalOrders()"><i
 							class="fa fa-search me-2"></i>Buscar</button>
 				</div>
-			</div>
+			</div> -->
 			<div class="table-responsive">
 				<app-orders-table [rows]="rows" (onEmitCellClicked)="cellClicked($event)"></app-orders-table>
 			</div>

@@ -3,6 +3,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { ReactiveFormsModule, FormsModule, UntypedFormGroup, Validators, FormBuilder } from '@angular/forms';
 import { NgbDatepickerModule, NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { IMasterTable } from 'src/app/commom/models/IMasterTable';
 import { IAddWorkerPermission } from 'src/app/pages/permissions/models/IAddWorkerPermission';
 import { IPerson } from 'src/app/pages/permissions/models/IPerson';
 import { WorkerPermissionService } from 'src/app/pages/permissions/services/worker-permission.service';
@@ -23,8 +24,10 @@ export class WorkerPermisionFormComponent {
 	user: number;
 	approverList: IPerson[] = [];
 	personList: IPerson[] = [];
-	motiveList: any = [{ id: 1, name: 'Permiso para fuera de local' }, { id: 2, name: 'Permiso para no concurrir a sus labores' }];
+	motiveList: any = [{ id: 1, name: 'Permiso para salir fuera de local' }, { id: 2, name: 'Permiso para no concurrir a sus labores' }];
 	personSearch: string = '';
+	areaList: IMasterTable[] = [];
+	sedeList: IMasterTable[] = [];
 
 	@Output() onEmitCloseModal: EventEmitter<boolean> = new EventEmitter<boolean>();
 	@Output() onEmitFinalizeAddPermission: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -38,23 +41,17 @@ export class WorkerPermisionFormComponent {
 		const today = new Date();
 		const formattedDate = today.toISOString().split('T')[0];
 
-		// Formatear la hora actual para los campos de tiempo
-		const pad = (num: number) => (num < 10 ? '0' + num : num.toString());
-		const currentHour = pad(today.getHours());
-		const currentMinutes = pad(today.getMinutes());
-
-		// Calcular la hora de finalización una hora después
-		const endHour = pad((today.getHours() + 1) % 24);
-
 		this.addWorkerPermissionForm = this.fb.group({
 			person: [this.user.toString(), Validators.required],
 			personSearch: [null],
+			sede: [null, Validators.required],
+			area: [null, Validators.required],
 			approver: [null, Validators.required],
 			motive: [null, Validators.required],
 			startDate: [formattedDate, Validators.required],
 			endDate: [formattedDate, Validators.required],
-			startTime: [{ hour: currentHour, minute: currentMinutes }, Validators.required],
-			endTime: [{ hour: endHour, minute: currentMinutes }, Validators.required],
+			startTime: [null, Validators.required],
+			endTime: [null, Validators.required],
 			justification: [''],
 		});
 
@@ -62,6 +59,7 @@ export class WorkerPermisionFormComponent {
 
 	ngOnInit() {
 		this.listApprovers();
+		this.masterTableList();
 	}
 
 	closeModal() {
@@ -74,8 +72,8 @@ export class WorkerPermisionFormComponent {
 
 		const request: IAddWorkerPermission = {
 			IdColaborador: this.addWorkerPermissionForm?.get('person')?.value,
-			IdArea: this.area,
-			CodSede: this.sede,
+			IdArea: this.addWorkerPermissionForm?.get('area')?.value,
+			CodSede: this.addWorkerPermissionForm?.get('sede')?.value,
 			CodMotivo: this.addWorkerPermissionForm?.get('motive')?.value,
 			FechaDesde: this.addWorkerPermissionForm?.get('startDate')?.value + ' ' + `${startHour.hour}:${startHour.minute}`,
 			FechaHasta: this.addWorkerPermissionForm?.get('endDate')?.value + ' ' + `${endHour.hour}:${endHour.minute}`,
@@ -118,6 +116,20 @@ export class WorkerPermisionFormComponent {
 		this.workerPermissionService.searchWorkers(personSearch).subscribe({
 			next: (response) => {
 				this.personList = response;
+			},
+			error: (error) => {
+				console.log(error);
+			}
+		});
+	}
+
+	masterTableList() {
+		this.workerPermissionService.masterTableList().subscribe({
+			next: (response) => {
+				this.areaList = response.filter(d => d.TipoTabla == 'AREA');
+				this.sedeList = response.filter(d => d.TipoTabla == 'SEDE');
+				this.addWorkerPermissionForm?.get('area')?.setValue(this.area);
+				this.addWorkerPermissionForm?.get('sede')?.setValue(this.sede);
 			},
 			error: (error) => {
 				console.log(error);

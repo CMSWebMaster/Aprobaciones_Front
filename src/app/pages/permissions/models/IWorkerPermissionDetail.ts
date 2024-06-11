@@ -5,8 +5,8 @@ export interface IWorkerPermission {
 	SexoColaborador: string;
 	Area: string;
 	Justificacion: string;
-	FechaDesde: Date;
-	FechaHasta: Date;
+	FechaDesde: string;
+	FechaHasta: string;
 	IndicadorEstado: string;
 	FechaCreacion: Date;
 	UsuarioCreacion: string;
@@ -15,4 +15,6 @@ export interface IWorkerPermission {
 	FechaRechaza: Date;
 	UsuarioRechaza: string;
 	CodUsuarioAprobador: string;
+	MotivoCodigo: number;
+	SedeCodigo: string;
 }
