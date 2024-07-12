@@ -9,60 +9,67 @@ import { FeatherModule } from 'angular-feather';
 declare var $: any;
 
 @Component({
-  selector: 'app-vertical-sidebar',
-  standalone: true,
-  imports:[TranslateModule, CommonModule, RouterModule, FeatherModule],
-  templateUrl: './vertical-sidebar.component.html'
+	selector: 'app-vertical-sidebar',
+	standalone: true,
+	imports: [TranslateModule, CommonModule, RouterModule, FeatherModule],
+	templateUrl: './vertical-sidebar.component.html'
 })
 export class VerticalSidebarComponent {
-  showMenu = '';
-  showSubMenu = '';
-  public sidebarnavItems: RouteInfo[] = [];
-  path = '';
+	showMenu = '';
+	showSubMenu = '';
+	public sidebarnavItems: RouteInfo[] = [];
+	path = '';
+	userName: string = '';
 
 
-  @Input() showClass: boolean = false;
-  @Output() notify: EventEmitter<boolean> = new EventEmitter<boolean>();
+	@Input() showClass: boolean = false;
+	@Output() notify: EventEmitter<boolean> = new EventEmitter<boolean>();
 
 
-  handleNotify() {
-    this.notify.emit(!this.showClass);
-  }
+	handleNotify() {
+		this.notify.emit(!this.showClass);
+	}
 
-  constructor(private menuServise: VerticalSidebarService, private router: Router) {
-    this.menuServise.items.subscribe(menuItems => {
-      this.sidebarnavItems = menuItems;
+	constructor(private menuServise: VerticalSidebarService, private router: Router) {
+		this.userName = localStorage.getItem('Nombres') + ' - ' + localStorage.getItem('CodigoUsuario');
+		this.menuServise.items.subscribe(menuItems => {
+			this.sidebarnavItems = menuItems;
 
-      // Active menu 
-      this.sidebarnavItems.filter(m => m.submenu.filter(
-        (s) => {
-          if (s.path === this.router.url) {
-            this.path = m.title;
-          }
-        }
-      ));
-      this.addExpandClass(this.path);
-    });
-  }
+			// Active menu 
+			this.sidebarnavItems.filter(m => m.submenu.filter(
+				(s) => {
+					if (s.path === this.router.url) {
+						this.path = m.title;
+					}
+				}
+			));
+			this.addExpandClass(this.path);
+		});
+	}
 
-  addExpandClass(element: any) {
-    if (element === this.showMenu) {
-      this.showMenu = '0';
-    } else {
-      this.showMenu = element;
-    }
-  }
+	addExpandClass(element: any) {
+		if (element === this.showMenu) {
+			this.showMenu = '0';
+		} else {
+			this.showMenu = element;
+		}
+	}
 
-  addActiveClass(element: any) {
-    if (element === this.showSubMenu) {
-      this.showSubMenu = '0';
-    } else {
-      this.showSubMenu = element;
-    }
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    });
-  }
+	addActiveClass(element: any) {
+		if (element === this.showSubMenu) {
+			this.showSubMenu = '0';
+		} else {
+			this.showSubMenu = element;
+		}
+		window.scroll({
+			top: 0,
+			left: 0,
+			behavior: 'smooth'
+		});
+	}
+
+	logout() {
+		localStorage.clear();
+		this.router.navigate(['authentication/login']);
+	}
 }

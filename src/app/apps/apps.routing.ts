@@ -30,10 +30,10 @@ import { EditInvoiceComponent } from './invoice/edit-invoice/edit-invoice.compon
 import { JobsListComponent } from './jobs/jobs-list/jobs-list.component';
 import { JobDetailComponent } from './jobs/job-detail/job-detail.component';
 import { JobApplyComponent } from './jobs/job-apply/job-apply.component';
-import { WorkerPermissionComponent } from '../pages/approval/submodules/worker-permission/index/index.component';
 import { RequirementsComponent } from '../pages/approval/submodules/requirements/index/index.component';
 import { OrdersComponent } from '../pages/approval/submodules/orders/index/index.component';
-
+import { WorkerPermissionComponent } from '../pages/permissions/submodules/worker-permission/index/index.component';
+import { TitleResolver } from '../commom/resolvers/title.resolver';
 export const AppsRoutes: Routes = [
 	{
 		path: 'orders/:id',
@@ -44,6 +44,9 @@ export const AppsRoutes: Routes = [
 				{ title: 'Apps', url: '/dashboard' },
 				{ title: 'Órdenes' },
 			],
+		},
+		resolve: {
+			title: TitleResolver,
 		},
 	},
 	{

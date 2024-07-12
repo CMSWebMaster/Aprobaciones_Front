@@ -8,8 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
 	response: Observable<any>;
-	loginURL: string = environment.loginURL;
-	baseURL: string = environment.baseURL;
+	apiLogin: string = environment.api_login;
 	private messageSource = new BehaviorSubject(localStorage.getItem('title'));
 	currentMessage = this.messageSource.asObservable();
 	constructor(private http: HttpClient) {
@@ -31,7 +30,7 @@ export class AuthService {
 	}
 	// validarToken(): Observable<boolean> {
 	validarToken() {
-		return this.http.get(`${this.loginURL}/info/renew`, this.headers).pipe(
+		return this.http.get(`${this.apiLogin}/info/renew`, this.headers).pipe(
 			tap((resp: any) => {
 				localStorage.setItem('token', resp.token);
 			}),
@@ -42,35 +41,35 @@ export class AuthService {
 
 	//Service Login
 	postLoginService(data) {
-		return this.http.post(`${this.loginURL}/users/login`, data).toPromise();
+		return this.http.post(`${this.apiLogin}/users/login`, data).toPromise();
 	}
 	getProfileUserService(data) {
-		return this.http.post(`${this.loginURL}/users/profile`, data).toPromise();
+		return this.http.post(`${this.apiLogin}/users/profile`, data).toPromise();
 	}
 	//USER
 	postUserService(data) {
-		return this.http.post(`${this.loginURL}/info`, data).toPromise();
+		return this.http.post(`${this.apiLogin}/info`, data).toPromise();
 	}
 	//DELETE
 	deleteUserService(id) {
-		return this.http.delete(`${this.baseURL}/info/${id}`).toPromise();
+		return this.http.delete(`${this.apiLogin}/info/${id}`).toPromise();
 	}
 	//USER LIST
 	getUserListService() {
-		return this.http.get(`${this.baseURL}/info`).toPromise();
+		return this.http.get(`${this.apiLogin}/info`).toPromise();
 	}
 	//UPDATE
 	updateUserService(data) {
-		return this.http.put(`${this.baseURL}/info`, data).toPromise();
+		return this.http.put(`${this.apiLogin}/info`, data).toPromise();
 	}
 	//
 	getUserBrIdService(persona) {
-		return this.http.get(`${this.loginURL}/info/${persona}`).toPromise();
+		return this.http.get(`${this.apiLogin}/info/${persona}`).toPromise();
 	}
 	//ROLES //
 	getRolesByService(idrol, persona) {
 		console.log(70, idrol, persona)
-		return this.http.get(`${this.loginURL}/permisos/rol/${idrol}/${persona}`).toPromise();
+		return this.http.get(`${this.apiLogin}/permisos/rol/${idrol}/${persona}`).toPromise();
 	}
 
 }

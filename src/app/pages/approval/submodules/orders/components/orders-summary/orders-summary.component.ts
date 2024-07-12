@@ -42,8 +42,8 @@ export class OrdersSummaryComponent {
 	executeApprovalOrder() {
 		Swal.fire({
 			icon: 'question',
-			title: 'APROBAR ORDER.',
-			text: 'Está seguro de APROBAR la orden de compra?',
+			title: 'APROBAR ORDEN.',
+			text: 'Está seguro de APROBAR la orden?',
 			showCancelButton: true,
 			showConfirmButton: true,
 		}).then((result) => {

@@ -1,1 +1,3 @@
-<app-table [columns]="columns" [rows]="rows" (onEmitCellClicked)="cellClicked($event)"></app-table>
+<app-table [columns]="columns" [rows]="rows" (onEmitCellClicked)="cellClicked($event)">
+	<app-table-resize [tableDetails]="tableDetails" (onEmitCellClicked)="cellClicked($event)"></app-table-resize>
+</app-table>

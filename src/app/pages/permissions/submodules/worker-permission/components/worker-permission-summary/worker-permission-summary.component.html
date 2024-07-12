@@ -1,0 +1,100 @@
+<div class="row">
+	<!-- Column -->
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-body">
+				<h3 class="card-title">
+					<span><img [src]="pathIconUser" alt="user" class="rounded-circle" width="50"></span>
+					{{ permissionDetail.Colaborador }}
+				</h3>
+				<div class="card-subtitle" style="text-align: right; margin-top: 20px;">
+					<div class="buttons-group">
+						<div class="d-flex justify-content-end">
+							@if (permissionDetail.CodUsuarioAprobador === user) {
+							<button class="btn btn-light-primary text-primary me-2" (click)="executeApprovalPermission()"
+								[disabled]="permissionDetail.FechaAprueba != null || permissionDetail.FechaRechaza"
+								data-bs-toggle="tooltip" title="Aprobar">
+								<i class="fa fa-check"></i>
+							</button>
+							<button class="btn btn-light-primary text-primary me-2" (click)="executeRejectPermission()"
+								[disabled]="permissionDetail.FechaAprueba != null || permissionDetail.FechaRechaza"
+								data-bs-toggle="tooltip" title="Rechazar">
+								<i class="fa fa-times"></i>
+							</button>
+							}
+							<button class="btn btn-light-primary text-primary me-2" (click)="generatePdf()"
+								data-bs-toggle="tooltip" title="Descargar Formato">
+								<i class="fa fa-download"></i>
+							</button>
+							<button class="btn btn-light-primary text-primary" (click)="backWorkerPermission()"
+								data-bs-toggle="tooltip" title="Regresar">
+								<i class="fa fa-chevron-left"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<h3 class="p-2-title mt-4 pt-3">Información General</h3>
+						<div class="table-responsive">
+							<table class="table">
+								<tbody>
+									<tr>
+										<td>Area</td>
+										<td>{{ permissionDetail.Area }}</td>
+									</tr>
+									<tr>
+										<td>Fecha Desde </td>
+										<td>{{ permissionDetail.FechaDesde }}</td>
+									</tr>
+									<tr>
+										<td>Fecha Hasta </td>
+										<td>{{ permissionDetail.FechaHasta }}</td>
+									</tr>
+									<tr>
+										<td>Justificación</td>
+										<td>{{ permissionDetail.Justificacion }}</td>
+									</tr>
+									<tr>
+										<td>Estado</td>
+										<td>{{ permissionDetail.IndicadorEstado }}</td>
+									</tr>
+									<tr>
+										<td>Usuario Creación</td>
+										<td> {{ permissionDetail.UsuarioCreacion }} </td>
+									</tr>
+									<tr>
+										<td>Fecha Creación</td>
+										<td>{{ permissionDetail.FechaCreacion }}</td>
+									</tr>
+									<tr>
+										<td>Usuario Aprobación</td>
+										<td> {{ permissionDetail.UsuarioAprobador }} </td>
+									</tr>
+									@if (permissionDetail.FechaAprueba != null) {
+									<tr>
+										<td>Fecha Aprobación</td>
+										<td>{{ permissionDetail.FechaAprueba }}</td>
+									</tr>
+									}
+									@if (permissionDetail.UsuarioRechaza != null) {
+									<tr>
+										<td>Usuario Rechazo</td>
+										<td> {{ permissionDetail.UsuarioRechaza }} </td>
+									</tr>
+									<tr>
+										<td>Fecha Rechazo</td>
+										<td>{{ permissionDetail.FechaRechaza }}</td>
+									</tr>
+									}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Column -->
+</div>

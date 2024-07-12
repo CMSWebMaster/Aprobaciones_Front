@@ -15,7 +15,7 @@ import { IFilesRequirement } from '../../../models/IFilesRequirement';
 })
 export class RequirementsComponent implements OnInit {
 
-	rows: any = [];
+	rows: IApprovalRequeriments[] = [];
 	rowsSummary: IRequirementDetail[] = [];
 	rowSelected: IApprovalRequeriments;
 	showDetail: boolean = false;
