@@ -53,7 +53,7 @@ export class RequirementsTableComponent {
 	}
 
 	getFilesRequirement(row: IApprovalRequeriments, listDetails: IRequirementDetail[]) {
-		this.requirementsService.getFilesRequirement('0000036177').subscribe({
+		this.requirementsService.getFilesRequirement(row.RequisicionNumero).subscribe({
 			next: (response) => {
 				this.onEmmitRequierementsDetails.emit({
 					details: listDetails,
