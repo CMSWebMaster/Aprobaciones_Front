@@ -1,0 +1,84 @@
+<div class="table-responsive">
+  <div class="card-body">
+    <div class="tbl-extra d-flex justify-content-between">
+      <span class="total-registros d-block fw-medium fs-3 px-3 py-2 rounded-top bg-light-subtle mb-0 border border-bottom-0">
+        {{ filasTabla.length }} en total
+      </span>
+      <input
+        name="txtBusqueda"
+        type="text"
+        placeholder="Ingresa el texto a buscar..."
+        class="input-busqueda form-control form-control-sm border-0 ms-1 bg-transparent position-relative flex-grow-1"
+        [(ngModel)]="txtBusqueda"
+        (keyup)="cambioTxtBusqueda()">
+    </div>
+
+    <table class="tbl-con-opc-ordenar table table-sm table-bordered table-hover">
+      <thead>
+        <tr>
+          <th
+            class="fw-bold fs-3 bg-light-subtle"
+            ordenable="Compromiso"
+            (evtOrdenar)="accionOrdenar($event)"
+          >
+            Compromiso
+            <i class="fas fa-arrows-alt-v ms-1"></i>
+            <i class="fas fa-long-arrow-alt-up ms-1"></i>
+            <i class="fas fa-long-arrow-alt-down ms-1"></i>
+          </th>
+          <th
+            class="fw-bold fs-3 bg-light-subtle"
+            ordenable="DescripcionLocal"
+            (evtOrdenar)="accionOrdenar($event)"
+          >
+            Descripción
+            <i class="fas fa-arrows-alt-v ms-1"></i>
+            <i class="fas fa-long-arrow-alt-up ms-1"></i>
+            <i class="fas fa-long-arrow-alt-down ms-1"></i>
+          </th>
+          <th
+            class="fw-bold fs-3 bg-light-subtle"
+            ordenable="Nombre"
+            (evtOrdenar)="accionOrdenar($event)"
+          >
+            Nombre
+            <i class="fas fa-arrows-alt-v ms-1"></i>
+            <i class="fas fa-long-arrow-alt-up ms-1"></i>
+            <i class="fas fa-long-arrow-alt-down ms-1"></i>
+          </th>
+          <th class="bg-light-subtle"></th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (filasVisualizar.length > 0) {
+          @for (fila of filasVisualizar; track $index) {
+            <tr>
+              <td data-label="Compromiso" class="fw-normal fs-3 align-middle py-2">
+                <ngb-highlight [result]="fila.Compromiso" [term]="txtBusqueda" />
+              </td>
+              <td data-label="Descripción" class="fw-normal fs-3 align-middle py-2">
+                <ngb-highlight [result]="fila.DescripcionLocal" [term]="txtBusqueda" />
+              </td>
+              <td data-label="Nombre" class="fw-normal fs-3 align-middle py-2">
+                <ngb-highlight [result]="fila.Nombre" [term]="txtBusqueda" />
+              </td>
+              <td class="w-btns py-2">
+                <button
+                  type="button"
+                  class="btn btn-sm rounded btn-primary"
+                  (click)="filaSeleccionada(fila)"
+                >
+                  Ver detalle
+                </button>
+              </td>
+            </tr>
+          }
+        } @else {
+          <tr>
+            <td colspan="4" class="info-sin-datos fs-3 fw-normal text-center">Sin datos</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

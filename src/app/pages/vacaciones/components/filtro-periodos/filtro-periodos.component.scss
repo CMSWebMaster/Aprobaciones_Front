@@ -1,0 +1,26 @@
+.w-filtro {
+  width: 700px;
+  margin: 0 auto;
+}
+
+.w-check-tod-areas {
+  width: 500px;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 700px) {
+  .w-filtro {
+    flex-direction: column;
+    width: 100%;
+    padding: 0 1.25em;
+  }
+
+  .w-check-tod-areas {
+    justify-content: start;
+    align-items: center;
+    width: inherit;
+  }
+}

@@ -1,0 +1,48 @@
+<div class="w-filtro d-flex gap-2 py-3">
+  <div class="w-check-tod-areas">
+    <input
+      id="todasLasAreas"
+      name="todasLasAreas"
+      type="checkbox"
+      value="Y"
+      class="form-check-input me-2"
+      [(ngModel)]="fTodasLasAreas"
+      (ngModelChange)="cambioIndTodasLasAreas()"
+    >
+    <label
+      for="todasLasAreas"
+      class="form-check-label fs-3"
+    >
+      Todas las Áreas
+    </label>
+  </div>
+  <select
+    name="areas"
+    class="form-select fs-3"
+    [disabled]="fTodasLasAreas"
+    [(ngModel)]="areaSeleccionada"
+    (ngModelChange)="seleccionDeArea()"
+  >
+    <option value="" selected disabled>
+      Selecciona Área...
+    </option>
+    @for (area of areas; track $index) {
+      <option [value]="area">{{ area }}</option>
+    }
+  </select>
+
+  <select
+    name="colaborador"
+    class="form-select fs-3"
+    [disabled]="fTodasLasAreas"
+    [(ngModel)]="colaboradorSeleccionado"
+    (ngModelChange)="seleccionDeColaborador()"
+  >
+    <option value="" selected disabled>
+      Selecciona Colaborador...
+    </option>
+    @for (colaborador of lstColaboradorPorArea; track $index) {
+      <option [value]="colaborador.COD_PERSONAL">{{ colaborador.Nombres }}</option>
+    }
+  </select>
+</div>

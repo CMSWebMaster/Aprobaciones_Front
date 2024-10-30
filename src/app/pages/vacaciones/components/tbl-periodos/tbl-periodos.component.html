@@ -1,0 +1,132 @@
+<div class="table-responsive">
+  <div class="card-body">
+    <div class="tbl-extra d-flex justify-content-between">
+      <span class="total-registros d-block fw-medium fs-3 px-3 py-2 rounded-top bg-light-subtle mb-0 border border-bottom-0">
+        {{ filasTabla.length }} en total
+      </span>
+      <input
+        name="txtBusqueda"
+        type="text"
+        placeholder="Ingresa el texto a buscar..."
+        class="input-busqueda form-control form-control-sm border-0 ms-1 bg-transparent position-relative flex-grow-1"
+        [(ngModel)]="txtBusqueda"
+        (keyup)="cambioTxtBusqueda()">
+    </div>
+
+    <table class="tbl-con-opc-ordenar table table-sm table-bordered table-hover">
+      <thead>
+        <tr>
+          <th
+            class="fw-bold fs-3 bg-light-subtle"
+            style="width: 106px;"
+            ordenable="NumeroPeriodo"
+            (evtOrdenar)="accionOrdenar($event)"
+          >
+            Nro. Periodo
+            <i class="fas fa-arrows-alt-v ms-1"></i>
+            <i class="fas fa-long-arrow-alt-up ms-1"></i>
+            <i class="fas fa-long-arrow-alt-down ms-1"></i>
+          </th>
+          <th
+            class="fw-bold fs-3 bg-light-subtle align-middle"
+            style="width: 110px;"
+            ordenable="PeriodoVac"
+            (evtOrdenar)="accionOrdenar($event)"
+          >
+            Periodo
+            <i class="fas fa-arrows-alt-v ms-1"></i>
+            <i class="fas fa-long-arrow-alt-up ms-1"></i>
+            <i class="fas fa-long-arrow-alt-down ms-1"></i>
+          </th>
+          <th
+            class="fw-bold fs-3 bg-light-subtle align-middle"
+            style="width: 111px;"
+            ordenable="Derecho"
+            (evtOrdenar)="accionOrdenar($event)"
+          >
+            Derecho
+            <i class="fas fa-arrows-alt-v ms-1"></i>
+            <i class="fas fa-long-arrow-alt-up ms-1"></i>
+            <i class="fas fa-long-arrow-alt-down ms-1"></i>
+          </th>
+          <th
+            class="fw-bold fs-3 bg-light-subtle align-middle"
+            style="width: 85px;"
+            ordenable="DiasGozados"
+            (evtOrdenar)="accionOrdenar($event)"
+          >
+            Goce
+            <i class="fas fa-arrows-alt-v ms-1"></i>
+            <i class="fas fa-long-arrow-alt-up ms-1"></i>
+            <i class="fas fa-long-arrow-alt-down ms-1"></i>
+          </th>
+          <th
+            class="fw-bold fs-3 bg-light-subtle"
+            style="width: 140px;"
+            ordenable="Pendientes"
+            (evtOrdenar)="accionOrdenar($event)"
+          >
+            Pendiente Periodo Ant.
+            <i class="fas fa-arrows-alt-v ms-1"></i>
+            <i class="fas fa-long-arrow-alt-up ms-1"></i>
+            <i class="fas fa-long-arrow-alt-down ms-1"></i>
+          </th>
+          <th class="bg-light-subtle"></th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (filasVisualizar.length > 0 && !fListando) {
+          @for (fila of filasVisualizar; track $index) {
+            <tr>
+              <td data-label="Nro. Periodo" class="fw-normal fs-3 align-middle py-2">
+                <ngb-highlight [result]="fila.NumeroPeriodo.toString()" [term]="txtBusqueda" />
+              </td>
+              <td data-label="Periodo" class="fw-normal fs-3 align-middle py-2">
+                <ngb-highlight [result]="fila.PeriodoVac" [term]="txtBusqueda" />
+              </td>
+              <td data-label="Derecho" class="fw-normal fs-3 align-middle py-2">
+                <ngb-highlight [result]="fila.Derecho.toString()" [term]="txtBusqueda" />
+              </td>
+              <td data-label="Goce" class="fw-normal fs-3 align-middle py-2">
+                <ngb-highlight [result]="fila.DiasGozados.toString()" [term]="txtBusqueda" />
+              </td>
+              <td data-label="Pendiente Periodo Ant." class="fw-normal fs-3 align-middle py-2">
+                <ngb-highlight [result]="fila.Pendientes.toString()" [term]="txtBusqueda" />
+              </td>
+              <td class="w-btns py-2">
+                <button
+                  type="button"
+                  class="btn btn-sm rounded btn-primary"
+                  (click)="filaSeleccionada(fila)"
+                >
+                  Utilización
+                </button>
+              </td>
+            </tr>
+          }
+        } @else {
+          <tr>
+            <td colspan="6" class="info-sin-datos fs-3 fw-normal text-center">
+              @if (!fListando) {
+                Sin datos
+              } @else {
+                <div class="spinner-border m-2 text-primary" role="status">
+                  <span class="visually-hidden">Cargando...</span>
+                </div>
+              }
+            </td>
+          </tr>
+        }
+      </tbody>
+      @if (filasVisualizar.length > 0 && !fListando) {
+        <tfoot>
+          <tr>
+            <td colspan="3"></td>
+            <td class="fw-bold fs-3 text-center">{{ totalGoce() }}</td>
+            <td colspan="2"></td>
+          </tr>
+        </tfoot>
+      }
+    </table>
+  </div>
+</div>

@@ -15,9 +15,12 @@
 							class="fa fa-search me-2"></i>Buscar</button>
 				</div>
 			</div> -->
-			<div class="table-responsive">
-				<app-orders-table [rows]="rows" (onEmitCellClicked)="cellClicked($event)"></app-orders-table>
-			</div>
+        <!-- <div class="table-responsive">
+          <app-orders-table [rows]="rows" (onEmitCellClicked)="cellClicked($event)"></app-orders-table>
+        </div> -->
+        <app-tbl-ordenes
+          [filas]="rows"
+          (evtFilaSeleccionada)="cellClicked($any($event))" />
 			}
 		</div>
 	</div>

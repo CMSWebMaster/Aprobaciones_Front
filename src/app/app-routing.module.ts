@@ -90,6 +90,12 @@ export const Approutes: Routes = [
 						(m) => m.SamplePagesModule
 					),
 			},
+
+      {
+        path: 'vacaciones/tomadas',
+        loadComponent: () =>
+          import('./pages/vacaciones/pagina-vacaciones-tomadas/pagina-vacaciones-tomadas.component'),
+      },
 		],
 	},
 	{

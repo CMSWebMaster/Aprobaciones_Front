@@ -1,0 +1,15 @@
+<div class="row">
+	<div class="col-12">
+		<div class="card">
+      <app-filtro-periodos
+        [areas]="areas"
+        [personalPorArea]="personalPorArea"
+        (evtListar)="evtListar($event)" />
+
+      <app-tbl-periodos
+        [filas]="lstPeriodosPagados"
+        [fListando]="fListandoPeriodos"
+        (evtFilaSeleccionada)="filaSeleccionada($event)" />
+    </div>
+  </div>
+</div>

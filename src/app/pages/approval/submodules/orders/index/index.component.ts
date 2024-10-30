@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { OrdersTableComponent } from '../components/orders-table/orders-table.component';
 import { OrdersSummaryComponent } from '../components/orders-summary/orders-summary.component';
 import { OrdersService } from '../../../services/orders.service';
@@ -9,16 +9,20 @@ import { IOrderDetail } from '../../../models/IOrderDetail';
 import { IUsersAprrovers } from '../../../models/IUsersApprovers';
 import { IExecuteApprovalOrders } from '../../../models/IExecuteApprovalOrders';
 import Swal from 'sweetalert2';
+import { TblOrdenesComponent } from '../components/tbl-ordenes/tbl-ordenes.component';
 
 @Component({
 	selector: 'app-index',
 	standalone: true,
-	imports: [OrdersTableComponent, OrdersSummaryComponent],
+	imports: [
+    OrdersTableComponent,
+    OrdersSummaryComponent,
+    TblOrdenesComponent,
+  ],
 	templateUrl: './index.component.html',
-	styleUrl: './index.component.scss'
+	styles: [],
 })
 export class OrdersComponent implements OnInit {
-
 	showDetails: boolean = false;
 	persona: string = '';
 	codUser: number = 0;
@@ -33,7 +37,6 @@ export class OrdersComponent implements OnInit {
 	}
 
 	ngOnInit() {
-
 		this.route.paramMap.subscribe(params => {
 			this.typeOrder = +params.get('id');
 			this.listApprovalOrders();

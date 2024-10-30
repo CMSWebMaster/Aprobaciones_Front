@@ -1,6 +1,39 @@
 import { RouteInfo } from "./vertical-sidebar.metadata";
 
+const menuVacaciones: RouteInfo = {
+  path: 'vacaciones',
+  title: 'Vacaciones',
+  icon: 'shopping-cart',
+  class: 'has-arrow',
+  label: '',
+  labelClass: '',
+  extralink: false,
+  submenu: [
+    {
+      path: '/vacaciones/pendientes',
+      title: 'Vacaciones Pendientes',
+      icon: 'shopping-cart',
+      class: '',
+      label: '',
+      labelClass: '',
+      extralink: false,
+      submenu: [],
+    },
+    {
+      path: '/vacaciones/tomadas',
+      title: 'Vacaciones Tomadas',
+      icon: 'mdi mdi-arrange-bring-forward',
+      class: '',
+      label: '',
+      labelClass: '',
+      extralink: false,
+      submenu: [],
+    },
+  ]
+};
+
 export const ROUTES: RouteInfo[] = [
+  menuVacaciones,
 	{
 		path: "approval",
 		title: "Aprobación",
