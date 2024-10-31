@@ -91,11 +91,40 @@ export const Approutes: Routes = [
 					),
 			},
 
-      {
-        path: 'vacaciones/tomadas',
-        loadComponent: () =>
-          import('./pages/vacaciones/pagina-vacaciones-tomadas/pagina-vacaciones-tomadas.component'),
-      },
+			{
+				path: 'vacaciones/pendientes',
+				loadComponent: () =>
+					import('./pages/vacaciones/pagina-vacaciones-pendientes/pagina-vacaciones-pendientes.component'),
+        data: {
+          title: 'Vacaciones Pendientes',
+          urls: [
+            {
+              url: '/dashboard',
+              title: 'Vacaciones',
+            },
+            {
+              title: 'Pendientes',
+            }
+          ]
+        }
+			},
+			{
+				path: 'vacaciones/tomadas',
+				loadComponent: () =>
+					import('./pages/vacaciones/pagina-vacaciones-tomadas/pagina-vacaciones-tomadas.component'),
+        data: {
+          title: 'Vacaciones Tomadas',
+          urls: [
+            {
+              url: '/dashboard',
+              title: 'Vacaciones',
+            },
+            {
+              title: 'Tomadas',
+            }
+          ]
+        }
+			},
 		],
 	},
 	{
