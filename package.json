@@ -42,6 +42,7 @@
     "date-fns": "^2.30.0",
     "flatpickr": "^4.6.13",
     "jspdf": "^2.5.1",
+    "luxon": "^3.5.0",
     "ng-apexcharts": "^1.7.6",
     "ng-chartist": "^7.1.2",
     "ng2-charts": "^4.1.1",

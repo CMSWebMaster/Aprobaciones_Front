@@ -1,0 +1,67 @@
+<div class="table-responsive">
+  <div class="card-body">
+    @if (datosTbl) {
+      <table class="table table-sm table-bordered table-hover">
+        <thead>
+          <tr>
+            <th class="fw-bold fs-3 bg-light-subtle">
+              Tipo de Paciente
+            </th>
+            <th class="text-center fw-bold fs-3 bg-light-subtle align-middle">
+              En Atención
+            </th>
+            <th class="text-center fw-bold fs-3 bg-light-subtle align-middle">
+              Hospitalizado
+            </th>
+            <th
+              class="text-center fw-bold fs-3 bg-light-subtle align-middle"
+              style="width: 85px;"
+            >
+              Alta
+            </th>
+            <th
+              class="text-center fw-bold fs-3 bg-light-subtle"
+              style="width: 85px;"
+            >
+              Total
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (indice of indicesDatosTbl; track $index; let o = $odd) {
+            <tr>
+              <td class="fw-normal fs-3 align-middle py-2" [ngClass]="{ 'bg-light-subtle-2': o }">
+                {{ indice }}
+              </td>
+              <td class="text-center fw-normal fs-3 align-middle py-2" [ngClass]="{ 'bg-light-subtle-2': o }">
+                {{ datosTbl[indice][tipoAltaMedicaEnum.NO_REGISTRADO] }}
+              </td>
+              <td class="text-center fw-normal fs-3 align-middle py-2" [ngClass]="{ 'bg-light-subtle-2': o }">
+                {{ datosTbl[indice][tipoAltaMedicaEnum.HOSPITALIZACION] }}
+              </td>
+              <td class="text-center fw-normal fs-3 align-middle py-2" [ngClass]="{ 'bg-light-subtle-2': o }">
+                {{ sumAlta(datosTbl[indice]) }}
+              </td>
+              <td class="text-center fw-bold fs-3 align-middle py-2" [ngClass]="{ 'bg-light-subtle-2': o }">
+                {{ sumTotal(datosTbl[indice]) }}
+              </td>
+            </tr>
+          }
+        </tbody>
+        <tfoot>
+          <tr>
+            <td class="fw-bold fs-3 text-center bg-light-subtle">Total</td>
+            <td class="fw-bold fs-3 text-center bg-light-subtle">{{ totEnAtencion() }}</td>
+            <td class="fw-bold fs-3 text-center bg-light-subtle">{{ totHospitalizado() }}</td>
+            <td class="fw-bold fs-3 text-center bg-light-subtle">{{ totAlta() }}</td>
+            <td class="fw-bold fs-3 text-center bg-light-subtle">{{ total() }}</td>
+          </tr>
+        </tfoot>
+      </table>
+    } @else {
+      <div class="alert alert-light" role="alert">
+        Sin datos que mostrar
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,10 @@
+.destino-alta {
+  display: flex;
+  column-gap: 20px;
+  flex-wrap: wrap;
+}
+
+.table-hover tbody tr:hover td.no-hover {
+  background-color: transparent;
+  box-shadow: none;
+}

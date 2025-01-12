@@ -97,7 +97,6 @@ export default class PaginaVacacionesPendientesComponent {
   }
 
   public evtListar(codPersonal: string): void {
-    // console.log('codPersonal', codPersonal);
     this.listarPeriodos(codPersonal);
     // this.listarPeriodos('128'); // TODO reemplazar por el comentado
   }

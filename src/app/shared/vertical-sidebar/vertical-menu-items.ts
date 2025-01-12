@@ -32,8 +32,31 @@ const menuVacaciones: RouteInfo = {
   ]
 };
 
+const menuEmergencias: RouteInfo = {
+  path: 'emergencias',
+  title: 'Emergencias',
+  icon: 'shopping-cart',
+  class: 'has-arrow',
+  label: '',
+  labelClass: '',
+  extralink: false,
+  submenu: [
+    {
+      path: '/emergencias/pacientes',
+      title: 'Pacientes en Emergencia',
+      icon: 'shopping-cart',
+      class: '',
+      label: '',
+      labelClass: '',
+      extralink: false,
+      submenu: [],
+    },
+  ]
+};
+
 export const ROUTES: RouteInfo[] = [
   menuVacaciones,
+  menuEmergencias,
 	{
 		path: "approval",
 		title: "Aprobación",

@@ -91,6 +91,25 @@ export const Approutes: Routes = [
 					),
 			},
 
+      {
+        path: 'emergencias/pacientes',
+        loadComponent: () =>
+          import('./pages/emergencia/pagina-pacientes-en-emergencia/pagina-pacientes-en-emergencia.component')
+            .then(m => m.PaginaPacientesEnEmergenciaComponent),
+        data: {
+          title: 'Pacientes en Emergencia',
+          urls: [
+            {
+              url: '/dashboard',
+              title: 'Emergencia',
+            },
+            {
+              title: 'Pacientes en emergencia',
+            }
+          ]
+        }
+			},
+
 			{
 				path: 'vacaciones/pendientes',
 				loadComponent: () =>

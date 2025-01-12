@@ -1,0 +1,73 @@
+<div class="table-responsive">
+  <div class="card-body">
+    @if (lstPacientes) {
+      <table class="table table-sm table-bordered table-hover">
+        <thead>
+          <tr>
+            <th class="fw-bold fs-3 bg-light-subtle border-end-0">
+              Paciente
+            </th>
+            <th
+              class="text-center fw-bold fs-3 bg-light-subtle border-start-0 border-end-0"
+              style="width: 110px;"
+            >
+              Ingreso
+            </th>
+            <th
+              class="bg-light-subtle border-start-0"
+              style="width: 60px;"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (paciente of lstPacientes; track $index; let o = $odd) {
+            <tr class="border-bottom-0">
+              <td
+                class="fw-normal fs-3 align-middle py-2 border-end-0"
+                [ngClass]="{ 'bg-light-subtle-2': o }"
+              >
+                {{ paciente.PacienteNombre }}
+              </td>
+              <td
+                class="text-center fw-normal fs-3 align-middle py-2 border-start-0 border-end-0"
+                [ngClass]="{ 'bg-light-subtle-2': o }"
+              >
+                {{ extraerAn(paciente.HoraIngreso) }}
+              </td>
+              <td
+                rowspan="2"
+                class="text-end align-middle border-start-0 no-hover"
+                [ngClass]="{ 'bg-light-subtle-2': o }"
+              >
+                <button
+                  type="button"
+                  class="btn btn-link p-0"
+                  (click)="mostrarDetalle(paciente)"
+                >
+                  <i class="fas fa-plus"></i>
+                </button>
+              </td>
+            </tr>
+            <tr class="border-top-0 pe-none">
+              <td colspan="2" class="pt-0 border-end-0" [ngClass]="{ 'bg-light-subtle-2': o }">
+                <div class="destino-alta">
+                  <div class="bloque">
+                    <span class="fw-bold fs-3 me-2">Destino:</span>
+                    <span class="fs-3">{{ capitalizarPrimeraLetra(paciente.Destino) }}</span>
+                  </div>
+                  <div class="bloque">
+                    <span class="fw-bold fs-3 me-2">Alta:</span>
+                    <span class="fs-3">{{ extraerAn(paciente.HoraEgreso) }}</span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    } @else {
+      <div class="alert alert-light" role="alert">
+        Sin datos que mostrar
+      </div>
+    }
+  </div>
+</div>

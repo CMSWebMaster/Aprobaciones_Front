@@ -1,0 +1,6 @@
+export enum TipoAltaMedicaEnum {
+  ALTA_MEDICA = 'ALTA MEDICA',
+  ALTA_VOLUNTARIA = 'ALTA VOLUNTARIA',
+  HOSPITALIZACION = 'HOSPITALIZACION',
+  NO_REGISTRADO = 'No Registrado',
+}

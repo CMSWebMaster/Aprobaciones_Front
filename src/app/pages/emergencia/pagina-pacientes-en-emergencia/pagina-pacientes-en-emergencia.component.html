@@ -1,0 +1,28 @@
+<div class="row">
+	<div class="col-12">
+		<div class="card p-4">
+      <app-filtro
+        [filtro]="filtroBusqueda"
+        [fBuscando]="fBuscandoECH"
+        [sedes]="sedes"
+        (evtBuscar)="buscarEmConHot()" />
+
+      <ul ngbNav #nav="ngbNav" [(activeId)]="tab" [destroyOnHide]="false" class="nav-tabs mt-4">
+        <li [ngbNavItem]="1">
+          <button ngbNavLink>RESUMEN</button>
+          <ng-template ngbNavContent>
+            <app-tbl-resumen [lstPacientes]="lstPacientes" />
+          </ng-template>
+        </li>
+        <li [ngbNavItem]="2">
+          <button ngbNavLink>DETALLE</button>
+          <ng-template ngbNavContent>
+            <app-tbl-detalle [lstPacientes]="lstPacientes" />
+          </ng-template>
+        </li>
+      </ul>
+
+      <div [ngbNavOutlet]="nav" class="mt-2"></div>
+    </div>
+  </div>
+</div>

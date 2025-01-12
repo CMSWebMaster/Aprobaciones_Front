@@ -1,0 +1,72 @@
+<div class="p-3">
+  <table class="table table-sm table-bordered table-hover mb-0">
+    <thead>
+      <tr>
+        <th colspan="2" class="fw-bold fs-3 bg-light-subtle">
+          Paciente: {{ paciente.PacienteNombre }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="fs-3 border-end-0">
+          <span class="fs-3 fw-bold me-1">H. Clínica:</span>
+          {{ paciente.CodigoHC }}
+        </td>
+        <td class="fs-3 border-start-0">
+          <span class="fs-3 fw-bold me-1">Edad:</span>
+          {{ paciente.Edad }}
+        </td>
+      </tr>
+      <tr>
+        <td class="fs-3 border-end-0">
+          <span class="fs-3 fw-bold me-1">Ingreso:</span>
+          {{ paciente.HoraIngreso }}
+        </td>
+        <td class="fs-3 border-start-0">
+          <span class="fs-3 fw-bold me-1">Pr. Ingreso:</span>
+          {{ paciente.PrioridadIngreso }}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="fs-3">
+          <span class="fs-3 fw-bold me-1">OA:</span>
+          {{ paciente.CodigoOA }}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="fs-3">
+          <span class="fs-3 fw-bold me-1">Tipo de Paciente:</span>
+          {{ paciente.TipoPacienteNombre }}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="fs-3">
+          <span class="fs-3 fw-bold me-1">Empresa:</span>
+          {{ paciente.EmpresaAseguradoraNombre }}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="fs-3">
+          <span class="fs-3 fw-bold me-1">Egreso:</span>
+          {{ paciente.HoraEgreso }}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="fs-3">
+          <span class="fs-3 fw-bold me-1">Destino:</span>
+          {{ paciente.Destino }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="p-3 pt-1 text-end">
+  <button
+    type="button"
+    class="btn btn-light"
+    (click)="cerrar()"
+  >
+    Cerrar
+  </button>
+</div>
