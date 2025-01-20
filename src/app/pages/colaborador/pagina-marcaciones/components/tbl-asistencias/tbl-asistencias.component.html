@@ -1,0 +1,141 @@
+<div class="table-responsive">
+  <table class="table table-sm table-bordered table-hover">
+    <thead>
+      <tr>
+        <th class="fs-3 fw-bold text-center">Día</th>
+        <th class="fs-3 fw-bold text-center">Fecha</th>
+        <th class="fs-3 fw-bold text-center">Horario</th>
+        <th class="fs-3 fw-bold text-center">Ingreso</th>
+        <th class="fs-3 fw-bold text-center border-end-0">Tardanza</th>
+        <th class="fs-3 fw-bold text-center border-start-0"></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of asistencias; track $index) {
+        <tr>
+          <td
+            class="fs-3 text-center align-middle"
+            [ngClass]="{ 'bg-primary-subtle': mostrarDetalle(item.Fecha) }"
+          >
+            {{ item.Dia }}
+          </td>
+          <td
+            class="fs-3 text-center align-middle"
+            [ngClass]="{ 'bg-primary-subtle': mostrarDetalle(item.Fecha) }"
+          >
+            {{ soloFecha(item.Fecha) }}
+          </td>
+          <td
+            class="fs-3 text-center align-middle"
+            [ngClass]="{ 'bg-primary-subtle': mostrarDetalle(item.Fecha) }"
+          >
+            {{ item.Horario }}
+          </td>
+          <td
+            class="fs-3 text-center align-middle"
+            [ngClass]="{ 'text-danger': item.HoraTar && aNro(item.HoraTar) != 0, 'bg-primary-subtle': mostrarDetalle(item.Fecha) }"
+          >
+            {{ hora(item.HoraIng_1) }}
+          </td>
+          <td
+            class="fs-3 text-center align-middle mostrar-espacios-en-blanco"
+            [ngClass]="{ 'bg-primary-subtle': mostrarDetalle(item.Fecha) }"
+          >
+            {{ horaTardanza(item.HoraTar) | minutosATiempo }}
+          </td>
+          <td
+            class="fs-3 text-center"
+            [ngClass]="{ 'bg-primary-subtle': mostrarDetalle(item.Fecha) }"
+          >
+            <button
+              type="button"
+              class="btn btn-link p-0"
+              (click)="toggleMostrarDetalle(item)"
+            >
+              <i class="fas fa-plus"></i>
+            </button>
+          </td>
+        </tr>
+
+        @if (mostrarDetalle(item.Fecha)) {
+          @if (item.HoraIng_1 || item.HoraSal_1) {
+            <tr>
+              <td></td>
+              <td colspan="5" class="bg-light-subtle">
+                <div class="fs-3 d-flex gap-4">
+                  @if (item.HoraIng_1) {
+                    <div>
+                      <i class="icon-login me-1 fw-bold"></i> {{ item.HoraIng_1 }}
+                    </div>
+                  }
+                  @if (item.HoraSal_1) {
+                    <div>
+                      <i class="icon-logout me-1 fw-bold"></i> {{ item.HoraSal_1 }}
+                    </div>
+                  }
+                </div>
+              </td>
+            </tr>
+          }
+          @if (item.HoraIng_2 || item.HoraSal_2) {
+            <tr>
+              <td></td>
+              <td colspan="5" class="bg-light-subtle">
+                <div class="fs-3 d-flex gap-4">
+                  @if (item.HoraIng_2) {
+                    <div>
+                      <i class="icon-login me-1 fw-bold"></i> {{ item.HoraIng_2 }}
+                    </div>
+                  }
+                  @if (item.HoraSal_2) {
+                    <div>
+                      <i class="icon-logout me-1 fw-bold"></i> {{ item.HoraSal_2 }}
+                    </div>
+                  }
+                </div>
+              </td>
+            </tr>
+          }
+          @if (item.HoraIng_3 || item.HoraSal_3) {
+            <tr>
+              <td></td>
+              <td colspan="5" class="bg-light-subtle">
+                <div class="fs-3 d-flex gap-4">
+                  @if (item.HoraIng_3) {
+                    <div>
+                      <i class="icon-login me-1 fw-bold"></i> {{ item.HoraIng_3 }}
+                    </div>
+                  }
+                  @if (item.HoraSal_3) {
+                    <div>
+                      <i class="icon-logout me-1 fw-bold"></i> {{ item.HoraSal_3 }}
+                    </div>
+                  }
+                </div>
+              </td>
+            </tr>
+          }
+          @if (item.Observacion) {
+            <tr>
+              <td></td>
+              <td colspan="5" class="bg-light-subtle">
+                <span class="fs-3 fw-bold d-block">Observación:</span>
+                <div class="fs-3">
+                  {{ item.Observacion }}
+                </div>
+              </td>
+            </tr>
+          }
+        }
+      } @empty {
+        <tr>
+          <td colspan="6" class="p-0">
+            <div class="alert alert-light text-center m-0 border-0" role="alert">
+              Sin asistencias
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

@@ -54,9 +54,32 @@ const menuEmergencias: RouteInfo = {
   ]
 };
 
+const menuColaborador: RouteInfo = {
+  path: 'colaborador',
+  title: 'Colaborador',
+  icon: 'shopping-cart',
+  class: 'has-arrow',
+  label: '',
+  labelClass: '',
+  extralink: false,
+  submenu: [
+    {
+      path: '/colaborador/marcaciones',
+      title: 'Marcaciones',
+      icon: 'shopping-cart',
+      class: '',
+      label: '',
+      labelClass: '',
+      extralink: false,
+      submenu: [],
+    },
+  ]
+};
+
 export const ROUTES: RouteInfo[] = [
   menuVacaciones,
   menuEmergencias,
+  menuColaborador,
 	{
 		path: "approval",
 		title: "Aprobación",

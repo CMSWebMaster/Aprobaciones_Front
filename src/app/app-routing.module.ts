@@ -110,6 +110,25 @@ export const Approutes: Routes = [
         }
 			},
 
+      {
+        path: 'colaborador/marcaciones',
+        loadComponent: () =>
+          import('./pages/colaborador/pagina-marcaciones/pagina-marcaciones.component')
+            .then(m => m.PaginaMarcacionesComponent),
+        data: {
+          title: 'Marcaciones',
+          urls: [
+            {
+              url: '/dashboard',
+              title: 'Colaborador',
+            },
+            {
+              title: 'Marcaciones',
+            }
+          ]
+        }
+			},
+
 			{
 				path: 'vacaciones/pendientes',
 				loadComponent: () =>

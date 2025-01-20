@@ -1,0 +1,47 @@
+<form>
+  <div class="row align-items-center controles">
+    <div class="col-md-6 d-flex align-items-center">
+      <label for="fechaInicio" class="form-label mb-0 me-2 mw">Fecha Inicio:</label>
+      <input
+        [(ngModel)]="filtro.fechaInicio"
+        type="date"
+        name="fechaInicio"
+        id="fechaInicio"
+        class="form-control">
+    </div>
+    <div class="col-md-6 d-flex align-items-center">
+      <label for="fechaFin" class="form-label mb-0 me-2 mw">Fecha Fin:</label>
+      <input
+        [(ngModel)]="filtro.fechaFin"
+        type="date"
+        name="fechaFin"
+        id="fechaFin"
+        class="form-control">
+    </div>
+
+    <div class="col-12 d-flex align-items-center">
+      <label for="trabajador" class="form-label mb-0 me-2 mw">Trabajador:</label>
+      <input
+        [(ngModel)]="filtro.trabajador"
+        type="text"
+        maxlength="100"
+        name="trabajador"
+        id="trabajador"
+        class="form-control">
+    </div>
+
+    <div class="col-md-2 offset-md-10">
+      <button
+        type="button"
+        class="btn btn-primary w-100"
+        (click)="emitirBuscar()"
+        [disabled]="fBuscando"
+      >
+        @if (fBuscando) {
+          <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+        }
+        Procesar
+      </button>
+    </div>
+  </div>
+</form>
