@@ -3,6 +3,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { firstValueFrom } from 'rxjs';
 import { IFechaPagadaPeriodo } from 'src/app/pages/approval/models/vacaciones/fecha-pagada-periodo.interface';
 import { IPeriodo } from 'src/app/pages/approval/models/vacaciones/periodo.interface';
+import { IVacacionPorJefeResponsable } from 'src/app/pages/approval/models/vacaciones/vacacion-por-jefe-responsable.interface';
 import { VacacionesTomadasService } from 'src/app/pages/approval/services/vacaciones-tomadas.service';
 import Swal from 'sweetalert2';
 
@@ -20,6 +21,9 @@ export class MdlFechasPagadasPeriodoComponent implements OnInit {
 
   @Input({ required: true })
   public periodo: IPeriodo;
+
+  @Input({ required: true })
+  public vacacionPersonal: IVacacionPorJefeResponsable;
 
   constructor(
     private vacacionesTomadasService: VacacionesTomadasService,
@@ -53,6 +57,10 @@ export class MdlFechasPagadasPeriodoComponent implements OnInit {
   public totalDiasUtilizacion(): string {
     const suma = this.lstFechaPagada.reduce((prev, act) => prev + +act.DiasUtilizacion, 0);
     return suma.toFixed(2);
+  }
+
+  public aEntero(nro: string): number {
+    return parseInt(nro);
   }
 
   public cerrar(): void {

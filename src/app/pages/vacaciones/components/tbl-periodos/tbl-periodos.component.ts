@@ -75,8 +75,12 @@ export class TblPeriodosComponent {
     this.evtFilaSeleccionada.emit(fila);
   }
 
-  public totalGoce(): string {
-    const total = this.filasTabla.reduce((acc, obj) => parseFloat(obj.DiasGozados) + acc, 0);
-    return total.toFixed(2);
+  // public totalGoce(): string {
+  //   const total = this.filasTabla.reduce((acc, obj) => parseFloat(obj.DiasGozados) + acc, 0);
+  //   return total.toFixed(2);
+  // }
+
+  public aEntero(nro: string): number {
+    return parseInt(nro);
   }
 }

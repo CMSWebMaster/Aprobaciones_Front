@@ -1,5 +1,5 @@
 <div class="w-filtro d-flex gap-2 py-3">
-  <div class="w-check-tod-areas">
+  <!-- <div class="w-check-tod-areas">
     <input
       id="todasLasAreas"
       name="todasLasAreas"
@@ -15,7 +15,7 @@
     >
       Todas las Áreas
     </label>
-  </div>
+  </div> -->
   <select
     name="areas"
     class="form-select fs-3"
@@ -42,7 +42,7 @@
       Selecciona Colaborador...
     </option>
     @for (colaborador of lstColaboradorPorArea; track $index) {
-      <option [value]="colaborador.COD_PERSONAL">{{ colaborador.Nombres }}</option>
+      <option [value]="colaborador.COD_PERSONAL">{{ colaborador.TRABAJADOR }}</option>
     }
   </select>
 </div>

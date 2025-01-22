@@ -16,36 +16,53 @@
           <td
             class="fs-3 text-center align-middle"
             [ngClass]="{ 'bg-primary-subtle': mostrarDetalle(item.Fecha) }"
+            [ngStyle]="bordeColDia(item)"
           >
             {{ item.Dia }}
           </td>
           <td
             class="fs-3 text-center align-middle"
             [ngClass]="{ 'bg-primary-subtle': mostrarDetalle(item.Fecha) }"
+            [ngStyle]="bordeCol(item)"
           >
             {{ soloFecha(item.Fecha) }}
           </td>
           <td
             class="fs-3 text-center align-middle"
             [ngClass]="{ 'bg-primary-subtle': mostrarDetalle(item.Fecha) }"
+            [ngStyle]="bordeCol(item)"
           >
             {{ item.Horario }}
           </td>
-          <td
-            class="fs-3 text-center align-middle"
-            [ngClass]="{ 'text-danger': item.HoraTar && aNro(item.HoraTar) != 0, 'bg-primary-subtle': mostrarDetalle(item.Fecha) }"
-          >
-            {{ hora(item.HoraIng_1) }}
-          </td>
-          <td
-            class="fs-3 text-center align-middle mostrar-espacios-en-blanco"
-            [ngClass]="{ 'bg-primary-subtle': mostrarDetalle(item.Fecha) }"
-          >
-            {{ horaTardanza(item.HoraTar) | minutosATiempo }}
-          </td>
+          @if (item.Observacion && !item.HoraIng_1) {
+            <td
+              colspan="2"
+              class="fs-3 align-middle"
+              [ngClass]="{ 'bg-primary-subtle': mostrarDetalle(item.Fecha) }"
+              [ngStyle]="bordeCol(item)"
+            >
+              {{ item.Observacion }}
+            </td>
+          } @else {
+            <td
+              class="fs-3 text-center align-middle"
+              [ngClass]="{ 'text-danger': item.HoraTar && aNro(item.HoraTar) != 0, 'bg-primary-subtle': mostrarDetalle(item.Fecha) }"
+              [ngStyle]="bordeCol(item)"
+            >
+              {{ hora(item.HoraIng_1) }}
+            </td>
+            <td
+              class="fs-3 text-center align-middle mostrar-espacios-en-blanco"
+              [ngClass]="{ 'bg-primary-subtle': mostrarDetalle(item.Fecha) }"
+              [ngStyle]="bordeCol(item)"
+            >
+              {{ horaTardanza(item.HoraTar) | minutosATiempo }}
+            </td>
+          }
           <td
             class="fs-3 text-center"
             [ngClass]="{ 'bg-primary-subtle': mostrarDetalle(item.Fecha) }"
+            [ngStyle]="bordeColAcciones(item)"
           >
             <button
               type="button"
@@ -60,17 +77,18 @@
         @if (mostrarDetalle(item.Fecha)) {
           @if (item.HoraIng_1 || item.HoraSal_1) {
             <tr>
-              <td></td>
-              <td colspan="5" class="bg-light-subtle">
+              <td [ngStyle]="bordeColDetalleDia(item, 1)"></td>
+              <td [ngStyle]="bordeColDetalle(item, 1)" colspan="5" class="bg-light-subtle">
                 <div class="fs-3 d-flex gap-4">
+                  <span class="fw-bold fs-3">1.</span>
                   @if (item.HoraIng_1) {
                     <div>
-                      <i class="icon-login me-1 fw-bold"></i> {{ item.HoraIng_1 }}
+                      <i class="icon-login me-1 fw-bold"></i> {{ sinMilisegundos(item.HoraIng_1) }}
                     </div>
                   }
                   @if (item.HoraSal_1) {
                     <div>
-                      <i class="icon-logout me-1 fw-bold"></i> {{ item.HoraSal_1 }}
+                      <i class="icon-logout me-1 fw-bold"></i> {{ sinMilisegundos(item.HoraSal_1) }}
                     </div>
                   }
                 </div>
@@ -79,17 +97,18 @@
           }
           @if (item.HoraIng_2 || item.HoraSal_2) {
             <tr>
-              <td></td>
-              <td colspan="5" class="bg-light-subtle">
+              <td [ngStyle]="bordeColDetalleDia(item, 2)"></td>
+              <td [ngStyle]="bordeColDetalle(item, 2)" colspan="5" class="bg-light-subtle">
                 <div class="fs-3 d-flex gap-4">
+                  <span class="fw-bold fs-3">2.</span>
                   @if (item.HoraIng_2) {
                     <div>
-                      <i class="icon-login me-1 fw-bold"></i> {{ item.HoraIng_2 }}
+                      <i class="icon-login me-1 fw-bold"></i> {{ sinMilisegundos(item.HoraIng_2) }}
                     </div>
                   }
                   @if (item.HoraSal_2) {
                     <div>
-                      <i class="icon-logout me-1 fw-bold"></i> {{ item.HoraSal_2 }}
+                      <i class="icon-logout me-1 fw-bold"></i> {{ sinMilisegundos(item.HoraSal_2) }}
                     </div>
                   }
                 </div>
@@ -98,17 +117,18 @@
           }
           @if (item.HoraIng_3 || item.HoraSal_3) {
             <tr>
-              <td></td>
-              <td colspan="5" class="bg-light-subtle">
-                <div class="fs-3 d-flex gap-4">
+              <td [ngStyle]="bordeColDetalleDia(item, 3)"></td>
+              <td [ngStyle]="bordeColDetalle(item, 3)" colspan="5" class="bg-light-subtle">
+                <div class="fs-3 d-flex gap-3">
+                  <span class="fw-bold fs-3">3.</span>
                   @if (item.HoraIng_3) {
                     <div>
-                      <i class="icon-login me-1 fw-bold"></i> {{ item.HoraIng_3 }}
+                      <i class="icon-login me-1 fw-bold"></i> {{ sinMilisegundos(item.HoraIng_3) }}
                     </div>
                   }
                   @if (item.HoraSal_3) {
                     <div>
-                      <i class="icon-logout me-1 fw-bold"></i> {{ item.HoraSal_3 }}
+                      <i class="icon-logout me-1 fw-bold"></i> {{ sinMilisegundos(item.HoraSal_3) }}
                     </div>
                   }
                 </div>
@@ -117,8 +137,8 @@
           }
           @if (item.Observacion) {
             <tr>
-              <td></td>
-              <td colspan="5" class="bg-light-subtle">
+              <td [ngStyle]="bordeColDetalleDia(item, 0)"></td>
+              <td [ngStyle]="bordeColDetalle(item, 0)" colspan="5" class="bg-light-subtle">
                 <span class="fs-3 fw-bold d-block">Observación:</span>
                 <div class="fs-3">
                   {{ item.Observacion }}

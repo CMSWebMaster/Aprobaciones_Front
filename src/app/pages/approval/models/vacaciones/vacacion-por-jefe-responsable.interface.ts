@@ -10,4 +10,5 @@ export interface IVacacionPorJefeResponsable {
   DES_AREAS: string;
   DES_CARGO: string;
   id_gerencia: string;
+  TipoPlanilla: string;
 }

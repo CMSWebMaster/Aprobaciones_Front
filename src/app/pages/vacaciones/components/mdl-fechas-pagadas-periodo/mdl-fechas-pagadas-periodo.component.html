@@ -1,6 +1,12 @@
-<div class="modal-header">
-  <h4 class="modal-title fs-3">
-    <b>UTILIZACIÓN:</b> {{ periodo.NomEmpleado }}
+<div class="modal-header align-items-start">
+  <h4 class="modal-title">
+    <span class="d-block fs-4 fw-bold">{{ periodo.NomEmpleado }}</span>
+    <span class="d-block fs-2">{{ vacacionPersonal.TipoPlanilla }}</span>
+    <span class="d-block fs-2">{{ vacacionPersonal.DES_AREAS.toUpperCase() }}</span>
+    <span class="d-block fs-2">{{ vacacionPersonal.DES_CARGO }}</span>
+    <span class="d-block fs-2">
+      INGRESO: --- valor pendiente ---
+    </span>
   </h4>
   <button type="button" class="btn-close" aria-label="Close" (click)="cerrar()"></button>
 </div>
@@ -19,7 +25,7 @@
           <tr>
             <td class="fs-3 fw-normal text-center">{{ item.FechaInicio }}</td>
             <td class="fs-3 fw-normal text-center">{{ item.FechaFin }}</td>
-            <td class="fs-3 fw-normal text-center">{{ item.DiasUtilizacion }}</td>
+            <td class="fs-3 fw-normal text-center">{{ aEntero(item.DiasUtilizacion) }}</td>
           </tr>
         } @empty {
           <tr>
@@ -40,7 +46,7 @@
           <tr>
             <td colspan="2"></td>
             <td class="fs-3 fw-bold text-center">
-              {{ totalDiasUtilizacion() }}
+              {{ aEntero(totalDiasUtilizacion()) }}
             </td>
           </tr>
         </tfoot>

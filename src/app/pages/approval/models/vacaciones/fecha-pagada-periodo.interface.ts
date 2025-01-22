@@ -1,10 +1,10 @@
 export interface IFechaPagadaPeriodo {
-  Empleado: number;
+  Empleado: string;
   NomEmpleado: string;
-  NumeroPeriodo: number;
+  NumeroPeriodo: string;
   PeriodoVac: string;
-  Secuencia: number;
+  Secuencia: string;
   FechaInicio: string;
   FechaFin: string;
-  DiasUtilizacion: number;
+  DiasUtilizacion: string;
 }

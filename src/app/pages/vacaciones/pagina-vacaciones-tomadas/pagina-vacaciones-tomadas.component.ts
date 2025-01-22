@@ -19,7 +19,11 @@ export interface IPersonalPorArea {
   standalone: true,
   imports: [TblPeriodosComponent, FiltroPeriodosComponent],
   templateUrl: './pagina-vacaciones-tomadas.component.html',
-  styles: []
+  styles: [`
+    .contenedor-fecha-ingreso {
+      width: 700px;
+    }
+  `]
 })
 export default class PaginaVacacionesTomadasComponent implements OnInit {
   public fListandoVacDelPerPorJefResp = false;
@@ -29,6 +33,8 @@ export default class PaginaVacacionesTomadasComponent implements OnInit {
   public lstPeriodosPagados: Array<IPeriodo> = [];
   public areas: Array<string> = [];
   public personalPorArea: IPersonalPorArea = {};
+  public vacacionesPersonal: Array<IVacacionPorJefeResponsable> = [];
+  public vacacionPersonalVisualizada: IVacacionPorJefeResponsable;
 
   constructor (
     private vacacionesTomadasService: VacacionesTomadasService,
@@ -44,11 +50,11 @@ export default class PaginaVacacionesTomadasComponent implements OnInit {
     try {
       this.fListandoVacDelPerPorJefResp = true;
 
-      const lst = await firstValueFrom(
+      this.vacacionesPersonal = await firstValueFrom(
         this.vacacionesTomadasService.listarVacDelPersonalPorJefeResp(codUsu)
       );
 
-      this.personalPorArea = lst.reduce((acc, curr) => {
+      this.personalPorArea = this.vacacionesPersonal.reduce((acc, curr) => {
         if (!acc[curr.DES_AREAS]) {
           acc[curr.DES_AREAS] = [];
         }
@@ -56,7 +62,7 @@ export default class PaginaVacacionesTomadasComponent implements OnInit {
         return acc;
       }, {});
 
-      this.areas = [...new Set(lst.map(item => item.DES_AREAS))];
+      this.areas = [...new Set(this.vacacionesPersonal.map(item => item.DES_AREAS))];
     } catch (error) {
       Swal.fire({
         text: 'Error al listar los periodos pagados',
@@ -94,9 +100,11 @@ export default class PaginaVacacionesTomadasComponent implements OnInit {
       keyboard: false,
     });
     modal.componentInstance.periodo = fila;
+    modal.componentInstance.vacacionPersonal = this.vacacionPersonalVisualizada;
   }
 
   public evtListar(codPersonal: string): void {
+    this.vacacionPersonalVisualizada = this.vacacionesPersonal.find(vp => vp.COD_PERSONAL == codPersonal);
     // console.log('codPersonal', codPersonal);
     this.listarPeriodos(codPersonal);
     // this.listarPeriodos('128'); // TODO reemplazar por el comentado

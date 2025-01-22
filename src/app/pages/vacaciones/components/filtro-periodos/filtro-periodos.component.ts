@@ -25,30 +25,31 @@ export class FiltroPeriodosComponent {
   @Output()
   public evtListar = new EventEmitter<string>();
 
-  public cambioIndTodasLasAreas(): void {
-    if (this.fTodasLasAreas) {
-      this.areaSeleccionada = '';
-      this.colaboradorSeleccionado = '';
-      this.evtListar.emit(this.strLstIds());
-    }
-  }
+  // public cambioIndTodasLasAreas(): void {
+  //   if (this.fTodasLasAreas) {
+  //     this.areaSeleccionada = '';
+  //     this.colaboradorSeleccionado = '';
+  //     this.evtListar.emit(this.strLstIds());
+  //   }
+  // }
 
-  private strLstIds(): string {
-    const arrIds: Array<string> = [];
+  // private strLstIds(): string {
+  //   const arrIds: Array<string> = [];
 
-    for (let area of this.areas) {
-      const lst = this.personalPorArea[area];
+  //   for (let area of this.areas) {
+  //     const lst = this.personalPorArea[area];
 
-      for (let p of lst) {
-        arrIds.push(p.COD_PERSONAL);
-      }
-    }
+  //     for (let p of lst) {
+  //       arrIds.push(p.COD_PERSONAL);
+  //     }
+  //   }
 
-    return arrIds.join(',');
-  }
+  //   return arrIds.join(',');
+  // }
 
   public seleccionDeArea(): void {
     this.lstColaboradorPorArea = this.personalPorArea[this.areaSeleccionada];
+    this.colaboradorSeleccionado = '';
   }
 
   public seleccionDeColaborador(): void {
