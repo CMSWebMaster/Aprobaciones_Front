@@ -3,6 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { FullComponent } from './layouts/full/full.component';
 import { BlankComponent } from './layouts/blank/blank.component';
+import {
+  PaginaPacientesProgramadosOperacionesComponent
+} from "./pages/emergencia/pagina-pacientes-programados-operaciones/pagina-pacientes-programados-operaciones.component";
 
 export const Approutes: Routes = [
 	{
@@ -109,6 +112,51 @@ export const Approutes: Routes = [
           ]
         }
 			},
+
+      //para redigir a pacientes internados inicio
+      {
+        path: 'emergencias/internados',
+        loadComponent: () =>
+          import('./pages/emergencia/pagina-pacientes-internados/pagina-pacientes-internados.component')
+            .then(m => m.PaginaPacientesInternadosComponent),
+        data: {
+          title: 'Pacientes Internados',
+          urls: [
+            {
+              url: '/dashboard',
+              title: 'Emergencia',
+            },
+            {
+              title: 'Pacientes internados',
+            }
+          ]
+        }
+      },
+      //para redigir a pacientes internados fin
+
+      //para redigir a pacientes programdos inicio
+      {
+        path: 'emergencias/programados',
+        loadComponent: () =>
+          import('./pages/emergencia/pagina-pacientes-programados-operaciones/pagina-pacientes-programados-operaciones.component')
+            .then(m => m.PaginaPacientesProgramadosOperacionesComponent),
+        data: {
+          title: 'Pacientes Programados en Sala de Operaciones',
+          urls: [
+            {
+              url: '/dashboard',
+              title: 'Emergencia',
+            },
+            {
+              title: 'Pacientes programados',
+            }
+          ]
+        }
+      },
+      //para redigir a pacientes programdos fin
+      //borrar
+
+
 
       {
         path: 'colaborador/marcaciones',

@@ -1,0 +1,128 @@
+<div class="background-container">
+  <div class="container mt-4">
+    <!-- Filtro inicio -->
+    <app-filtro
+      [filtro]="filtro"
+      [sedes]="sedes"
+      [fBuscando]="fBuscando"
+      (evtBuscar)="realizarConsulta()"
+    ></app-filtro>
+    <!-- Filtro fin -->
+
+    <div class="row mt-4">
+      <!-- Menú lateral inicio -->
+      <div class="col-md-3">
+        <ul class="nav flex-column menu-lateral">
+          <li
+            class="nav-item"
+            [class.active]="vistaActual === 'resumen'"
+            (click)="cambiarVista('resumen')"
+          >
+            <a class="nav-link">RESUMEN</a>
+          </li>
+          <li
+            class="nav-item"
+            [class.active]="vistaActual === 'detalle'"
+            (click)="cambiarVista('detalle')"
+          >
+            <a class="nav-link">DETALLE</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Menú lateral fin -->
+
+      <!-- Contenido dinámico -->
+      <div class="col-md-9">
+        <!-- Vista Resumen -->
+        <div *ngIf="vistaActual === 'resumen'">
+          <h3 *ngIf="resumenDisponible; else noDatos">Resumen por Tipo de Paciente</h3>
+          <table *ngIf="resumenDisponible" class="table table-bordered">
+            <thead>
+            <tr>
+              <th>Tipo de Paciente</th>
+              <th class="text-center">Ambulatorio</th>
+              <th class="text-center">Hospitalización</th>
+              <th class="text-center">Total</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let tipo of resumen | keyvalue">
+              <td>{{ tipo.key }}</td>
+              <td class="text-center">{{ tipo.value.Ambulatorio }}</td>
+              <td class="text-center">{{ tipo.value.Hospitalizacion }}</td>
+              <td class="text-center">{{ tipo.value.Total }}</td>
+            </tr>
+            <tr class="table-secondary">
+              <td class="forzar"><strong>Total General</strong></td>
+              <td class="text-center forzar"><strong>{{ obtenerTotalesGenerales().Ambulatorio }}</strong></td>
+              <td class="text-center forzar"><strong>{{ obtenerTotalesGenerales().Hospitalizacion }}</strong></td>
+              <td class="text-center forzar"><strong>{{ obtenerTotalesGenerales().Total }}</strong></td>
+            </tr>
+            </tbody>
+          </table>
+          <ng-template #noDatos>
+            <div class="alert alert-info mt-4">Sin datos que mostrar</div>
+          </ng-template>
+        </div>
+
+        <!-- Vista Detalle -->
+        <div *ngIf="vistaActual === 'detalle'">
+          <div *ngIf="resultados?.length > 0; else noDatosDetalle">
+            <div class="card mb-3" *ngFor="let paciente of resultados">
+              <div class="card-body d-flex justify-content-between align-items-center">
+                <div>
+                  <h5 class="card-title">{{ paciente.paciente }}</h5>
+                  <p class="card-text">
+                    <strong>Estado de Documento:</strong> {{ paciente.estadoDocumento }}
+                  </p>
+                </div>
+                <div class="d-flex align-items-center">
+                  <p class="text-end m-0">
+                    <strong>Fecha:</strong> {{ paciente.fecha }}
+                  </p>
+                  <button
+                    type="button"
+                    class="btn btn-link p-0 ms-2"
+                    (click)="mostrarMasInformacion(paciente)"
+                  >
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ng-template #noDatosDetalle>
+            <div class="alert alert-info mt-4">Sin datos que mostrar</div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div
+    class="modal fade show"
+    *ngIf="pacienteSeleccionado"
+    style="display: block; background: rgba(0, 0, 0, 0.5);"
+    (click)="cerrarModal()"
+  >
+    <div class="modal-dialog modal-dialog-centered" (click)="$event.stopPropagation()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Detalles del Paciente</h5>
+          <button type="button" class="btn-close" aria-label="Close" (click)="cerrarModal()"></button>
+        </div>
+        <div class="modal-body">
+          <ng-container *ngFor="let detalle of pacienteSeleccionado | keyvalue">
+            <p *ngIf="detalle.value !== null">
+              <strong>{{ formatKey(detalle.key) }}:</strong> {{ detalle.value }}
+            </p>
+          </ng-container>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="cerrarModal()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
