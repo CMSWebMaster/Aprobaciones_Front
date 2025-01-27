@@ -51,6 +51,28 @@ const menuEmergencias: RouteInfo = {
       extralink: false,
       submenu: [],
     },
+    {
+      path: '/emergencias/internados',
+      title: 'Pacientes Internados',
+      icon: 'shopping-cart',
+      class: '',
+      label: '',
+      labelClass: '',
+      extralink: false,
+      submenu: [],
+    },
+    {
+      path: '/emergencias/programados',
+      title: 'Pacientes Programados en Sala de Operaciones',
+      icon: 'shopping-cart',
+      class: '',
+      label: '',
+      labelClass: '',
+      extralink: false,
+      submenu: [],
+    },
+
+    //borrar
   ]
 };
 

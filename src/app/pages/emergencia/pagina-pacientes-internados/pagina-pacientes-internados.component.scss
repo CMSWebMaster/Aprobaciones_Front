@@ -1,0 +1,59 @@
+.menu-lateral {
+  .nav-item {
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+
+    .nav-link {
+      color: #333;
+      padding: 10px 15px;
+      display: block;
+      text-decoration: none;
+    }
+
+    &.active .nav-link {
+      background-color: #f8f9fa;
+      font-weight: bold;
+      border-left: 3px solid #007bff;
+      color: #007bff;
+    }
+
+    &:hover .nav-link {
+      background-color: #f1f1f1;
+    }
+  }
+}
+
+.background-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para los cuadros de detalle en la vista de DETALLE */
+.card {
+  background-color: #f8feff; /* Fondo de color suave */
+  border: 0.5px solid #eef2f5;   /* Contorno de contorno */
+}
+
+/* Estilo para el cuadro "Sin datos que mostrar" inicio */
+.alert-info {
+  background-color: #f8feff !important;
+  border: 0.5px solid #eef2f5;
+  color: #333;
+  border-radius: 8px;
+  padding: 15px;
+}
+/* Estilo para el cuadro "Sin datos que mostrar" fin*/
+
+/* Forzando el color de pie de tabla inicio */
+.forzar {
+  background-color: #f8feff !important;
+  border: 0.5px solid #eef2f5;
+}
+/* Forzando el color de pie de tabla fin */
+
+
+
+
+
