@@ -1,0 +1,28 @@
+<div class="row">
+	<div class="col-12">
+		<div class="card">
+      <table class="table table-bordered table-sm">
+        <thead>
+          <tr>
+            <td class="fs-3 fw-bold text-center">Fecha Inicio</td>
+            <td class="fs-3 fw-bold text-center">Fecha Fin</td>
+            <td class="fs-3 fw-bold text-center">Estado</td>
+          </tr>
+        </thead>
+        <tbody>
+          @for (vacacion of vacacionesSolicitadas; track $index) {
+            <tr>
+              <td class="fs-3 text-center">{{ vacacion.fechaInicio }}</td>
+              <td class="fs-3 text-center">{{ vacacion.fechaFin }}</td>
+              <td class="fs-3 text-center">
+                <span class="px-2 py-1 rounded text-white" [ngClass]="colorFondo(vacacion.estado)">
+                  {{ estadoATxt(vacacion.estado) }}
+                </span>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

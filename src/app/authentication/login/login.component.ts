@@ -109,6 +109,7 @@ export class LoginComponent implements OnInit {
 			localStorage.setItem('CodigoUsuario', this.profiles[0]?.CodigoUsuario)
 			localStorage.setItem('id_area', this.profiles[0]?.id_area);
 			localStorage.setItem('sede', this.profiles[0]?.Sucursal);
+			localStorage.setItem('idPersona', this.profiles[0]?.Persona);
 			if (this.profiles[0]?.id_area === '02060603') {
 				localStorage.setItem('id_areav2', '20603');
 			} else {

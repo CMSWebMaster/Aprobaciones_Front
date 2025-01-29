@@ -21,8 +21,10 @@
       }
 
       <app-tbl-periodos
+        [tipoVacaciones]="'pendientes'"
         [filas]="lstPeriodosPendientes"
         [fListando]="fListandoPeriodos"
+        [vacacionesPersonal]="vacacionesPersonal"
         (evtFilaSeleccionada)="filaSeleccionada($event)" />
     </div>
   </div>

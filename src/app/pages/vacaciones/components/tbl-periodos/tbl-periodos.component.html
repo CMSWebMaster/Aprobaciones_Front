@@ -80,13 +80,34 @@
                 <ngb-highlight [result]="aEntero(fila.Pendientes).toString()" [term]="txtBusqueda" />
               </td>
               <td class="w-btns py-2">
-                <button
-                  type="button"
-                  class="btn btn-sm rounded btn-primary"
-                  (click)="filaSeleccionada(fila)"
-                >
-                  <i class="fas fa-th-list"></i>
-                </button>
+                @if (tipoVacaciones === 'pendientes') {
+                  <button
+                    type="button"
+                    class="btn btn-sm rounded btn-primary"
+                    (click)="filaSeleccionada(fila)"
+                  >
+                    <i class="fas fa-th-list"></i>
+                  </button>
+                }
+                @if (tipoVacaciones === 'tomadas') {
+                  <div class="d-flex gap-2">
+                    <button
+                      type="button"
+                      class="btn btn-sm rounded btn-primary"
+                      (click)="filaSeleccionada(fila)"
+                    >
+                      <i class="fas fa-th-list"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-sm rounded btn-primary"
+                      [disabled]="isBtnSolVacDesactivado(fila)"
+                      (click)="abrirMdlSolVacPend(fila)"
+                    >
+                      <i class="fas fa-calendar-alt"></i>
+                    </button>
+                  </div>
+                }
               </td>
             </tr>
           }

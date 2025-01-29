@@ -11,4 +11,5 @@ export interface IVacacionPorJefeResponsable {
   DES_CARGO: string;
   id_gerencia: string;
   TipoPlanilla: string;
+  Confianza: string;
 }

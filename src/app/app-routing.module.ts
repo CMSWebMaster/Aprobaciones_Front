@@ -211,6 +211,24 @@ export const Approutes: Routes = [
           ]
         }
 			},
+			{
+				path: 'vacaciones/aprobaciones',
+				loadComponent: () =>
+					import('./pages/vacaciones/pagina-aprobaciones/pagina-aprobaciones.component')
+            .then(m => m.PaginaAprobacionesComponent),
+        data: {
+          title: 'Vacaciones Aprobaciones',
+          urls: [
+            {
+              url: '/dashboard',
+              title: 'Vacaciones',
+            },
+            {
+              title: 'Tomadas',
+            }
+          ]
+        }
+			},
 		],
 	},
 	{

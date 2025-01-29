@@ -29,6 +29,16 @@ const menuVacaciones: RouteInfo = {
       extralink: false,
       submenu: [],
     },
+    {
+      path: '/vacaciones/aprobaciones',
+      title: 'Aprobaciones',
+      icon: 'mdi mdi-arrange-bring-forward',
+      class: '',
+      label: '',
+      labelClass: '',
+      extralink: false,
+      submenu: [],
+    },
   ]
 };
 
@@ -134,6 +144,16 @@ export const ROUTES: RouteInfo[] = [
 			{
 				path: "/apps/requirements",
 				title: "Requerimientos",
+				icon: "mdi mdi-book-multiple",
+				class: "",
+				label: "",
+				labelClass: "",
+				extralink: false,
+				submenu: [],
+			},
+			{
+				path: "/apps/vacaciones",
+				title: "Vacaciones",
 				icon: "mdi mdi-book-multiple",
 				class: "",
 				label: "",

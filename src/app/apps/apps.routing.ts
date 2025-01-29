@@ -34,6 +34,7 @@ import { RequirementsComponent } from '../pages/approval/submodules/requirements
 import { OrdersComponent } from '../pages/approval/submodules/orders/index/index.component';
 import { WorkerPermissionComponent } from '../pages/permissions/submodules/worker-permission/index/index.component';
 import { TitleResolver } from '../commom/resolvers/title.resolver';
+
 export const AppsRoutes: Routes = [
 	{
 		path: 'orders/:id',
@@ -68,6 +69,20 @@ export const AppsRoutes: Routes = [
 			urls: [
 				{ title: 'Apps', url: '/dashboard' },
 				{ title: 'Requerimientos' },
+			],
+		},
+	},
+	{
+		path: 'vacaciones',
+		// component: RequirementsComponent,
+    loadComponent: () =>
+          import('../pages/approval/submodules/pagina-aprobacion-vacaciones/pagina-aprobacion-vacaciones.component')
+            .then(m => m.PaginaAprobacionVacacionesComponent),
+		data: {
+			title: 'Vacaciones',
+			urls: [
+				{ title: 'Apps', url: '/dashboard' },
+				{ title: 'Vacaciones' },
 			],
 		},
 	},

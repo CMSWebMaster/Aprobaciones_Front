@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { TipoPeriodoVacacionEnum } from 'src/app/enums/vacacion/tipo-periodo-vacacion.enum';
 import { IFechaPagadaPeriodo } from '../models/vacaciones/fecha-pagada-periodo.interface';
 import { IVacacionPorJefeResponsable } from '../models/vacaciones/vacacion-por-jefe-responsable.interface';
+import { IVacacionSolicitada } from '../models/vacaciones/response-vacacion-solicitada.interface';
 
 @Injectable({
 	providedIn: 'root'
@@ -50,4 +51,25 @@ export class VacacionesTomadasService {
         })))
       );
   }
+
+	solicitarVacacionesPendientes(
+    codTrab: string,
+    codPeriodoVacacional: string,
+    fechaInicio: string,
+    fechaFin: string,
+    jefeResponsable: string,
+  ): Observable<Array<IPeriodo>> {
+		return this.http.post<Array<IPeriodo>>(this.url, {
+      codTrab,
+      codPeriodoVacacional,
+      fechaInicio,
+      fechaFin,
+      jefeResponsable,
+    });
+	}
+
+  listarVacacionesSolicitadas(codTrab: string): Observable<Array<IVacacionSolicitada>> {
+    const params = new HttpParams().append('codTrab', codTrab);
+		return this.http.get<Array<IVacacionSolicitada>>(`${this.url}/aprobaciones`, { params });
+	}
 }
