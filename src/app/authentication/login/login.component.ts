@@ -179,14 +179,17 @@ export class LoginComponent implements OnInit {
 				let claves = Object.keys(this.listrol);
 				var area_access = '';
 				var idrol = '';
+        var nomRol = '';
 				for (let i = 0; i < claves.length; i++) {
 					let clave = claves[i];
 					if (claves.length != i + 1) {
 						// area_access =  area_access + this.listrol[clave].area_access + ',';
 						idrol = idrol + this.listrol[clave].idrol + ',';
+						nomRol = nomRol + this.listrol[clave].name + ',';
 					} else {
 						// area_access =  area_access + this.listrol[clave].area_access;
 						idrol = idrol + this.listrol[clave].idrol;
+						nomRol = nomRol + this.listrol[clave].name;
 					}
 
 					console.log(111, claves);
@@ -195,6 +198,7 @@ export class LoginComponent implements OnInit {
 				localStorage.setItem('access', this.acceso.toString());
 				// localStorage.setItem('access_area', area_access);
 				localStorage.setItem('idrol', idrol);
+				localStorage.setItem('nomRol', nomRol);
 				localStorage.setItem('access_area', this.listrol[0]?.area_access);
 				// localStorage.setItem('idrol', this.listrol[0]?.idrol);
 				this.router.navigate(['/apps/orders/1']);

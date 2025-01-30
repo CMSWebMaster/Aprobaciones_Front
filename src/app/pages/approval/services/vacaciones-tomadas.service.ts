@@ -7,6 +7,10 @@ import { TipoPeriodoVacacionEnum } from 'src/app/enums/vacacion/tipo-periodo-vac
 import { IFechaPagadaPeriodo } from '../models/vacaciones/fecha-pagada-periodo.interface';
 import { IVacacionPorJefeResponsable } from '../models/vacaciones/vacacion-por-jefe-responsable.interface';
 import { IVacacionSolicitada } from '../models/vacaciones/response-vacacion-solicitada.interface';
+import { IRequestAnularVacacion } from 'src/app/interfaces/vacacion/request-anular-vacacion.interface';
+import { IRequestRechazarVacacion } from 'src/app/interfaces/vacacion/request-rechazar-vacacion.interface';
+import { IRequestAprobarVacacionXJefe } from 'src/app/interfaces/vacacion/request-aprobar-vacacion-x-jefe.interface';
+import { IRequestRegistrarVacacionXRRHH } from 'src/app/interfaces/vacacion/request-registrar-vacacion-x-rrhh.interface copy';
 
 @Injectable({
 	providedIn: 'root'
@@ -71,5 +75,34 @@ export class VacacionesTomadasService {
   listarVacacionesSolicitadas(codTrab: string): Observable<Array<IVacacionSolicitada>> {
     const params = new HttpParams().append('codTrab', codTrab);
 		return this.http.get<Array<IVacacionSolicitada>>(`${this.url}/aprobaciones`, { params });
+	}
+
+  listarVacacionesSolicitadasXAprobar(codJefeResp: string): Observable<Array<IVacacionSolicitada>> {
+    const params = new HttpParams().append('codJefeResp', codJefeResp);
+		return this.http.get<Array<IVacacionSolicitada>>(`${this.url}/aprobaciones/por-jefe-responsable`, { params });
+	}
+
+  listarVacacionesAprobadasXRegistrar(): Observable<Array<IVacacionSolicitada>> {
+		return this.http.get<Array<IVacacionSolicitada>>(`${this.url}/aprobaciones/por-rrhh`);
+	}
+
+  anularVacacion(parametros: IRequestAnularVacacion) {
+		return this.http.put(`${this.url}/anular-pendiente`, parametros);
+	}
+
+  rechazarVacacion(parametros: IRequestRechazarVacacion) {
+		return this.http.put(`${this.url}/rechazar-pendiente`, parametros);
+	}
+
+  aprobarVacacion(parametros: IRequestAprobarVacacionXJefe) {
+		return this.http.put(`${this.url}/aprobar-pendiente`, parametros);
+	}
+
+  registrarVacacion(parametros: IRequestAprobarVacacionXJefe) {
+		return this.http.put(`${this.url}/registrar-pendiente`, parametros);
+	}
+
+  aprobarVacacionRegistrada(parametros: IRequestRegistrarVacacionXRRHH) {
+		return this.http.put(`${this.url}/registrar-aprobado`, parametros);
 	}
 }

@@ -5,6 +5,7 @@ import { IVacacionSolicitada } from '../../approval/models/vacaciones/response-v
 import { VacacionesTomadasService } from '../../approval/services/vacaciones-tomadas.service';
 import { EstadoVacacionSolicitadaEnum } from 'src/app/enums/vacacion/estado-vacacion-solicitada.enum';
 import { NgClass } from '@angular/common';
+import { IRequestAnularVacacion } from 'src/app/interfaces/vacacion/request-anular-vacacion.interface';
 
 @Component({
   selector: 'app-pagina-aprobaciones',
@@ -16,10 +17,12 @@ import { NgClass } from '@angular/common';
 export class PaginaAprobacionesComponent implements OnInit {
   private vacacionesTomadasService = inject(VacacionesTomadasService);
 
+  public vacacionEnProcesoAnulacion: IVacacionSolicitada = null;
   public vacacionesSolicitadas: Array<IVacacionSolicitada> = [];
-  public idPersona: string = '';
+  public idPersona = '';
 
   public fListandoVacacionesSolicitadas = false;
+  public fanulandoVacacion = false;
 
   ngOnInit(): void {
     this.idPersona = localStorage.getItem('idPersona');
@@ -46,11 +49,63 @@ export class PaginaAprobacionesComponent implements OnInit {
     }
   }
 
+  public async anular(vacacion: IVacacionSolicitada): Promise<void> {
+    try {
+      this.fanulandoVacacion = true;
+      this.vacacionEnProcesoAnulacion = vacacion;
+
+      const parametros: IRequestAnularVacacion = {
+        idPeriodo: vacacion.idPeriodo,
+        idPersona: vacacion.idPersona,
+        fechaInicio: vacacion.fechaInicio,
+        fechaFin: vacacion.fechaFin,
+      };
+
+      await firstValueFrom(this.vacacionesTomadasService.anularVacacion(parametros));
+
+      this.cambiarEstadoVacacion(vacacion, EstadoVacacionSolicitadaEnum.ANULADO);
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        icon: 'error',
+        text: 'Ocurrió un error al anular la vacación solicitada.'
+      });
+    } finally {
+      this.fanulandoVacacion = false;
+      this.vacacionEnProcesoAnulacion = null;
+    }
+  }
+
+  private cambiarEstadoVacacion(vacacion: IVacacionSolicitada, estado: EstadoVacacionSolicitadaEnum): void {
+    this.vacacionesSolicitadas = this.vacacionesSolicitadas.map(vac => {
+      if (
+        vac.idPeriodo == vacacion.idPeriodo &&
+        vac.idPersona == vacacion.idPersona &&
+        vac.fechaInicio == vacacion.fechaInicio &&
+        vac.fechaFin == vacacion.fechaFin
+      ) {
+        vac.estado = estado;
+      }
+      return vac;
+    });
+  }
+
+  public enProcesoAnulacion(vacacion): boolean {
+    return this.fanulandoVacacion && (
+        this.vacacionEnProcesoAnulacion.idPeriodo == vacacion.idPeriodo &&
+        this.vacacionEnProcesoAnulacion.idPersona == vacacion.idPersona &&
+        this.vacacionEnProcesoAnulacion.fechaInicio == vacacion.fechaInicio &&
+        this.vacacionEnProcesoAnulacion.fechaFin == vacacion.fechaFin
+      );
+  }
+
   public colorFondo(estado: string): object {
     return {
       'bg-success': EstadoVacacionSolicitadaEnum.APROBADO == estado,
       'bg-primary': EstadoVacacionSolicitadaEnum.PENDIENTE == estado,
       'bg-danger': EstadoVacacionSolicitadaEnum.RECHAZADO == estado,
+      'bg-dark': EstadoVacacionSolicitadaEnum.ANULADO == estado,
+      'bg-secondary': EstadoVacacionSolicitadaEnum.REGISTRADO == estado,
     };
   }
 
@@ -63,6 +118,12 @@ export class PaginaAprobacionesComponent implements OnInit {
     }
     if (EstadoVacacionSolicitadaEnum.RECHAZADO == estado) {
       return 'RECHAZADO';
+    }
+    if (EstadoVacacionSolicitadaEnum.REGISTRADO == estado) {
+      return 'REGISTRADO';
+    }
+    if (EstadoVacacionSolicitadaEnum.ANULADO  == estado) {
+      return 'ANULADO ';
     }
     return '';
   }

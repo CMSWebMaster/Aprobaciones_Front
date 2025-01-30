@@ -12,4 +12,5 @@ export interface IVacacionPorJefeResponsable {
   id_gerencia: string;
   TipoPlanilla: string;
   Confianza: string;
+  FechaIngreso: string;
 }

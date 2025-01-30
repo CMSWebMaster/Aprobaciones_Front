@@ -1,1 +1,56 @@
-<p>pagina-aprobacion-vacaciones works!</p>
+<div class="row">
+	<div class="col-12">
+		<div class="card p-4">
+      <table class="table table-bordered table-sm">
+        <thead>
+          <tr>
+            <td class="fs-3 fw-bold text-center">Fecha Inicio</td>
+            <td class="fs-3 fw-bold text-center">Fecha Fin</td>
+            <td class="fs-3 fw-bold text-center">Estado</td>
+            <td class="fs-3 fw-bold text-center">Acciones</td>
+          </tr>
+        </thead>
+        <tbody>
+          @for (vacacion of vacacionesSolicitadas; track $index) {
+            <tr>
+              <td class="fs-3 text-center align-middle">{{ vacacion.fechaInicio }}</td>
+              <td class="fs-3 text-center align-middle">{{ vacacion.fechaFin }}</td>
+              <td class="fs-3 text-center align-middle">
+                <span class="px-2 py-1 rounded text-white" [ngClass]="colorFondo(vacacion.estado)">
+                  {{ estadoATxt(vacacion.estado) }}
+                </span>
+              </td>
+              <td class="text-center align-middle">
+                @if (enProcesoCambioEstado(vacacion)) {
+                  <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                } @else {
+                  <button
+                    class="btn btn-link text-secondary py-0"
+                    [disabled]="desactivarBtnAprobar(vacacion)"
+                    (click)="cambiarEstado(vacacion)"
+                  >
+                    {{ txtBtnCambiarEstado() }}
+                  </button>
+                }
+
+                @if (!isRRHH) {
+                  @if (enProcesoRechazo(vacacion)) {
+                    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                  } @else {
+                    <button
+                      class="btn btn-link text-danger py-0"
+                      [disabled]="vacacion.estado !== estadoVacacionSolicitadaEnum.PENDIENTE || fRechazando || fCambiandoEstado"
+                      (click)="rechazarPendienteAprobacion(vacacion)"
+                    >
+                      Rechazar
+                    </button>
+                  }
+                }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

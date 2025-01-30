@@ -5,7 +5,7 @@
     <span class="d-block fs-2">{{ vacacionPersonal.DES_AREAS.toUpperCase() }}</span>
     <span class="d-block fs-2">{{ vacacionPersonal.DES_CARGO }}</span>
     <span class="d-block fs-2">
-      INGRESO: --- valor pendiente ---
+      INGRESO: {{ vacacionPersonal.FechaIngreso }}
     </span>
   </h4>
   <button type="button" class="btn-close" aria-label="Close" (click)="cerrar()"></button>
