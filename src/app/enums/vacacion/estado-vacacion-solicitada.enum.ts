@@ -4,4 +4,5 @@ export enum EstadoVacacionSolicitadaEnum {
   RECHAZADO = 'RE',
   REGISTRADO = 'RG',
   ANULADO = 'AN',
+  VALIDADO = 'VA',
 }

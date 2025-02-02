@@ -1,0 +1,42 @@
+<div class="row">
+	<div class="col-12">
+		<div class="card p-4">
+      <table class="table table-bordered table-sm">
+        <thead>
+          <tr>
+            <td class="fs-3 fw-bold text-center">Fecha Inicio</td>
+            <td class="fs-3 fw-bold text-center">Fecha Fin</td>
+            <td class="fs-3 fw-bold text-center">Estado</td>
+            <td class="fs-3 fw-bold text-center">Acciones</td>
+          </tr>
+        </thead>
+        <tbody>
+          @for (permiso of lstPermisos; track $index) {
+            <tr>
+              <td class="fs-3 text-center align-middle">{{ formatearFechaYTiempo(permiso.FEC_DESDE) }}</td>
+              <td class="fs-3 text-center align-middle">{{ formatearFechaYTiempo(permiso.FEC_HASTA) }}</td>
+              <td class="fs-3 text-center align-middle">
+                <span class="px-2 py-1 rounded text-white" [ngClass]="colorFondo(permiso.IND_ESTADO)">
+                  {{ estadoATxt(permiso.IND_ESTADO) }}
+                </span>
+              </td>
+              <td class="text-center align-middle">
+                @if (enProcesoCambioEstado(permiso)) {
+                  <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                } @else {
+                  <button
+                    class="btn btn-link text-secondary py-0"
+                    [disabled]="desactivarBtnAprobar(permiso)"
+                    (click)="aprobar(permiso)"
+                  >
+                    Aprobar
+                  </button>
+                }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

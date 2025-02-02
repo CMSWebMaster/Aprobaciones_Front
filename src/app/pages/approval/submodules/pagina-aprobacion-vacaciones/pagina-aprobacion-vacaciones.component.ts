@@ -14,7 +14,7 @@ import { IRequestRegistrarVacacionXRRHH } from 'src/app/interfaces/vacacion/requ
   standalone: true,
   imports: [NgClass],
   templateUrl: './pagina-aprobacion-vacaciones.component.html',
-  styleUrl: './pagina-aprobacion-vacaciones.component.scss'
+  styles: []
 })
 export class PaginaAprobacionVacacionesComponent implements OnInit {
   private vacacionesTomadasService = inject(VacacionesTomadasService);

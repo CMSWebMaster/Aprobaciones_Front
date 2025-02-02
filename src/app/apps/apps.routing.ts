@@ -74,7 +74,6 @@ export const AppsRoutes: Routes = [
 	},
 	{
 		path: 'vacaciones',
-		// component: RequirementsComponent,
     loadComponent: () =>
           import('../pages/approval/submodules/pagina-aprobacion-vacaciones/pagina-aprobacion-vacaciones.component')
             .then(m => m.PaginaAprobacionVacacionesComponent),
@@ -83,6 +82,32 @@ export const AppsRoutes: Routes = [
 			urls: [
 				{ title: 'Apps', url: '/dashboard' },
 				{ title: 'Vacaciones' },
+			],
+		},
+	},
+  {
+		path: 'permisos',
+    loadComponent: () =>
+          import('../pages/approval/submodules/pagina-aprobacion-permisos/pagina-aprobacion-permisos.component')
+            .then(m => m.PaginaAprobacionPermisosComponent),
+		data: {
+			title: 'Permisos RRHH',
+			urls: [
+				{ title: 'Apps', url: '/dashboard' },
+				{ title: 'Permisos RRHH' },
+			],
+		},
+	},
+  {
+		path: 'permisos-seguridad',
+    loadComponent: () =>
+          import('../pages/approval/submodules/pagina-aprobacion-permisos-seguridad/pagina-aprobacion-permisos-seguridad.component')
+            .then(m => m.PaginaAprobacionPermisosSeguridadComponent),
+		data: {
+			title: 'Permisos Personal de Seguridad',
+			urls: [
+				{ title: 'Apps', url: '/dashboard' },
+				{ title: 'Permisos Personal de Seguridad' },
 			],
 		},
 	},
