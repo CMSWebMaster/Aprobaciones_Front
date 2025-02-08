@@ -1,0 +1,140 @@
+<div class="modal-header">
+  <h4 class="modal-title fw-bold">CONFIRMAR SERVICIO</h4>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="cerrar()">
+  </button>
+</div>
+<div class="modal-body">
+  <form>
+    <div class="row">
+      <div class="col-12">
+        <div>
+          <span class="fw-bold fs-3">Orden Servicio:</span>
+          <span class="fs-3 ms-2">{{ ord.NumeroCompromiso }}</span>
+          <span class="fw-bold fs-3 ms-4">#</span>
+          <span class="fs-3 ms-1">{{ ord.LineaDetalle }}</span>
+        </div>
+        <div class="py-2">
+          <span class="fw-bold fs-3">Fecha Esperada Término:</span>
+          <span class="fs-3 ms-2">{{ soloFecha(ord.FechaEsperadaTermino) }}</span>
+        </div>
+        <div>
+          <span class="fw-bold fs-3">Fecha Término Real:</span>
+          <!-- <input
+            type="date"
+            class="form-control fomr-control-sm d-inline-block ms-2"
+            name="fechaTerminoReal"
+            style="width: fit-content;"
+            [(ngModel)]="frm.fechaTerminoReal"> -->
+          <span class="fs-3 ms-2">{{ frm.fechaTerminoReal }}</span>
+        </div>
+      </div>
+      <div class="col-12 my-3">
+        <span class="fw-bold fs-3">Pagar en cuotas:</span>
+        <input
+            type="number"
+            class="form-control form-control-sm d-inline-block ms-2"
+            name="cuotas"
+            style="width: fit-content;"
+            [(ngModel)]="frm.cuotas"
+            (ngModelChange)="cambioDeCuotas($event)">
+      </div>
+      <div class="col-12">
+        <div class="table-responsive">
+          <table class="table table-sm table-bordered">
+            <tbody>
+              <tr>
+                <td class="p-0"></td>
+                <td class="fs-2 fw-bold px-1 text-center" scope="col">Cantidades</td>
+                <td class="fs-2 fw-bold px-1 text-center" scope="col">Valores</td>
+                <td class="fs-2 fw-bold px-1 text-center" scope="col">Porcentajes</td>
+              </tr>
+              <tr>
+                <td class="fs-2 fw-bold px-1" scope="row">Total</td>
+                <td class="text-center fs-3 px-1">{{ this.frm.total.c.toFixed(8) }}</td>
+                <td class="text-center fs-3 px-1">{{ this.frm.total.v.toFixed(2) }}</td>
+                <td class="text-center fs-3 px-1">{{ this.frm.total.p.toFixed(4) }}</td>
+              </tr>
+              <tr>
+                <td class="fs-2 fw-bold px-1" scope="row">Recibida</td>
+                <td class="text-center fs-3 px-1">{{ this.frm.recibida.c.toFixed(8) }}</td>
+                <td class="text-center fs-3 px-1">{{ this.frm.recibida.v.toFixed(2) }}</td>
+                <td class="text-center fs-3 px-1">{{ this.frm.recibida.p.toFixed(4) }}</td>
+              </tr>
+              <tr>
+                <td class="fs-2 fw-bold px-1" scope="row">Por Recibir</td>
+                <td class="text-center px-0">
+                  <input
+                    type="number"
+                    name="porRecibirC"
+                    class="form-control form-control-sm text-center fs-3"
+                    [(ngModel)]="this.frm.porRecibir.c"
+                    (ngModelChange)="cambioValor('c', $event)">
+                </td>
+                <td class="text-center px-0">
+                  <input
+                    type="number"
+                    name="porRecibirV"
+                    class="form-control form-control-sm text-center fs-3"
+                    [(ngModel)]="this.frm.porRecibir.v"
+                    (ngModelChange)="cambioValor('v', $event)">
+                </td>
+                <td class="text-center px-0">
+                  <input
+                    type="number"
+                    name="porRecibirP"
+                    class="form-control form-control-sm text-center fs-3"
+                    [(ngModel)]="this.frm.porRecibir.p"
+                    (ngModelChange)="cambioValor('p', $event)">
+                </td>
+              </tr>
+              <tr>
+                <td class="fs-2 fw-bold px-1" scope="row">Nuevo Saldo</td>
+                <td class="fs-3 text-center px-1">{{ frm.nuevoSaldo.c.toFixed(8) }}</td>
+                <td class="fs-3 text-center px-1">{{ frm.nuevoSaldo.v.toFixed(2) }}</td>
+                <td class="fs-3 text-center px-1">{{ frm.nuevoSaldo.p.toFixed(4) }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-12">
+        <span class="fw-bold fs-3">Descripción</span>
+        <p class="fs-3">{{ ord.Descripcion }}</p>
+      </div>
+      <div class="col-12">
+        <label class="form-label fw-bold fs-3" for="comentario">Comentario</label>
+        <input
+          name="comentario"
+          type="text"
+          class="form-control form-control-sm fs-3"
+          [(ngModel)]="frm.comentario">
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-primary"
+    [disabled]="fConfirmandoServicio"
+    (click)="confirmarServicio()"
+  >
+    @if (fConfirmandoServicio) {
+      <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+    }
+    Confirmar Servicio
+  </button>
+
+  <button
+    type="button"
+    class="btn btn-outline-secondary"
+    [disabled]="fConfirmandoServicio"
+    (click)="cerrar()"
+  >
+    Salir
+  </button>
+</div>

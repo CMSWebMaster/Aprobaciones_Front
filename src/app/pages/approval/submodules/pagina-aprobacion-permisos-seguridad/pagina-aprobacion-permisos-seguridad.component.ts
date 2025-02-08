@@ -5,14 +5,14 @@ import { firstValueFrom } from 'rxjs';
 import { IResponsePermiso } from 'src/app/interfaces/permiso/response-permiso.interface';
 import { DateTime } from 'luxon';
 import { EstadoVacacionSolicitadaEnum } from 'src/app/enums/vacacion/estado-vacacion-solicitada.enum';
-import { DatePipe, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { IRequestAprobarPermisoXPerSeg } from 'src/app/interfaces/permiso/request-aprobar-permiso-x-per-seg.interface';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pagina-aprobacion-permisos-seguridad',
   standalone: true,
-  imports: [FormsModule, NgClass, DatePipe],
+  imports: [FormsModule, NgClass],
   templateUrl: './pagina-aprobacion-permisos-seguridad.component.html',
   styles: []
 })
@@ -27,6 +27,7 @@ export class PaginaAprobacionPermisosSeguridadComponent implements OnInit {
   public permisoEnProcesoAprobacion: IResponsePermiso = null;
 
   ngOnInit(): void {
+    this.codUsuario = localStorage.getItem('cod_user');
     this.listarAprobados();
   }
 

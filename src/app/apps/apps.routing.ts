@@ -111,6 +111,32 @@ export const AppsRoutes: Routes = [
 			],
 		},
 	},
+  {
+		path: 'aprobacion-servicios',
+    loadComponent: () =>
+          import('../pages/approval/submodules/pagina-aprobacion-servicios/pagina-aprobacion-servicios.component')
+            .then(m => m.PaginaAprobacionServiciosComponent),
+		data: {
+			title: 'Aprobación de servicios',
+			urls: [
+				{ title: 'Apps', url: '/dashboard' },
+				{ title: 'Aprobación de servicios' },
+			],
+		},
+	},
+  {
+		path: 'desconformidad-servicios',
+    loadComponent: () =>
+          import('../pages/approval/submodules/pagina-desconformidad-servicios/pagina-desconformidad-servicios.component')
+            .then(m => m.PaginaDesconformidadServiciosComponent),
+		data: {
+			title: 'Servicios Aprobados',
+			urls: [
+				{ title: 'Apps', url: '/dashboard' },
+				{ title: 'Servicios Aprobados' },
+			],
+		},
+	},
 	{
 		path: '',
 		children: [
