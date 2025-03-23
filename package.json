@@ -47,11 +47,12 @@
     "ng-apexcharts": "^1.7.6",
     "ng-chartist": "^7.1.2",
     "ng2-charts": "^4.1.1",
-    "ng2-pdf-viewer": "^10.2.2",
+    "ng2-pdf-viewer": "^10.0.0",
     "ngx-doc-viewer": "^15.0.1",
     "ngx-editor": "^15.3.0",
     "ngx-scrollbar": "^11.0.0",
     "ngx-toastr": "^16.2.0",
+    "pdfjs-dist": "^3.6.172",
     "rxjs": "~7.8.0",
     "rxjs-compat": "^6.6.7",
     "sass": "^1.62.1",
@@ -77,6 +78,6 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
-    "typescript": "~5.2.2"
+    "typescript": "^5.4.5"
   }
 }

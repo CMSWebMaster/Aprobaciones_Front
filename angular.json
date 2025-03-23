@@ -24,6 +24,7 @@
               "rfdc",
               "apexcharts",
               "bezier-easing",
+              "sweetalert2",
               "c3"
             ],
             "outputPath": "dist/adminpro",

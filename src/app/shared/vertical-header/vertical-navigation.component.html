@@ -13,6 +13,7 @@
 <!-- Right side toggle and nav items -->
 <!-- ============================================================== -->
 <ul class="navbar-nav float-end">
+	<!--
 	<li class="nav-item dropdown" ngbDropdown placement="bottom-end">
 		<a ngbDropdownToggle class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown" role="button"
 			data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -33,10 +34,12 @@
 
 		</div>
 	</li>
+	-->
 
 	<!-- ============================================================== -->
 	<!-- Search -->
 	<!-- ============================================================== -->
+	<!--
 	<li class="nav-item search-box">
 		<a (click)="showSearch = !showSearch" class="nav-link waves-effect waves-dark" href="javascript:void(0)">
 			<i class="ti-search"></i>
@@ -48,9 +51,11 @@
 			</a>
 		</form>
 	</li>
+	-->
 	<!-- ============================================================== -->
 	<!-- Comment -->
 	<!-- ============================================================== -->
+	<!-- 
 	<li class="nav-item dropdown" ngbDropdown placement="bottom-end">
 		<a ngbDropdownToggle class="nav-link dropdown-toggle waves-effect waves-dark" href="javascript:void(0)"
 			data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -71,9 +76,9 @@
 					</div>
 				</li>
 				<li>
-					<ng-scrollbar class="message-center notifications">
+					<ng-scrollbar class= "message-center notifications">-->
 						<!-- Message -->
-						@for(notification of notifications; track notification) {
+						<!-- @for(notification of notifications; track notification) {
 						<a href="javascript:void(0)" class="message-item border-bottom d-block text-decoration-none">
 							<span class="btn btn-circle rounded-circle {{ notification.btn }}">
 								<i class="{{ notification.icon }}"></i>
@@ -97,14 +102,14 @@
 				</li>
 			</ul>
 		</div>
-	</li>
+	</li> -->
 	<!-- ============================================================== -->
 	<!-- End Comment -->
 	<!-- ============================================================== -->
 	<!-- ============================================================== -->
 	<!-- Messages -->
 	<!-- ============================================================== -->
-	<li class="nav-item dropdown" ngbDropdown placement="bottom-end">
+<!-- 	<li class="nav-item dropdown" ngbDropdown placement="bottom-end">
 		<a ngbDropdownToggle class="nav-link dropdown-toggle waves-effect waves-dark" href="javascript:void(0)" id="2"
 			data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			<i class="mdi mdi-email"></i>
@@ -124,9 +129,9 @@
 					</div>
 				</li>
 				<li>
-					<ng-scrollbar class="message-center message-body">
+					<ng-scrollbar class="message-center message-body"> -->
 						<!-- Message -->
-						@for(mymessage of mymessages; track mymessage) {
+<!-- 						@for(mymessage of mymessages; track mymessage) {
 						<a href="javascript:void(0)" class="message-item border-bottom d-block text-decoration-none">
 							<span class="user-img position-relative d-inline-block">
 								<img src="{{ mymessage.useravatar }}" alt="user" class="rounded-circle" />
@@ -162,14 +167,14 @@
 				</li>
 			</ul>
 		</div>
-	</li>
+	</li> -->
 	<!-- ============================================================== -->
 	<!-- End Messages -->
 	<!-- ============================================================== -->
 	<!-- ============================================================== -->
 	<!-- mega menu -->
 	<!-- ============================================================== -->
-	<li class="nav-item mega-dropdown" ngbDropdown [autoClose]="false">
+	<!--<li class="nav-item mega-dropdown" ngbDropdown [autoClose]="false">
 		<a ngbDropdownToggle class="nav-link waves-effect waves-dark" href="javascript:void(0)" data-toggle="dropdown"
 			aria-haspopup="true" aria-expanded="false">
 			<i class="mdi mdi-view-grid"></i>
@@ -177,9 +182,9 @@
 		<div class="dropdown-menu" ngbDropdownMenu>
 			<div class="mega-dropdown-menu row">
 				<div class="col-lg-3 col-xlg-2 mb-4">
-					<h4 class="mb-4">CAROUSEL</h4>
+					<h4 class="mb-4">CAROUSEL</h4> -->
 					<!-- CAROUSEL -->
-					<ngb-carousel class="carousel-dark">
+				<!-- 	<ngb-carousel class="carousel-dark">
 						<ng-template ngbSlide>
 							<img src="assets/images/big/img1.jpg" class="img-fluid" alt="Random first slide" />
 						</ng-template>
@@ -189,13 +194,13 @@
 						<ng-template ngbSlide>
 							<img src="assets/images/big/img3.jpg" class="img-fluid" alt="Random third slide" />
 						</ng-template>
-					</ngb-carousel>
+					</ngb-carousel> -->
 					<!-- End CAROUSEL -->
-				</div>
+				<!-- </div>
 				<div class="col-lg-3 mb-4">
-					<h4 class="mb-4">ACCORDION</h4>
+					<h4 class="mb-4">ACCORDION</h4> -->
 					<!-- Accordian -->
-					<div ngbAccordion>
+					<!-- <div ngbAccordion>
 						<div ngbAccordionItem [collapsed]="false">
 							<h2 ngbAccordionHeader>
 								<button ngbAccordionButton>Simple</button>
@@ -246,9 +251,9 @@
 					</div>
 				</div>
 				<div class="col-lg-3 mb-4">
-					<h4 class="mb-4">CONTACT US</h4>
+					<h4 class="mb-4">CONTACT US</h4> -->
 					<!-- Contact -->
-					<form>
+					<!-- <form>
 						<div class="mb-3">
 							<input type="text" class="form-control" id="exampleInputname1" placeholder="Enter Name" />
 						</div>
@@ -262,9 +267,9 @@
 					</form>
 				</div>
 				<div class="col-lg-3 col-xlg-4 mb-4">
-					<h4 class="mb-4">List style</h4>
+					<h4 class="mb-4">List style</h4> -->
 					<!-- List style -->
-					<ul class="list-style-none">
+				<!-- 	<ul class="list-style-none">
 						<li>
 							<a href="javascript:void(0)">
 								<i class="fa fa-check text-success"></i> You can give link</a>
@@ -289,7 +294,7 @@
 				</div>
 			</div>
 		</div>
-	</li>
+	</li> -->
 	<!-- ============================================================== -->
 	<!-- End mega menu -->
 	<!-- ============================================================== -->
@@ -302,7 +307,7 @@
 			<img src="assets/images/users/user1.jpg" alt="user" class="rounded-circle" width="31" />
 		</a>
 		<div class="dropdown-menu-right user-dd" ngbDropdownMenu>
-			<div class="d-flex no-block align-items-center p-3 mb-2">
+			<!-- <div class="d-flex no-block align-items-center p-3 mb-2">
 				<div class="">
 					<img src="assets/images/users/user1.jpg" alt="user" class="rounded" width="70" />
 				</div>
@@ -311,19 +316,19 @@
 					<p class="text-muted mb-0 fs-2">varun&#64;gmail.com</p>
 					<a href="javascript:void(0)" class="btn btn-danger btn-rounded btn-sm mt-1">View Profile</a>
 				</div>
-			</div>
+			</div> 
 			<a class="dropdown-item" href="javascript:void(0)">
 				<i class="ti-user me-1 ms-1"></i> My Profile</a>
-			<a class="dropdown-item" href="javascript:void(0)">
+ 			<a class="dropdown-item" href="javascript:void(0)">
 				<i class="ti-wallet me-1 ms-1"></i> My Balance</a>
 			<a class="dropdown-item" href="javascript:void(0)">
 				<i class="ti-email me-1 ms-1"></i> Inbox</a>
 			<div class="dropdown-divider"></div>
 			<a class="dropdown-item" href="javascript:void(0)">
-				<i class="ti-settings me-1 ms-1"></i> Account Setting</a>
+				<i class="ti-settings me-1 ms-1"></i> Account Setting</a> -->
 			<div class="dropdown-divider"></div>
 			<a class="dropdown-item" (click)="logout()">
-				<i class="fa fa-power-off me-1 ms-1"></i> Logout</a>
+				<i class="fa fa-power-off me-1 ms-1"></i> Salir</a>
 		</div>
 	</li>
 	<!-- ============================================================== -->

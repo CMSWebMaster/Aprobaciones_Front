@@ -9,7 +9,7 @@ const menuVacaciones: RouteInfo = {
   labelClass: '',
   extralink: false,
   submenu: [
-    {
+    /*{
       path: '/vacaciones/pendientes',
       title: 'Vacaciones Pendientes',
       icon: 'shopping-cart',
@@ -18,10 +18,11 @@ const menuVacaciones: RouteInfo = {
       labelClass: '',
       extralink: false,
       submenu: [],
-    },
+    },*/
     {
       path: '/vacaciones/tomadas',
-      title: 'Vacaciones Tomadas',
+      //title: 'Vacaciones Tomadas',
+	  title: 'Vacaciones',
       icon: 'mdi mdi-arrange-bring-forward',
       class: '',
       label: '',

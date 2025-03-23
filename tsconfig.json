@@ -21,7 +21,7 @@
     "module": "ES2022",
     "typeRoots": ["node_modules/@types"],
     "useDefineForClassFields": false,
-    "lib": ["ES2022", "dom"]
+    "lib": ["ES2022", "es2016", "dom"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
