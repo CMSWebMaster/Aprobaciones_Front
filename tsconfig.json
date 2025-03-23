@@ -27,6 +27,7 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
+    "types": ["node", "chartist", "datatables.net"],
     "strictTemplates": true
   }
 }
